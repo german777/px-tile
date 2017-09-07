@@ -1,0 +1,131 @@
+<!-- Common imports -->
+<link rel="import" href="../../polymer/polymer.html" />
+
+<!-- Common demo imports -->
+<link rel="import" href="../../px-demo/px-demo-header.html" />
+<link rel="import" href="../../px-demo/px-demo-api-viewer.html" />
+<link rel="import" href="../../px-demo/px-demo-footer.html" />
+<link rel="import" href="../../px-demo/px-demo-configs.html" />
+<link rel="import" href="../../px-demo/px-demo-props.html" />
+<link rel="import" href="../../px-demo/px-demo-interactive.html" />
+<link rel="import" href="../../px-demo/px-demo-component-snippet.html" />
+<link rel="import" href="../../px-icon-set/px-icon-set.html" />
+<link rel="import" href="../../px-icon-set/px-icon.html" />
+<link rel="import" href="../../px-alert-label/px-alert-label.html" />
+
+<!-- Imports for this component -->
+<link rel="import" href="../../px-demo/css/px-demo-styles.html" />
+<link rel="import" href="../px-tile.html" />
+
+<!-- Demo DOM module -->
+<dom-module id="px-tile-demo">
+  <template>
+    <style include="px-demo-styles" is="custom-style">
+      .footer {
+        display: flex;
+        align-items: center;
+      }
+      px-icon {
+        margin-right: 1.3333rem;
+      }
+      px-alert-label {
+        margin-left: 0.66667rem;
+        --px-alert-label-border-color: white;
+        --px-alert-label-background-color--unknown: transparent;
+        --px-alert-label-text-color--unknown: white;
+      }
+    </style>
+
+    <!-- Header -->
+    <px-demo-header
+        module-name="px-tile"
+        description="The px-tile component has two states and a sliding animation.">
+    </px-demo-header>
+
+    <!-- Interactive -->
+    <px-demo-interactive>
+      <!-- Configs -->
+      <px-demo-configs configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
+
+      <!-- Props -->
+      <px-demo-props props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
+
+      <!-- Component ---------------------------------------------------------->
+      <px-demo-component>
+        <px-tile type="{{props.type.value}}"
+                 hoverable="{{props.hoverable.value}}"
+                 image-url="{{props.imageUrl.value}}"
+                 title="{{props.title.value}}"
+                 description="{{props.description.value}}"
+                 flip-action="{{props.flipAction.value}}">
+          <div class="footer" slot="footer">
+            <px-icon icon="px-fea:tag"></px-icon>
+            <px-alert-label type="unknown" label="Tag 1"></px-alert-label>
+            <px-alert-label type="unknown" label="Tag 2"></px-alert-label>
+            <px-alert-label type="unknown" label="Tag 3"></px-alert-label>
+          </div>
+        </px-tile>
+      </px-demo-component>
+      <!-- END Component ------------------------------------------------------>
+
+      <px-demo-component-snippet
+          element-properties="{{props}}"
+          element-name="px-tile">
+      </px-demo-component-snippet>
+    </px-demo-interactive>
+
+    <!-- API Viewer -->
+    <px-demo-api-viewer source="px-tile"></px-demo-api-viewer>
+
+    <!-- Footer -->
+    <px-demo-footer></px-demo-footer>
+
+  </template>
+
+</dom-module>
+<script>
+  Polymer({
+    is: 'px-tile-demo',
+
+    properties: {
+
+      props: {
+        type: Object,
+        value: function(){ return this.demoProps; }
+      },
+
+      configs: {
+        type: Array,
+        value: function(){
+          return [
+            { configName: "Default",
+              configReset: true }
+          ]
+        }
+      }
+    },
+
+    demoProps: {
+      title: {
+        type: String,
+        defaultValue: 'Title',
+        inputType: 'text'
+      },
+      description: {
+        type: String,
+        defaultValue: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.',
+        inputType: 'text'
+      },
+      imageUrl: {
+        type: String,
+        defaultValue: '../turbine.jpg',
+        inputType: 'text'
+      },
+      hoverable: {
+        type: Boolean,
+        defaultValue: true,
+        inputType: 'toggle'
+      }
+    }
+  });
+</script>

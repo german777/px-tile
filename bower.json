@@ -1,0 +1,41 @@
+{
+  "name": "px-tile",
+  "version": "1.0.0",
+  "main": [
+    "px-tile.html"
+  ],
+  "ignore": [
+    ".*",
+    "npm-debug.log",
+    "gulpfile.js",
+    "sass",
+    "bower_components",
+    "node_modules",
+    "test",
+    "OSS_Notice.pdf",
+    "scripts",
+    ".github",
+    "px-tile.png",
+    "LICENSE.md",
+    "CONTRIBUTING.md",
+    "HISTORY.md",
+    "README.md",
+    ".jshintrc",
+    ".editorconfig",
+    "*.enc"
+  ],
+  "dependencies": {
+    "polymer": "^1.9.0"
+  },
+  "devDependencies": {
+    "px-starter-kit-design": "^1.0.0",
+    "px-demo": "^2.0.0",
+    "px-theme": "^3.0.0",
+    "px-headings-design": "^1.0.3",
+    "px-alert-label": "^2.0.7",
+    "px-shadows-design": "^1.0.2"
+  },
+  "resolutions":{
+    "webcomponentsjs": "^0.7.24"
+  }
+}

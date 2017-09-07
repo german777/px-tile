@@ -1,0 +1,58 @@
+<!--
+    Relative paths assume component is being run from inside an app or another component, where dependencies are flat
+    siblings. When this component is run from its own repo (e.g. tests, examples), we assume the server is started with
+    'gulp serve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
+-->
+<link rel="import" href="../polymer/polymer.html" />
+
+<link rel="import" href="css/px-tile-styles.html">
+
+<!--
+
+### Usage
+
+    <px-tile title="title" description="description" hoverable>
+      <div slot="footer"></div>
+    </px-tile>
+
+### Styling
+The following custom properties are also available for styling:
+
+Custom property | Description | Default
+:----------------|:-------------|:----------
+`--px-tile-width` | Width of the whole tile | `20rem`
+`--px-tile-height` | Height of the whole tile | `17.93333rem`
+`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`
+`--px-tile-thumbnail-height` | Height of the thumbnail portion | `13.3333rem`
+`--px-tile-background-color` | Background color of the title bar at the bottom | `$gray1`
+`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `$gray17`
+`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `$white`
+
+
+@element px-tile
+@blurb A tile component with two states and a sliding animation.
+@homepage index.html
+@demo index.html
+-->
+
+<dom-module id="px-tile">
+  <template>
+    <style include="px-tile-styles"></style>
+
+    <div class="tile__container">
+      <div id="tile" class="tile">
+        <div id="thumbnail" class="thumbnail"></div>
+        <div class="title delta">{{title}}</div>
+      </div>
+      <div id="overlay" class="overlay">
+        <div class="title delta">{{title}}</div>
+        <div class="text">{{description}}</div>
+        <div class="footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    </div>
+
+  </template>
+</dom-module>
+<script src="dist/px-tile.js"></script>
