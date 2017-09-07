@@ -1,6 +1,6 @@
 {
   "name": "px-tile",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": [
     "px-tile.html"
   ],
@@ -28,14 +28,15 @@
     "polymer": "^1.9.0"
   },
   "devDependencies": {
-    "px-starter-kit-design": "^1.0.0",
     "px-demo": "^2.0.0",
     "px-theme": "^3.0.0",
     "px-headings-design": "^1.0.3",
     "px-alert-label": "^2.0.7",
-    "px-shadows-design": "^1.0.2"
+    "px-shadows-design": "^1.0.2",
+    "px-normalize-design": "^1.0.2",
+    "px-box-sizing-design": "^1.0.2"
   },
-  "resolutions":{
+  "resolutions": {
     "webcomponentsjs": "^0.7.24"
   }
 }
