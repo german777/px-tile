@@ -24,9 +24,9 @@ Custom property | Description | Default
 `--px-tile-height` | Height of the whole tile | `17.93333rem`
 `--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`
 `--px-tile-thumbnail-height` | Height of the thumbnail portion | `13.3333rem`
-`--px-tile-background-color` | Background color of the title bar at the bottom | `$gray1`
-`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `$gray17`
-`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `$white`
+`--px-tile-background-color` | Background color of the title bar at the bottom | `lightgray`
+`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`
+`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`
 
 
 @element px-tile
@@ -44,7 +44,7 @@ Custom property | Description | Default
         <div id="thumbnail" class="thumbnail"></div>
         <div class="title epsilon">{{title}}</div>
       </div>
-      <div id="overlay" class="overlay">
+      <div id="overlay" class$="overlay {{_getClass(_hovered)}}">
         <div class="title epsilon">{{title}}</div>
         <div class="text">{{description}}</div>
         <div class="footer">

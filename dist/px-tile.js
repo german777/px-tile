@@ -2,9 +2,9 @@
        * If true, hovering over the card will cause an overlay to appear
        * with more detailed information, including the description
        * and an optional slot for showing a footer at the bottom.
-       */hoverable:{type:Boolean,value:false,reflectToAttribute:true},/**
+       */hoverable:{type:Boolean,value:false},/**
        * Whether the tile is currently being hovered.
-       */_hovered:{type:Boolean,value:false,reflectToAttribute:true},/**
+       */_hovered:{type:Boolean,value:false},/**
        * Relative URL to an image file to use as a thumbnail on the tile.
        */imageUrl:{type:String,value:'',observer:'_updateImage'},/**
        * Main text label for the tile.
@@ -20,5 +20,7 @@
      * Attach event listeners for hoverable tiles.
      */attached:function attached(){this.listen(this.$.overlay,'mouseenter','_hover');this.listen(this.$.overlay,'mouseleave','_hover')},/**
      * Detach event listeners for hoverable tiles.
-     */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')}})})();
+     */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')},/**
+     * Returns class to control overlay for hoverable tiles.
+     */_getClass:function _getClass(hovered){return hovered?'hovered':''}})})();
 //# sourceMappingURL=px-tile.js.map

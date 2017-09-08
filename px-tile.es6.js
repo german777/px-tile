@@ -11,16 +11,14 @@
        */
       hoverable: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        value: false
       },
       /**
        * Whether the tile is currently being hovered.
        */
       _hovered: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        value: false
       },
       /**
        * Relative URL to an image file to use as a thumbnail on the tile.
@@ -74,6 +72,12 @@
     detached() {
       this.unlisten(this.$.overlay, 'mouseenter');
       this.unlisten(this.$.overlay, 'mouseleave');
+    },
+    /**
+     * Returns class to control overlay for hoverable tiles.
+     */
+    _getClass(hovered) {
+      return hovered ? 'hovered' : '';
     }
   });
 })();
