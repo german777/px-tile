@@ -12,7 +12,8 @@
 ### Usage
 
     <px-tile title="title" description="description" hoverable>
-      <div slot="footer"></div>
+      <div slot="thumbnail"><img src="../turbine.jpg"/></div>
+      <div slot="footer">Footer Content Here</div>
     </px-tile>
 
 ### Styling
@@ -41,7 +42,9 @@ Custom property | Description | Default
 
     <div class="tile__container">
       <div id="tile" class="tile">
-        <div id="thumbnail" class="thumbnail"></div>
+        <div id="thumbnail" class="thumbnail">
+          <slot name="thumbnail"></slot>
+        </div>
         <div class="title epsilon">{{title}}</div>
       </div>
       <div id="overlay" class$="overlay {{_getClass(_hovered)}}">

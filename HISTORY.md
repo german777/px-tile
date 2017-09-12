@@ -1,3 +1,7 @@
+v1.0.3
+==================
+* convert thumbnail to slot
+
 v1.0.2
 ==================
 * fix for shadow dom compatibility

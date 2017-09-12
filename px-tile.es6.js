@@ -21,14 +21,6 @@
         value: false
       },
       /**
-       * Relative URL to an image file to use as a thumbnail on the tile.
-       */
-      imageUrl: {
-        type: String,
-        value: '',
-        observer: '_updateImage'
-      },
-      /**
        * Main text label for the tile.
        */
       title: {
@@ -51,13 +43,6 @@
       if(this.hoverable) {
         this._hovered = !this._hovered;
       }
-    },
-    /**
-     * Changes the background of the thumbnail div when the imageUrl changes.
-     * @param {String} url
-     */
-    _updateImage(url) {
-      this.$.thumbnail.style.background = `url(${url}) 0 0 no-repeat`;
     },
     /**
      * Attach event listeners for hoverable tiles.
