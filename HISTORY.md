@@ -1,3 +1,7 @@
+v1.0.5
+==================
+* bof IE test
+
 v1.0.4
 ==================
 * add unit tests, travis integration

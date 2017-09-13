@@ -25,12 +25,12 @@ function runCustomTests() {
     test('Hover works', function() {
       var overlay = Polymer.dom(tileEl.root).querySelector('.overlay'),
           opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
-      assert.equal(opacity, '0');
+      assert.closeTo(opacity, '0', 0.1);
       window.setTimeout(function() {
         overlay.classList.add('hovered');
         opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
-        assert.equal(opacity, '1');
-      },50);
+        assert.closeTo(opacity, '1', 0.1);
+      },500);
     });
   });
 }
