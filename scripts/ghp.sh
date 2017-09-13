@@ -42,19 +42,19 @@ rm -rf css
 rm -rf sass
 rm -rf scripts
 rm -rf test
-rm *.html
-rm *.json
-rm *.enc
-rm *.js
-rm *.lock
-rm *.ico
-rm *.md
-yes | rm .travis.yml
-rm .bowerrc
-rm .editorconfig
+rm -f *.html
+rm -f *.json
+rm -f *.enc
+rm -f *.js
+rm -f *.lock
+rm -f *.ico
+rm -f *.md
+rm -f .travis.yml
+rm -f .bowerrc
+rm -f .editorconfig
 rm -rf .github
-rm .gitignore
-rm .jshintrc
+rm -f .gitignore
+rm -f .jshintrc
 
 # force installation of bower packages at the root
 echo "{ \"directory\": \".\" }" > .bowerrc
