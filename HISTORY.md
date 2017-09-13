@@ -1,3 +1,7 @@
+v1.0.4
+==================
+* add unit tests, travis integration
+
 v1.0.3
 ==================
 * convert thumbnail to slot

@@ -24,6 +24,9 @@
   <body>
     <style include="px-theme-styles" is="custom-style"></style>
     <h3>Web Component Test : Fixture for px-tile</h3>
-    <px-tile id="px_tile_1"></px-tile>
+    <px-tile id="px_tile_1" title="Title" description="Description" hoverable>
+      <div slot="thumbnail"><img src="../turbine.jpg"/></div>
+      <div slot="footer">Footer</div>
+    </px-tile>
   </body>
 </html>
