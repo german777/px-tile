@@ -23,13 +23,11 @@ function runCustomTests() {
       assert.equal(img.tagName, 'IMG');
     });
     test('Hover works', function() {
-      var overlay = Polymer.dom(tileEl.root).querySelector('.overlay'),
-          opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
-      assert.closeTo(opacity, '0', 0.1);
+      var overlay = Polymer.dom(tileEl.root).querySelector('.overlay');
+      overlay.classList.add('hovered');
       window.setTimeout(function() {
-        overlay.classList.add('hovered');
-        opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
-        assert.closeTo(opacity, '1', 0.1);
+        var opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
+        assert.equal(opacity, '1');
       },500);
     });
   });
