@@ -46,9 +46,11 @@ rm -f *.html
 rm -f *.json
 rm -f *.enc
 rm -f *.js
+rm -f *.png
 rm -f *.lock
 rm -f *.ico
 rm -f *.md
+rm -f *.pdf
 rm -f .travis.yml
 rm -f .bowerrc
 rm -f .editorconfig
@@ -111,8 +113,10 @@ bower install
 # checkout a new orphan
 git checkout --orphan $TARGET_BRANCH
 
-git add -A .
-git commit -m "${GIT_COMMIT_MESSAGE}"
+git add -A . > /dev/null
+echo "git add done"
+git commit -m "${GIT_COMMIT_MESSAGE}" --quiet
+echo "git commit done"
 
 # Set git credentials (defined in settings above)
 git config user.name ${GIT_USER_NAME}
