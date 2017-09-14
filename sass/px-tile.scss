@@ -35,6 +35,7 @@
 .thumbnail {
   width: var(--px-tile-thumbnail-width, 20rem);
   height: var(--px-tile-thumbnail-height, 11.66667rem);
+  background: var(--px-tile-thumbnail-background-color, white);
 }
 .title {
   background: var(--px-tile-background-color, lightgray);

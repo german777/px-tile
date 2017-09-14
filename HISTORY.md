@@ -1,3 +1,7 @@
+v1.0.9
+==================
+* expose thumbnail background variable
+
 v1.0.8
 ==================
 * fix travis
