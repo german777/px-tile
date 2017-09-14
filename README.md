@@ -2,7 +2,7 @@
 
 ## Overview
 
-px-tile is a Predix UI component
+Px-tile displays an image, a title, and a description - perfect for image galleries.
 
 ## Usage
 
@@ -31,7 +31,10 @@ Second, import the component to your application with the following tag in your 
 Finally, use the component in your application:
 
 ```
-Insert Your demo code here.
+<px-tile title="title" description="description" hoverable>
+  <div slot="thumbnail"><img src="../turbine.jpg"/></div>
+  <div slot="footer">Footer Content Here</div>
+</px-tile>
 ```
 
 <br />
