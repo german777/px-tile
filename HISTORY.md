@@ -1,3 +1,7 @@
+v1.0.10
+==================
+* fixed title truncation
+
 v1.0.9
 ==================
 * expose thumbnail background variable

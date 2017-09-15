@@ -15,6 +15,7 @@
 // Generic
 @import "px-normalize-design/_generic.normalize.scss";
 @import "px-box-sizing-design/_generic.box-sizing.scss";
+@import "px-helpers-design/_generic.helpers.scss";
 
 // Base
 @import "px-headings-design/_base.headings.scss";
@@ -41,9 +42,6 @@
   background: var(--px-tile-background-color, lightgray);
   height: 3.66667rem;
   padding: 0 1.3333rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   display: flex;
   align-items: center;
 }
