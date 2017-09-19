@@ -1,3 +1,7 @@
+v1.0.11
+==================
+* fixed title truncation on overlay and the line-height issue
+
 v1.0.10
 ==================
 * fixed title truncation

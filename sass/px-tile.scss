@@ -33,6 +33,9 @@
   width: var(--px-tile-width, 20rem);
   height: var(--px-tile-height, 15.3333rem);
 }
+.title-span {
+  line-height: calculateRem(22px);
+}
 .thumbnail {
   width: var(--px-tile-thumbnail-width, 20rem);
   height: var(--px-tile-thumbnail-height, 11.66667rem);
