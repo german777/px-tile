@@ -1,3 +1,7 @@
+v1.0.12
+==================
+* updated css `background` to `background-color`
+
 v1.0.11
 ==================
 * fixed title truncation on overlay and the line-height issue

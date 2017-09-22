@@ -39,10 +39,10 @@
 .thumbnail {
   width: var(--px-tile-thumbnail-width, 20rem);
   height: var(--px-tile-thumbnail-height, 11.66667rem);
-  background: var(--px-tile-thumbnail-background-color, white);
+  background-color: var(--px-tile-thumbnail-background-color, white);
 }
 .title {
-  background: var(--px-tile-background-color, lightgray);
+  background-color: var(--px-tile-background-color, lightgray);
   height: 3.66667rem;
   padding: 0 1.3333rem;
   display: flex;
@@ -51,7 +51,7 @@
 .overlay {
   position: absolute;
   top: 0;
-  background: var(--px-tile-overlay-background-color, black);
+  background-color: var(--px-tile-overlay-background-color, black);
   color: var(--px-tile-overlay-text-color, white);
   opacity: 0;
   transition: opacity 0.4s cubic-bezier(.78,.13,.16,.87);
