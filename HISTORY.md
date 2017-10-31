@@ -1,3 +1,7 @@
+v1.0.13
+==================
+* add device flags
+
 v1.0.12
 ==================
 * updated css `background` to `background-color`
