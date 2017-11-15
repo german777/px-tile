@@ -20,21 +20,23 @@
 <!-- Demo DOM module -->
 <dom-module id="px-tile-demo">
   <template>
-    <style include="px-demo-styles" is="custom-style">
-      .footer {
-        display: flex;
-        align-items: center;
-      }
-      px-icon {
-        margin-right: 1.3333rem;
-      }
-      px-alert-label {
-        margin-left: 0.66667rem;
-        --px-alert-label-border-color: white;
-        --px-alert-label-background-color--unknown: transparent;
-        --px-alert-label-text-color--unknown: white;
-      }
-    </style>
+    <custom-style>
+      <style include="px-demo-styles" is="custom-style">
+        .footer {
+          display: flex;
+          align-items: center;
+        }
+        px-icon {
+          margin-right: 1.3333rem;
+        }
+        px-alert-label {
+          margin-left: 0.66667rem;
+          --px-alert-label-border-color: white;
+          --px-alert-label-background-color--unknown: transparent;
+          --px-alert-label-text-color--unknown: white;
+        }
+      </style>
+    </custom-style>
 
     <!-- Header -->
     <px-demo-header
@@ -46,19 +48,17 @@
     <!-- Interactive -->
     <px-demo-interactive>
       <!-- Configs -->
-      <px-demo-configs configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
+      <px-demo-configs slot="px-demo-configs" configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
 
       <!-- Props -->
-      <px-demo-props props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
+      <px-demo-props slot="px-demo-props" props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
 
       <!-- Component ---------------------------------------------------------->
-      <px-demo-component>
+      <px-demo-component slot="px-demo-component">
         <px-tile hoverable="{{props.hoverable.value}}"
                  title="{{props.title.value}}"
                  description="{{props.description.value}}">
-          <div class="thumbnail" slot="thumbnail">
-            <img src="../turbine.jpg"/ >
-          </div>
+          <img slot="thumbnail" src$="[[importPath]]turbine.jpg"/ >
           <div class="footer" slot="footer">
             <px-icon icon="px-fea:tag"></px-icon>
             <px-alert-label type="unknown" label="Tag 1"></px-alert-label>
@@ -70,8 +70,9 @@
       <!-- END Component ------------------------------------------------------>
 
       <px-demo-component-snippet
-          element-properties="{{props}}"
-          element-name="px-tile">
+        slot="px-demo-component-snippet"
+        element-properties="{{props}}"
+        element-name="px-tile">
       </px-demo-component-snippet>
     </px-demo-interactive>
 

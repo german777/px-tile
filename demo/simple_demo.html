@@ -30,7 +30,7 @@
       if (!webComponentsSupported) {
         var script = document.createElement('script');
         script.async = true;
-        script.src = '../webcomponentsjs/webcomponents-lite.min.js';
+        script.src = '../webcomponentsjs/webcomponents-lite.js';
         script.onload = onload;
         document.head.appendChild(script);
       } else {
@@ -48,22 +48,24 @@
     <style include="px-theme-styles" is="custom-style"></style>
 
     <link rel="import" href="../../px-demo/css/px-demo-styles.html" />
-    <style include="px-demo-styles" is="custom-style">
-      px-tile {
-        margin: 1rem;
-        cursor: pointer;
-      }
-      .footer {
-        display: flex;
-        align-items: center;
-      }
-      px-alert-label {
-        margin-left: 0.66667rem;
-        --px-alert-label-border-color: white;
-        --px-alert-label-background-color--unknown: transparent;
-        --px-alert-label-text-color--unknown: white;
-      }
-    </style>
+    <custom-style>
+      <style include="px-demo-styles" is="custom-style">
+        px-tile {
+          margin: 1rem;
+          cursor: pointer;
+        }
+        .footer {
+          display: flex;
+          align-items: center;
+        }
+        px-alert-label {
+          margin-left: 0.66667rem;
+          --px-alert-label-border-color: white;
+          --px-alert-label-background-color--unknown: transparent;
+          --px-alert-label-text-color--unknown: white;
+        }
+      </style>
+    </custom-style>
 
     <link rel="import" href="../px-tile.html" />
 
@@ -82,7 +84,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -96,7 +98,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -110,7 +112,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -124,7 +126,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -138,7 +140,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -152,7 +154,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -166,7 +168,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -180,7 +182,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
@@ -194,7 +196,7 @@
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">
-          <img src="../turbine.jpg"/ >
+          <img src="turbine.jpg"/ >
         </div>
         <div class="footer" slot="footer">
           <px-icon icon="px-fea:tag"></px-icon>
