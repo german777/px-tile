@@ -28,6 +28,13 @@
         value: 'Title'
       },
       /**
+       * subtitle text for the tile.
+       */
+      subtitle: {
+        type: String,
+        value: 'Subtitle text'
+      },
+       /**
        * Additional information to be displayed in the overlay of a hoverable card.
        * Only the first ~6 lines of text will be displayed, after which it will be truncated.
        */

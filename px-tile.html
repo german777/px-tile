@@ -42,11 +42,14 @@ Custom property | Description | Default
     <style include="px-tile-styles"></style>
 
     <div class="tile__container">
-      <div id="tile" class="tile">
+      <div id="tile" class="tile shadow-component">
         <div id="thumbnail" class="thumbnail">
           <slot name="thumbnail"></slot>
         </div>
-        <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
+        <div class="tile-text-wrapper">
+          <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
+          <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
+        </div>
       </div>
       <div id="overlay" class$="overlay {{_getClass(_hovered)}}">
         <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>

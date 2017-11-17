@@ -30,11 +30,18 @@
   position: relative;
 }
 .tile, .overlay {
-  width: var(--px-tile-width, 20rem);
-  height: var(--px-tile-height, 15.3333rem);
+  min-width: var(--px-tile-width, calculateRem(100px));
+  minheight: var(--px-tile-height, calculateRem(100px));
+  width: var(--px-tile-width, calculateRem(300px));
+  height: var(--px-tile-height, calculateRem(300px));
 }
 .title-span {
+  color: var(--px-tile-color, darkslategray);
   line-height: calculateRem(22px);
+}
+.subtitle-span{
+  color: var(--px-tile-subtitle-color, gray);
+  line-height: calculateRem(12px);
 }
 .thumbnail {
   width: var(--px-tile-thumbnail-width, 20rem);
@@ -43,10 +50,19 @@
 }
 .title {
   background-color: var(--px-tile-background-color, lightgray);
-  height: 3.66667rem;
-  padding: 0 1.3333rem;
+  height: 1.6rem;
+  padding: 0.1rem 0 0 0;
   display: flex;
-  align-items: center;
+  align-items: left;
+}
+.subtitle{
+  background-color: var(--px-tile-background-color, lightgray);
+  padding: 0 0 1rem 0;
+  display: flex;
+  align-items: left;
+}
+.tile-text-wrapper{
+  padding: 1rem;
 }
 .overlay {
   position: absolute;
