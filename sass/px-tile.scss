@@ -25,44 +25,82 @@
 // Objects
 @import "px-shadows-design/_objects.shadows.scss";
 
+/* mixin for multiline */
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: var(--px-tile-desc-text-height, $lineHeight * $lineCount);
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
 // Component
 .tile__container {
   position: relative;
 }
 .tile, .overlay {
   min-width: var(--px-tile-width, calculateRem(100px));
-  minheight: var(--px-tile-height, calculateRem(100px));
+  min-height: var(--px-tile-height, calculateRem(100px));
   width: var(--px-tile-width, calculateRem(300px));
   height: var(--px-tile-height, calculateRem(300px));
 }
-.title-span {
-  color: var(--px-tile-color, darkslategray);
-  line-height: calculateRem(22px);
-}
-.subtitle-span{
-  color: var(--px-tile-subtitle-color, gray);
-  line-height: calculateRem(12px);
-}
-.thumbnail {
-  width: var(--px-tile-thumbnail-width, 20rem);
-  height: var(--px-tile-thumbnail-height, 11.66667rem);
-  background-color: var(--px-tile-thumbnail-background-color, white);
-}
-.title {
-  background-color: var(--px-tile-background-color, lightgray);
-  height: 1.6rem;
-  padding: 0.1rem 0 0 0;
-  display: flex;
-  align-items: left;
-}
-.subtitle{
-  background-color: var(--px-tile-background-color, lightgray);
-  padding: 0 0 1rem 0;
-  display: flex;
-  align-items: left;
-}
-.tile-text-wrapper{
+
+.tile-text-wrapper {
   padding: 1rem;
+  height: var(--px-tile-text-height, calculateRem(135px));
+
+  .title-span {
+    color: var(--px-tile-color, darkslategray);
+    line-height: calculateRem(22px);
+  }
+  .subtitle-span {
+    color: var(--px-tile-subtitle-color, gray);
+    line-height: calculateRem(14px);
+  }
+  .thumbnail {
+    width: var(--px-tile-thumbnail-width, 20rem);
+    height: var(--px-tile-thumbnail-height, 11.66667rem);
+    background-color: var(--px-tile-thumbnail-background-color, white);
+  }
+  .title {
+    background-color: var(--px-tile-background-color, lightgray);
+    height: 1.6rem;
+    padding: 0.1rem 0 0 0;
+    display: flex;
+    align-items: left;
+  }
+  .subtitle {
+    background-color: var(--px-tile-background-color, lightgray);
+    padding: 0 0 calculateRem(10px) 0;
+    display: flex;
+    align-items: left;
+  }
+  .text {
+      position: relative;
+      margin-right: 1rem;
+  }
+  .block-with-text {
+    @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: white);
+  }
+
+
 }
 .overlay {
   position: absolute;
@@ -74,13 +112,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  .header-wrapper{
+    margin-top: 0.2rem;
+    height: 3.2rem;
+  }
   .title {
+    display: flex;
     background: none;
     margin-top: 1rem;
+    height: 1.6rem;
+    padding: 0 1.3333rem;
+  }
+  .subtitle {
+    display: flex;
+    //text-overflow: ellipsis;
+    height: 1.2rem;
+    line-height: calculateRem(14px);
+    padding: 0 1.3333rem;
   }
   .text {
     padding: 0 1.3333rem;
-    height: 7.6rem;
+    height: var(--px-tile-overlay-desc-text-height, 7.6rem);
     overflow: hidden;
     margin-top: 1rem;
   }
@@ -93,10 +145,11 @@
     transition: margin-top 0.2s cubic-bezier(0.78, 0.13, 0.16, 0.87) 0.1s;
   }
 }
+
 .hovered.overlay {
   opacity: 1;
   .title, .text, .footer {
-    margin-top: 0;
+    margin-top: 1rem;
   }
 }
 

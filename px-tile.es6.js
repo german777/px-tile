@@ -41,7 +41,11 @@
       description: {
         type: String,
         value: 'Description'
-      }
+      },
+      overlayDescription: {
+        type: String,
+        value: 'Overlay description'
+      },
     },
     /**
      * Method used internally for flipping the hovered status of a tile.

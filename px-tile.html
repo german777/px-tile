@@ -49,11 +49,16 @@ Custom property | Description | Default
         <div class="tile-text-wrapper">
           <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
           <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
+          <div class="text zeta"><div class="block-with-text">{{description}}</div></div>
         </div>
       </div>
       <div id="overlay" class$="overlay {{_getClass(_hovered)}}">
-        <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
-        <div class="text">{{description}}</div>
+        <div class="header-wrapper">
+          <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
+          <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
+        </div>
+
+        <div class="text">{{overlayDescription}}</div>
         <div class="footer">
           <slot name="footer"></slot>
         </div>
