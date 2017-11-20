@@ -46,7 +46,7 @@ Custom property | Description | Default
         <div id="thumbnail" class="thumbnail">
           <slot name="thumbnail"></slot>
         </div>
-        <div class="tile-text-wrapper">
+        <div id="tile-text-wrapper" class="tile-text-wrapper">
           <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
           <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
           <div class="text zeta"><div class="block-with-text">{{description}}</div></div>
@@ -57,7 +57,6 @@ Custom property | Description | Default
           <div class="title epsilon"><span class="title-span truncate">{{title}}</span></div>
           <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
         </div>
-
         <div class="text">{{overlayDescription}}</div>
         <div class="footer">
           <slot name="footer"></slot>

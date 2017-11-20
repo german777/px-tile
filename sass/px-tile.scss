@@ -61,47 +61,46 @@
   width: var(--px-tile-width, calculateRem(300px));
   height: var(--px-tile-height, calculateRem(300px));
 }
-
-.tile-text-wrapper {
-  padding: 1rem;
-  height: var(--px-tile-text-height, calculateRem(135px));
-
-  .title-span {
-    color: var(--px-tile-color, darkslategray);
-    line-height: calculateRem(22px);
-  }
-  .subtitle-span {
-    color: var(--px-tile-subtitle-color, gray);
-    line-height: calculateRem(14px);
-  }
+.tile{
+  background-color: var(--px-tile-background-color, lightgray);
   .thumbnail {
-    width: var(--px-tile-thumbnail-width, 20rem);
-    height: var(--px-tile-thumbnail-height, 11.66667rem);
+    width: var(--px-tile-thumbnail-width, calculateRem(300px));
+    height: var(--px-tile-thumbnail-height, calculateRem(175px));
     background-color: var(--px-tile-thumbnail-background-color, white);
   }
-  .title {
-    background-color: var(--px-tile-background-color, lightgray);
-    height: 1.6rem;
-    padding: 0.1rem 0 0 0;
-    display: flex;
-    align-items: left;
-  }
-  .subtitle {
-    background-color: var(--px-tile-background-color, lightgray);
-    padding: 0 0 calculateRem(10px) 0;
-    display: flex;
-    align-items: left;
-  }
-  .text {
+  .tile-text-wrapper {
+    padding: 1rem;
+    height: var(--px-tile-text-height, calculateRem(125px));
+    background-color: var(--px-tile-text-background-color, lightgray);
+    .title-span {
+      color: var(--px-tile-title-color, darkslategray);
+      line-height: calculateRem(22px);
+    }
+    .subtitle-span {
+      color: var(--px-tile-subtitle-color, gray);
+      line-height: calculateRem(14px);
+    }
+    .title {
+      height: 1.6rem;
+      padding: 0.1rem 0 0 0;
+      display: flex;
+      align-items: left;
+    }
+    .subtitle {
+      padding: 0 0 calculateRem(10px) 0;
+      display: flex;
+      align-items: left;
+    }
+    .text {
       position: relative;
       margin-right: 1rem;
+    }
+    .block-with-text {
+      @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: var(--px-tile-text-background-color, lightgray ));
+    }
   }
-  .block-with-text {
-    @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: white);
-  }
-
-
 }
+
 .overlay {
   position: absolute;
   top: 0;
@@ -113,42 +112,39 @@
   flex-direction: column;
   justify-content: space-between;
   .header-wrapper{
-    margin-top: 0.2rem;
+    margin-top: 1.6rem;
     height: 3.2rem;
   }
   .title {
-    display: flex;
     background: none;
-    margin-top: 1rem;
+    margin-top: 0.6rem;
     height: 1.6rem;
     padding: 0 1.3333rem;
   }
   .subtitle {
-    display: flex;
-    //text-overflow: ellipsis;
     height: 1.2rem;
     line-height: calculateRem(14px);
     padding: 0 1.3333rem;
   }
   .text {
     padding: 0 1.3333rem;
-    height: var(--px-tile-overlay-desc-text-height, 7.6rem);
+    height: var(--px-tile-overlay-desc-text-height, 9.1rem);
     overflow: hidden;
-    margin-top: 1rem;
+    margin-top: 1.6rem;
   }
   .footer {
     padding: 1rem 1.3333rem;
+    margin-top: 1.6rem;
     height: 3.66667rem;
-    margin-top: 1rem;
   }
-  .title, .text, .footer {
+  .header-wrapper, .text, .footer {
     transition: margin-top 0.2s cubic-bezier(0.78, 0.13, 0.16, 0.87) 0.1s;
   }
 }
 
 .hovered.overlay {
   opacity: 1;
-  .title, .text, .footer {
+  .header-wrapper, .text, .footer {
     margin-top: 1rem;
   }
 }
