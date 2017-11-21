@@ -28,20 +28,26 @@
         value: 'Title'
       },
       /**
-       * subtitle text for the tile.
+       * Subtitle text for the tile.
        */
       subtitle: {
         type: String,
         value: 'Subtitle text'
       },
        /**
-       * Additional information to be displayed in the overlay of a hoverable card.
-       * Only the first ~6 lines of text will be displayed, after which it will be truncated.
+       * Description information to be displayed underneath tile and subtitle.
+       * Only the first ~3 lines of text will be displayed, after which it will be truncated.
+        * you can customize this using by adjusting --px-tile-desc-text-height scss variable
        */
       description: {
         type: String,
         value: 'Description'
       },
+      /**
+       * Description information to be displayed in the overlay of a hoverable card.
+       * It has more space to display text content and can be adjusted along side with
+       * total height of the tile
+       */
       overlayDescription: {
         type: String,
         value: 'Overlay description'

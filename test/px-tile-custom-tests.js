@@ -13,6 +13,11 @@ suite('Custom Automation Tests for px-tile', function() {
     assert.equal(title, 'Title');
   });
 
+  test('Subtitle is displayed', function() {
+    var title = Polymer.dom(tileEl.root).querySelector('.subtitle').textContent.trim();
+    assert.equal(title, 'Subtitle text');
+  });
+
   test('Description is displayed', function() {
     var description = Polymer.dom(tileEl.root).querySelector('.text').textContent.trim();
     assert.equal(description, 'Description');
@@ -29,8 +34,14 @@ suite('Custom Automation Tests for px-tile', function() {
     window.setTimeout(function() {
       var opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
       assert.equal(opacity, '1');
-      var footer = Polymer.dom(tileEl.root).querySelector('.footer').textContent.trim();
+      var title = overlay.querySelector('.title').textContent.trim();
+      var subtitle = overlay.querySelector('.subtitle').textContent.trim();
+      var overlayDescription = overlay.querySelector('.text').textContent.trim();
+      assert.equal(title, 'Title');
+      assert.equal(subtitle, 'Subtitle');
+      assert.equal(overlayDescription, 'Overlay Description text');
       assert.equal(footer, 'Footer');
     },500);
+
   });
 });
