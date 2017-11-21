@@ -9,17 +9,21 @@ suite('Custom Automation Tests for px-tile', function() {
   });
 
   test('Title is displayed', function() {
-    var title = Polymer.dom(tileEl.root).querySelector('.title').textContent.trim();
+    var tileTextWrapper = Polymer.dom(tileEl.root).querySelector('.tile-text-wrapper');
+    var title = tileTextWrapper.querySelector('.title').textContent.trim();
     assert.equal(title, 'Title');
+
   });
 
   test('Subtitle is displayed', function() {
-    var title = Polymer.dom(tileEl.root).querySelector('.subtitle').textContent.trim();
-    assert.equal(title, 'Subtitle text');
+    var tileTextWrapper = Polymer.dom(tileEl.root).querySelector('.tile-text-wrapper');
+    var subtitle = tileTextWrapper.querySelector('.subtitle').textContent.trim();
+    assert.equal(subtitle, 'Subtitle text');
   });
 
   test('Description is displayed', function() {
-    var description = Polymer.dom(tileEl.root).querySelector('.text').textContent.trim();
+    var tileTextWrapper = Polymer.dom(tileEl.root).querySelector('.tile-text-wrapper');
+    var description = tileTextWrapper.querySelector('.text').textContent.trim();
     assert.equal(description, 'Description');
   });
 
