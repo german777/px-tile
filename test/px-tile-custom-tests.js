@@ -19,13 +19,12 @@ suite('Custom Automation Tests for px-tile', function() {
     assert.equal(description, 'Description');
   });
 
-
   test('Image is displayed', function() {
     var img = tileEl.getEffectiveChildren()[0];
     assert.equal(img.tagName, 'IMG');
   });
 
-  test('Hover works', function() {
+  test('Hover works, overlay has title, subtitle, description, and footer text', function() {
     var overlay = Polymer.dom(tileEl.root).querySelector('.overlay');
     overlay.classList.add('hovered');
     window.setTimeout(function() {
