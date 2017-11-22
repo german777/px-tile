@@ -10,14 +10,14 @@ suite('Custom Automation Tests for px-tile', function() {
 
   test('Title is displayed', function() {
     var tileTextWrapper = Polymer.dom(tileEl.root).querySelector('.tile-text-wrapper');
-    var title = tileTextWrapper.querySelector('.title').textContent.trim();
-    assert.equal(title, 'Title');
+    var title = tileTextWrapper.querySelector('.title-span').textContent.trim();
+    assert.equal(title, 'Title text');
 
   });
 
   test('Subtitle is displayed', function() {
     var tileTextWrapper = Polymer.dom(tileEl.root).querySelector('.tile-text-wrapper');
-    var subtitle = tileTextWrapper.querySelector('.subtitle').textContent.trim();
+    var subtitle = tileTextWrapper.querySelector('.subtitle-span').textContent.trim();
     assert.equal(subtitle, 'Subtitle text');
   });
 
@@ -38,8 +38,8 @@ suite('Custom Automation Tests for px-tile', function() {
     window.setTimeout(function() {
       var opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
       assert.equal(opacity, '1');
-      var title = overlay.querySelector('.title').textContent.trim();
-      var subtitle = overlay.querySelector('.subtitle').textContent.trim();
+      var title = overlay.querySelector('.title-span').textContent.trim();
+      var subtitle = overlay.querySelector('.subtitle-span').textContent.trim();
       var overlayDescription = overlay.querySelector('.text').textContent.trim();
       assert.equal(title, 'Title');
       assert.equal(subtitle, 'Subtitle');
