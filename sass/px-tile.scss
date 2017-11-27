@@ -94,6 +94,7 @@
     .text {
       position: relative;
       margin-right: 1rem;
+      color: var(--px-tile-text-color, darkslategray);
     }
     .block-with-text {
       @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: var(--px-tile-text-background-color, lightgray ));
