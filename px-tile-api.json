@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "### Usage\n\n    <px-tile title=\"title\" description=\"description\" hoverable>\n      <div slot=\"thumbnail\"><img src=\"../turbine.jpg\"/></div>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `17.93333rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `13.3333rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the title bar at the bottom | `lightgray`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
+      "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
       "summary": "",
       "path": "dist/px-tile.js",
       "properties": [
@@ -67,17 +67,37 @@
           "defaultValue": "\"Title\""
         },
         {
-          "name": "description",
+          "name": "subtitle",
           "type": "string",
-          "description": "Additional information to be displayed in the overlay of a hoverable card.\nOnly the first ~6 lines of text will be displayed, after which it will be truncated.",
+          "description": "Subtitle text for the tile.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 11,
+              "line": 10,
               "column": 9
             },
             "end": {
-              "line": 11,
+              "line": 10,
+              "column": 53
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"Subtitle text\""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "Description information to be displayed underneath tile and subtitle.\nDefault : Only the first ~3 lines of text will be displayed, after which it will be truncated.\nYou can customize this using by adjusting `--px-tile-desc-text-height` SASS variable. (e.g. 1 line = 1 rem,\nto set to 5 lines truncated, set --px-tile-desc-text-height : 5rem)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 9
+            },
+            "end": {
+              "line": 15,
               "column": 54
             }
           },
@@ -85,6 +105,26 @@
             "polymer": {}
           },
           "defaultValue": "\"Description\""
+        },
+        {
+          "name": "overlayDescription",
+          "type": "string",
+          "description": "Description information to be displayed in the overlay of a hoverable card.\nIt has more space to display text content and can be adjusted along side with\ntotal height of the tile",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 9
+            },
+            "end": {
+              "line": 19,
+              "column": 69
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"Overlay description\""
         }
       ],
       "methods": [
@@ -94,11 +134,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 13,
+              "line": 21,
               "column": 7
             },
             "end": {
-              "line": 13,
+              "line": 21,
               "column": 81
             }
           },
@@ -111,11 +151,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 15,
+              "line": 23,
               "column": 7
             },
             "end": {
-              "line": 15,
+              "line": 23,
               "column": 136
             }
           },
@@ -128,11 +168,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 17,
+              "line": 25,
               "column": 7
             },
             "end": {
-              "line": 17,
+              "line": 25,
               "column": 122
             }
           },
@@ -145,11 +185,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 19,
+              "line": 27,
               "column": 7
             },
             "end": {
-              "line": 19,
+              "line": 27,
               "column": 73
             }
           },
@@ -175,7 +215,7 @@
           "column": 33
         },
         "end": {
-          "line": 19,
+          "line": 27,
           "column": 74
         }
       },
@@ -215,16 +255,48 @@
           "type": "string"
         },
         {
-          "name": "description",
-          "description": "Additional information to be displayed in the overlay of a hoverable card.\nOnly the first ~6 lines of text will be displayed, after which it will be truncated.",
+          "name": "subtitle",
+          "description": "Subtitle text for the tile.",
           "sourceRange": {
             "start": {
-              "line": 11,
+              "line": 10,
               "column": 9
             },
             "end": {
-              "line": 11,
+              "line": 10,
+              "column": 53
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description information to be displayed underneath tile and subtitle.\nDefault : Only the first ~3 lines of text will be displayed, after which it will be truncated.\nYou can customize this using by adjusting `--px-tile-desc-text-height` SASS variable. (e.g. 1 line = 1 rem,\nto set to 5 lines truncated, set --px-tile-desc-text-height : 5rem)",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 9
+            },
+            "end": {
+              "line": 15,
               "column": 54
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "overlay-description",
+          "description": "Description information to be displayed in the overlay of a hoverable card.\nIt has more space to display text content and can be adjusted along side with\ntotal height of the tile",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 9
+            },
+            "end": {
+              "line": 19,
+              "column": 69
             }
           },
           "metadata": {},
@@ -243,11 +315,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 46,
+              "line": 55,
               "column": 10
             },
             "end": {
-              "line": 46,
+              "line": 55,
               "column": 40
             }
           }
@@ -258,11 +330,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 54,
+              "line": 70,
               "column": 10
             },
             "end": {
-              "line": 54,
+              "line": 70,
               "column": 37
             }
           }

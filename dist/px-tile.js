@@ -9,9 +9,10 @@
        */title:{type:String,value:'Title'},/**
        * Subtitle text for the tile.
        */subtitle:{type:String,value:'Subtitle text'},/**
-       * Description information to be displayed underneath tile and subtitle.
-       * Only the first ~3 lines of text will be displayed, after which it will be truncated.
-        * you can customize this using by adjusting --px-tile-desc-text-height scss variable
+        * Description information to be displayed underneath tile and subtitle.
+        * Default : Only the first ~3 lines of text will be displayed, after which it will be truncated.
+        * You can customize this using by adjusting `--px-tile-desc-text-height` SASS variable. (e.g. 1 line = 1 rem,
+        * to set to 5 lines truncated, set --px-tile-desc-text-height : 5rem)
        */description:{type:String,value:'Description'},/**
        * Description information to be displayed in the overlay of a hoverable card.
        * It has more space to display text content and can be adjusted along side with

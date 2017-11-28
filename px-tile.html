@@ -11,7 +11,12 @@
 
 ### Usage
 
-    <px-tile title="title" description="description" hoverable>
+    <px-tile
+      title="title text"
+      subtitle="subtitle text"
+      description="description text"
+      overlay-description="overlay description text"
+      hoverable >
       <img slot="thumbnail" src="../turbine.jpg"/>
       <div slot="footer">Footer Content Here</div>
     </px-tile>
@@ -22,11 +27,16 @@ The following custom properties are also available for styling:
 Custom property | Description | Default
 :----------------|:-------------|:----------
 `--px-tile-width` | Width of the whole tile | `20rem`
-`--px-tile-height` | Height of the whole tile | `17.93333rem`
+`--px-tile-height` | Height of the whole tile | `20rem`
 `--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`
-`--px-tile-thumbnail-height` | Height of the thumbnail portion | `13.3333rem`
+`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`
 `--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`
-`--px-tile-background-color` | Background color of the title bar at the bottom | `lightgray`
+`--px-tile-background-color` | Background color of the tile | `lightgray`
+`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`
+`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`
+`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`
+`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`
+`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`
 `--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`
 `--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`
 
