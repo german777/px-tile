@@ -64,7 +64,7 @@ suite('Custom Automation Tests for px-tile', function() {
 
   test('Trigger actionTitleButton', function(done) {
     tileEl.set('titleActionButton', titleActionButton);
-    window.addEventListener('px-title-action', function(evt){
+    window.addEventListener('px-title-on-action-clicked', function(evt){
       selectedValue = evt.detail;
     });
     flush(function(){
@@ -87,7 +87,7 @@ suite('Custom Automation Tests for px-tile', function() {
 
   test('Trigger actionTitleButton on overlay', function(done) {
     tileEl.set('titleActionButton', titleActionButton);
-    window.addEventListener('px-title-action', function(evt){
+    window.addEventListener('px-title-on-action-clicked', function(evt){
       selectedValue = evt.detail;
     });
     flush(function(){

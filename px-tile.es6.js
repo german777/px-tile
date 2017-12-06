@@ -55,7 +55,8 @@
         value: 'Overlay description'
       },
       /**
-       * Single action button to display on the title section right side
+       * Single action button to display on the title section right side. 
+       * See https://github.com/PredixDev/px-buttons-design 
        */
       titleActionButton: {
         type: Object,
@@ -85,6 +86,7 @@
     attached() {
       this.listen(this.$.overlay, 'mouseenter', '_hover');
       this.listen(this.$.overlay, 'mouseleave', '_hover');
+      this.listen(this, 'px-title-action', '_onButtonClicked');
     },
     /**
      * Detach event listeners for hoverable tiles.
@@ -92,12 +94,20 @@
     detached() {
       this.unlisten(this.$.overlay, 'mouseenter');
       this.unlisten(this.$.overlay, 'mouseleave');
+      this.unlisten(this, 'px-title-action');
     },
     /**
      * Returns class to control overlay for hoverable tiles.
      */
     _getClass(hovered) {
       return hovered ? 'hovered' : '';
+    },
+    /**
+     * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
+     * @event px-title-on-action-clicked  
+     */
+    _onButtonClicked(evt) {
+      this.fire('px-title-on-action-clicked', evt.detail);
     }
   });
 })();

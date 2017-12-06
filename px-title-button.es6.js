@@ -34,6 +34,7 @@
     },
     /**
      * Fires px-title-action with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
+     * @event px-title-action
      */
     _handleSelection(detail) {
       this.fire('px-title-action', detail);
