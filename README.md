@@ -31,8 +31,13 @@ Second, import the component to your application with the following tag in your 
 Finally, use the component in your application:
 
 ```
-<px-tile title="title" subtitle="Subtitle text" description="Description" overlay-description="Overlay Description text" hoverable>
-  <div slot="thumbnail"><img src="../turbine.jpg"/></div>
+<px-tile
+  title="title text"
+  subtitle="subtitle text"
+  description="description text"
+  overlay-description="overlay description text"
+  hoverable 
+  title-action-button='{"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"}' >
   <div slot="footer">Footer Content Here</div>
 </px-tile>
 ```
