@@ -86,7 +86,6 @@
     attached() {
       this.listen(this.$.overlay, 'mouseenter', '_hover');
       this.listen(this.$.overlay, 'mouseleave', '_hover');
-      this.listen(this, 'px-title-action', '_onButtonClicked');
     },
     /**
      * Detach event listeners for hoverable tiles.
@@ -94,7 +93,6 @@
     detached() {
       this.unlisten(this.$.overlay, 'mouseenter');
       this.unlisten(this.$.overlay, 'mouseleave');
-      this.unlisten(this, 'px-title-action');
     },
     /**
      * Returns class to control overlay for hoverable tiles.
@@ -106,8 +104,5 @@
      * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked  
      */
-    _onButtonClicked(evt) {
-      this.fire('px-title-on-action-clicked', evt.detail);
-    }
   });
 })();

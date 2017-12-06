@@ -33,11 +33,11 @@
       });
     },
     /**
-     * Fires px-title-action with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
-     * @event px-title-action
+     * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
+     * @event px-title-on-action-clicked
      */
     _handleSelection(detail) {
-      this.fire('px-title-action', detail);
+      this.fire('px-title-on-action-clicked', detail);
     }
   });
 })();

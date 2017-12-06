@@ -26,12 +26,12 @@
      * On change callback to remove overlay
      */_hoverableChanged:function _hoverableChanged(){this.$.overlay.classList.add('overlay-remove');if(this.hoverable){this.$.overlay.classList.remove('overlay-remove')}},/**
      * Attach event listeners for hoverable tiles.
-     */attached:function attached(){this.listen(this.$.overlay,'mouseenter','_hover');this.listen(this.$.overlay,'mouseleave','_hover');this.listen(this,'px-title-action','_onButtonClicked')},/**
+     */attached:function attached(){this.listen(this.$.overlay,'mouseenter','_hover');this.listen(this.$.overlay,'mouseleave','_hover')},/**
      * Detach event listeners for hoverable tiles.
-     */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave');this.unlisten(this,'px-title-action')},/**
+     */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')},/**
      * Returns class to control overlay for hoverable tiles.
-     */_getClass:function _getClass(hovered){return hovered?'hovered':''},/**
+     */_getClass:function _getClass(hovered){return hovered?'hovered':''}}/**
      * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked  
-     */_onButtonClicked:function _onButtonClicked(evt){this.fire('px-title-on-action-clicked',evt.detail)}})})();
+     */)})();
 //# sourceMappingURL=px-tile.js.map
