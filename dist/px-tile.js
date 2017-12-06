@@ -2,7 +2,7 @@
        * If true, hovering over the card will cause an overlay to appear
        * with more detailed information, including the description
        * and an optional slot for showing a footer at the bottom.
-       */hoverable:{type:Boolean,value:false},/**
+       */hoverable:{type:Boolean,value:false,observer:'_hoverableChanged'},/**
        * Whether the tile is currently being hovered.
        */_hovered:{type:Boolean,value:false},/**
        * Main text label for the tile.
@@ -17,9 +17,13 @@
        * Description information to be displayed in the overlay of a hoverable card.
        * It has more space to display text content and can be adjusted along side with
        * total height of the tile
-       */overlayDescription:{type:String,value:'Overlay description'}},/**
+       */overlayDescription:{type:String,value:'Overlay description'},/**
+       * Single action button to display on the title section right side
+       */titleActionButton:{type:Object,value:{}}},/**
      * Method used internally for flipping the hovered status of a tile.
      */_hover:function _hover(){if(this.hoverable){this._hovered=!this._hovered}},/**
+     * On change callback to remove overlay
+     */_hoverableChanged:function _hoverableChanged(){this.$.overlay.classList.add('overlay-remove');if(this.hoverable){this.$.overlay.classList.remove('overlay-remove')}},/**
      * Attach event listeners for hoverable tiles.
      */attached:function attached(){this.listen(this.$.overlay,'mouseenter','_hover');this.listen(this.$.overlay,'mouseleave','_hover')},/**
      * Detach event listeners for hoverable tiles.

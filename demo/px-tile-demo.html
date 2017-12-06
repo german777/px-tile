@@ -7,6 +7,7 @@
 <link rel="import" href="../../px-demo/px-demo-footer.html" />
 <link rel="import" href="../../px-demo/px-demo-configs.html" />
 <link rel="import" href="../../px-demo/px-demo-props.html" />
+<link rel="import" href="../../px-demo/px-demo-code-editor.html" />
 <link rel="import" href="../../px-demo/px-demo-interactive.html" />
 <link rel="import" href="../../px-demo/px-demo-component-snippet.html" />
 <link rel="import" href="../../px-icon-set/px-icon-set.html" />
@@ -61,13 +62,17 @@
       <!-- Props -->
       <px-demo-props slot="px-demo-props" props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
 
+      <!-- Code Editor -->
+      <px-demo-code-editor slot="px-demo-code-editor" props="{{props}}"></px-demo-code-editor>
+
       <!-- Component ---------------------------------------------------------->
       <px-demo-component slot="px-demo-component">
         <px-tile hoverable="{{props.hoverable.value}}"
                  title="{{props.title.value}}"
                  subtitle="{{props.subtitle.value}}"
                  description="{{props.description.value}}"
-                 overlay-description="{{props.overlayDescription.value}}">
+                 overlay-description="{{props.overlayDescription.value}}"
+                 title-action-button="{{props.titleActionButton.value}}">
           <img slot="thumbnail" src$="[[importPath]]turbine.jpg" />
           <div class="footer" slot="footer">
             <px-icon icon="px-fea:tag"></px-icon>
@@ -142,6 +147,11 @@
         type: Boolean,
         defaultValue: true,
         inputType: 'toggle'
+      },
+      titleActionButton: {
+        type: Object,
+        defaultValue: {"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"},
+        inputType: 'code:JSON'
       }
     }
   });

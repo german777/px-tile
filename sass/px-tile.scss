@@ -24,6 +24,19 @@
 
 // Objects
 @import "px-shadows-design/_objects.shadows.scss";
+@import "px-flexbox-design/_base.flexbox.scss";
+
+$inuit-enable-btn--small : true;
+$inuit-enable-btn--large : true;
+$inuit-enable-btn--huge : true;
+$inuit-enable-btn--full : true;
+$inuit-enable-btn--primary : true;
+$inuit-enable-btn--tertiary : true;
+$inuit-enable-btn--call-to-action : true;
+$inuit-enable-btn--bare : true;
+$inuit-enable-btn--bare--primary : true;
+$inuit-enable-btn--icon : true;
+@import "px-buttons-design/_objects.buttons.scss";
 
 /* mixin for multiline */
 @mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
@@ -31,7 +44,7 @@
   position: relative;
   line-height: $lineHeight;
   max-height: var(--px-tile-desc-text-height, $lineHeight * $lineCount);
-  text-align: left;
+  text-align: justify;
   margin-right: -1em;
   padding-right: 1em;
   &:before {
@@ -75,18 +88,20 @@
     .title-span {
       color: var(--px-tile-title-color, darkslategray);
       line-height: calculateRem(22px);
+      padding-right: 5px;
     }
     .subtitle-span {
       color: var(--px-tile-subtitle-color, gray);
       line-height: calculateRem(14px);
     }
     .title {
-      height: 1.6rem;
+      height: 1.4rem;
       padding: 0.1rem 0 0 0;
+      display: flex;
       align-items: left;
     }
     .subtitle {
-      padding: 0 0 calculateRem(10px) 0;
+      display: flex;
       align-items: left;
     }
     .text {
@@ -147,6 +162,33 @@
     margin-top: 1rem;
   }
 }
+.overlay-remove {
+  visibility: hidden;
+  display: none !important;
+}
 
 
 // Trumps
+.action .btn+.btn.btn--small,
+.action .btn+.btn.btn--large,
+.action .btn+.btn.btn--huge {
+  margin-left: 5px;
+}
+.action .btn--icon {
+  min-width: var(--px-tile-action-btn-width, 16px);
+  width: var(--px-tile-action-btn-width, 16px);
+}
+.action .btn--icon px-icon {
+  width: 16px;
+  height: 16px;
+}
+.action .title-icon {
+  min-width: 20px;
+  min-height: 20px;
+  padding-bottom: 1.4rem;
+}
+/*
+.action .btn--bare:focus, .action .btn--bare:hover {
+  color: var(--px-btn-bare-color--hover, #007acc) !important;
+}
+*/

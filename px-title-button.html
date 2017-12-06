@@ -1,0 +1,46 @@
+<!--
+    Relative paths assume component is being run from inside an app or another component, where dependencies are flat
+    siblings. When this component is run from its own repo (e.g. tests, examples), we assume the server is started with
+    'gulp serve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
+-->
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../px-icon-set/px-icon-set.html"/>
+<link rel="import" href="css/px-tile-styles.html">
+
+<!--
+
+### Usage
+    This is a helper component to support display of button on hover effect in px-tile and avoid duplicate code
+    
+    <px-title-button title-action-button="{{titleActionButton}}"></px-title-button>
+    
+    Where titleActionButton is a JSON object such as: 
+    let titleActionButton = {"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"};
+    See https://github.com/PredixDev/px-buttons-design 
+    
+@element px-title-button
+@blurb A px-button.
+@homepage index.html
+@demo index.html
+-->
+
+<dom-module id="px-title-button">
+  <template>
+    <style include="px-tile-styles"></style> 
+    <template is="dom-if" if="{{_hasTitleActionButton}}">
+      <div class="flex  flex--justify">
+        <div class="action">
+          <button id="actionBtn" class="btn btn--bare btn--icon" on-click="_onTitleActionSelected">
+            <px-icon class="title-icon"
+             icon='{{titleActionButton.icon}}' 
+             title="{{titleActionButton.val}}" 
+             style$="color:{{titleActionButton.color}};  stroke:{{titleActionButton.color}}"></px-icon>
+          </button>
+        </div>
+      </div>
+    </template>
+  </template>
+</dom-module>
+<script src="dist/px-title-button.js"></script>
+
+

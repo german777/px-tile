@@ -25,7 +25,11 @@
     "*.enc"
   ],
   "dependencies": {
-    "polymer": "#1.9 - 2"
+    "polymer": "#1.9 - 2",
+    "px-dropdown": "^4.1.0",
+    "px-icon-set": "^2.1.1",
+    "px-flexbox-design": "^1.0.2",
+    "px-buttons-design": "^2.0.5"
   },
   "devDependencies": {
     "px-demo": "^3.0.0",
@@ -39,7 +43,10 @@
     "web-component-tester": "^6.3.0"
   },
   "resolutions": {
-    "webcomponentsjs": "^1.0.0"
+    "webcomponentsjs": "^1.0.0",
+    "px-api-viewer": "^2.0.0",
+    "iron-doc-viewer": "^3.0.0",
+    "px-code-editor": "^3.0.0"
   },
   "variants": {
     "1.x": {

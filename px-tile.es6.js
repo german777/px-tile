@@ -11,7 +11,8 @@
        */
       hoverable: {
         type: Boolean,
-        value: false
+        value: false,
+        observer: '_hoverableChanged'
       },
       /**
        * Whether the tile is currently being hovered.
@@ -53,6 +54,13 @@
         type: String,
         value: 'Overlay description'
       },
+      /**
+       * Single action button to display on the title section right side
+       */
+      titleActionButton: {
+        type: Object,
+        value: {}
+      }
     },
     /**
      * Method used internally for flipping the hovered status of a tile.
@@ -60,6 +68,15 @@
     _hover() {
       if(this.hoverable) {
         this._hovered = !this._hovered;
+      }
+    },
+    /**
+     * On change callback to remove overlay
+     */
+    _hoverableChanged() {
+      this.$.overlay.classList.add('overlay-remove');
+      if(this.hoverable) {
+        this.$.overlay.classList.remove('overlay-remove');
       }
     },
     /**
