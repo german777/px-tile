@@ -30,8 +30,8 @@
      * Detach event listeners for hoverable tiles.
      */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')},/**
      * Returns class to control overlay for hoverable tiles.
-     */_getClass:function _getClass(hovered){return hovered?'hovered':''}}/**
+     */_getClass:function _getClass(hovered){return hovered?'hovered':''}/**
      * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked  
-     */)})();
+     */})})();
 //# sourceMappingURL=px-tile.js.map

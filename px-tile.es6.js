@@ -99,7 +99,7 @@
      */
     _getClass(hovered) {
       return hovered ? 'hovered' : '';
-    },
+    }
     /**
      * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked  
