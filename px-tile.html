@@ -5,8 +5,6 @@
 -->
 <link rel="import" href="../polymer/polymer.html" />
 <link rel="import" href="px-title-button.html"/>
-<link rel="import" href="../px-icon-set/px-icon-set.html"/>
-<link rel="import" href="../px-dropdown/px-dropdown.html" />
 <link rel="import" href="css/px-tile-styles.html">
 
 <!--
@@ -60,22 +58,22 @@ Custom property | Description | Default
         <div id="thumbnail" class="thumbnail">
           <slot name="thumbnail"></slot>
         </div>
-        <div id="tile-text-wrapper" class="tile-text-wrapper flex flex--justify flex--col">
-          <div class="title epsilon flex flex--justify">
-            <span class="title-span truncate">{{title}}</span>
-            <px-title-button id="pxTitleButton" title-action-button="{{titleActionButton}}"></px-title-button>
+        <div id="tile-text-wrapper" class="tile-text-wrapper">
+          <div class="title flex--justify">
+            <span class="epsilon truncate title-span">{{title}}</span>
+            <px-title-button id="pxTitleButton" title-action-button="{{titleActionButton}}" class="title-btn"></px-title-button>
           </div>
-          <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
+          <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
           <div class="text zeta"><div class="block-with-text">{{description}}</div></div>
         </div>
       </div>
       <div id="overlay" class$="overlay {{_getClass(_hovered)}}">
         <div class="header-wrapper">
-          <div class="title epsilon flex flex--justify">
-             <span class="title-span truncate">{{title}}</span>
-             <px-title-button id="pxOverlayTitleButton" title-action-button="{{titleActionButton}}"></px-title-button>
+          <div class="title inline--flex">
+            <span class="epsilon truncate title-span">{{title}}</span>
+            <px-title-button id="pxOverlayTitleButton" title-action-button="{{titleActionButton}}" class="title-btn"></px-title-button>
           </div>
-          <div class="subtitle zeta"><span class="subtitle-span truncate">{{subtitle}}</span></div>
+          <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
         </div>
         <div class="text">{{overlayDescription}}</div>
         <div class="footer">

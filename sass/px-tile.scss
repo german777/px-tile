@@ -83,24 +83,30 @@ $inuit-enable-btn--icon : true;
   }
   .tile-text-wrapper {
     padding: 1rem;
-    height: var(--px-tile-text-height, calculateRem(125px));
+    position: absolute;
+    bottom: 0;
+    min-height: var(--px-tile-text-height, calculateRem(125px));
+    width: var(--px-tile-width, calculateRem(300px));
     background-color: var(--px-tile-text-background-color, lightgray);
     .title-span {
       color: var(--px-tile-title-color, darkslategray);
       line-height: calculateRem(22px);
-      padding-right: 5px;
     }
     .subtitle-span {
       color: var(--px-tile-subtitle-color, gray);
       line-height: calculateRem(14px);
     }
     .title {
-      height: 1.4rem;
+      height: 1.6rem;
       padding: 0.1rem 0 0 0;
       display: flex;
       align-items: left;
+      .title-btn {
+        margin-top: -4px;
+      }
     }
     .subtitle {
+      padding: 0 0 calculateRem(10px) 0;
       display: flex;
       align-items: left;
     }
@@ -128,12 +134,19 @@ $inuit-enable-btn--icon : true;
   .header-wrapper{
     margin-top: 1.6rem;
     height: 3.2rem;
+    .title-span {
+      width: 100%;
+    }
   }
   .title {
     background: none;
     margin-top: 0.6rem;
     height: 1.6rem;
+    width: var(--px-tile-width, calculateRem(300px));
     padding: 0 1.3333rem;
+    .title-btn {
+      margin-top: -6px;
+    }
   }
   .subtitle {
     height: 1.2rem;
@@ -169,21 +182,3 @@ $inuit-enable-btn--icon : true;
 
 
 // Trumps
-.action .btn+.btn.btn--small,
-.action .btn+.btn.btn--large,
-.action .btn+.btn.btn--huge {
-  margin-left: 5px;
-}
-.action .btn--icon {
-  min-width: var(--px-tile-action-btn-width, 16px);
-  width: var(--px-tile-action-btn-width, 16px);
-}
-.action .btn--icon px-icon {
-  width: 16px;
-  height: 16px;
-}
-.action .title-icon {
-  min-width: 20px;
-  min-height: 20px;
-  padding-bottom: 1.4rem;
-}

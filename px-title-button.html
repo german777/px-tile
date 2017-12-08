@@ -4,7 +4,8 @@
     'gulp serve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
 -->
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="../px-icon-set/px-icon-set.html"/>
+<link rel="import" href="../px-icon-set/px-icon-set.html" />
+<link rel="import" href="../px-icon-set/px-icon.html" />
 <link rel="import" href="css/px-tile-styles.html">
 
 <!--
@@ -28,8 +29,8 @@
   <template>
     <style include="px-tile-styles"></style> 
     <template is="dom-if" if="{{_hasTitleActionButton}}">
-      <div class="flex  flex--justify">
-        <div class="action">
+      <div class="flex flex--justify">
+        <div class="action-btn">
           <button id="actionBtn" class="btn btn--bare btn--icon" on-click="_onTitleActionSelected">
             <px-icon class="title-icon"
              icon='{{titleActionButton.icon}}' 
