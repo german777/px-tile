@@ -58,7 +58,7 @@
             },
             "end": {
               "line": 8,
-              "column": 257
+              "column": 151
             }
           },
           "metadata": {},
@@ -838,11 +838,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 99,
+              "line": 80,
               "column": 10
             },
             "end": {
-              "line": 99,
+              "line": 80,
               "column": 37
             }
           }

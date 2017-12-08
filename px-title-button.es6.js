@@ -25,11 +25,9 @@
      * Callback for title icon
      */
     _onTitleActionSelected() {
-      this.titleActionButton.selected = !this.titleActionButton.selected;
       this._handleSelection({
         val: this.titleActionButton.val, 
-        key: this.titleActionButton.key, 
-        selected: this.titleActionButton.selected
+        key: this.titleActionButton.key
       });
     },
     /**

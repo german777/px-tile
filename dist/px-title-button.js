@@ -6,7 +6,7 @@
      * Sets _hasTitleActionButton
      */_titleActionButtonChanged:function _titleActionButtonChanged(){this._hasTitleActionButton=(this.titleActionButton&&(this.titleActionButton.key||this.titleActionButton.val))!==undefined},/**
      * Callback for title icon
-     */_onTitleActionSelected:function _onTitleActionSelected(){this.titleActionButton.selected=!this.titleActionButton.selected;this._handleSelection({val:this.titleActionButton.val,key:this.titleActionButton.key,selected:this.titleActionButton.selected})},/**
+     */_onTitleActionSelected:function _onTitleActionSelected(){this._handleSelection({val:this.titleActionButton.val,key:this.titleActionButton.key})},/**
      * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked
      */_handleSelection:function _handleSelection(detail){this.fire('px-title-on-action-clicked',detail)}})})();

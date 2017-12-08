@@ -101,6 +101,9 @@ $inuit-enable-btn--icon : true;
       padding: 0.1rem 0 0 0;
       display: flex;
       align-items: left;
+      .title-btn {
+        margin-top: -4px;
+      }
     }
     .subtitle {
       padding: 0 0 calculateRem(10px) 0;
@@ -131,12 +134,19 @@ $inuit-enable-btn--icon : true;
   .header-wrapper{
     margin-top: 1.6rem;
     height: 3.2rem;
+    .title-span {
+      width: 100%;
+    }
   }
   .title {
     background: none;
     margin-top: 0.6rem;
     height: 1.6rem;
+    width: var(--px-tile-width, calculateRem(300px));
     padding: 0 1.3333rem;
+    .title-btn {
+      margin-top: -6px;
+    }
   }
   .subtitle {
     height: 1.2rem;
@@ -172,30 +182,3 @@ $inuit-enable-btn--icon : true;
 
 
 // Trumps
-.action-title {
-  margin-right: -1em;
-}
-.action-title .btn--bare{
-  
-}
-
-/*
-.action .btn+.btn.btn--small,
-.action .btn+.btn.btn--large,
-.action .btn+.btn.btn--huge {
-  margin-left: 5px;
-}
-.action .btn--icon {
-  min-width: var(--px-tile-action-btn-width, 16px);
-  width: var(--px-tile-action-btn-width, 16px);
-}
-.action .btn--icon px-icon {
-  width: 16px;
-  height: 16px;
-}
-.action .title-icon {
-  min-width: 20px;
-  min-height: 20px;
-  padding-bottom: 1.4rem;
-}
-*/
