@@ -140,6 +140,259 @@
       "tagname": "px-title-button"
     },
     {
+      "description": "### Usage\n    This is a helper component to support display of button on hover effect in px-tile and avoid duplicate code\n    \n    <px-action-buttons action-buttons=\"{{actionButtons}}\"></px-action-buttons>\n    \n    If items <= 3 it will display the elements one after the other\n    If items > 3 it will display the list of elements in a dropdown\n    \n    actionButtons is a JSON object such as: \n    E.g. for items = 3\n    let titleActionButton = {\"items\":[{\"key\":\"1\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:phone\"},{\"key\":\"2\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:edit\"}]};\n    E.g for items > 3\n    let titleActionButton = {\"items\":[{\"key\":\"1\",\"val\":\"Edit\",\"icon\":\"px-utl:edit\",\"selected\":true},{\"key\":\"2\",\"val\":\"Copy\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"val\":\"Remove\",\"icon\":\"px-vis:trash-series\"},{\"key\":\"4\",\"val\":\"Notification\",\"icon\":\"px-nav:notification\"}],\"sortMode\":\"key\",\"buttonStyle\":\"icon\",\"icon\":\"px-nav:more\",\"displayValue\":\"Select\",\"disabled\":false,\"disableClear\":false,\"hideChevron\":true,\"multi\":false,\"searchMode\":false}\n    \n    See https://github.com/PredixDev/px-buttons-design for button options \n    See https://github.com/PredixDev/px-dropdown for dropdown options",
+      "summary": "",
+      "path": "dist/px-action-buttons.js",
+      "properties": [
+        {
+          "name": "actionButtons",
+          "type": "Object",
+          "description": "Action buttons to display below the description/copy text.\nPlease refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 78
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_actionButtonsChanged\""
+            }
+          },
+          "defaultValue": "{}"
+        }
+      ],
+      "methods": [
+        {
+          "name": "detached",
+          "description": "Call _unlisten() to detach event listeners for action buttons.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 53
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_unlisten",
+          "description": "Detach event listeners for action buttons.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 136
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_actionButtonsChanged",
+          "description": "Observer when actionButtons changes.  \nSets flag _isDropdown true if actionButtons size is greater than 3, false otherwise.\nIf _isDropdown === true it will update px-dropdown options menu",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 7
+            },
+            "end": {
+              "line": 14,
+              "column": 341
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_onSelected",
+          "description": "Callback for on-tap event for action items when the list size is 3 or less",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 16,
+              "column": 7
+            },
+            "end": {
+              "line": 16,
+              "column": 138
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt"
+            }
+          ]
+        },
+        {
+          "name": "_itemSelected",
+          "description": "Callback for selected/unselected action title dropdown items when the list is greater than 3",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 7
+            },
+            "end": {
+              "line": 18,
+              "column": 202
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt"
+            }
+          ]
+        },
+        {
+          "name": "_handleSelection",
+          "description": "Fires px-title-action with selection detail. E.g. {key: \"1\", val: \"Favorite\", selected: true}",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 7
+            },
+            "end": {
+              "line": 20,
+              "column": 200
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "detail"
+            }
+          ]
+        },
+        {
+          "name": "_getBtnSize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 201
+            },
+            "end": {
+              "line": 20,
+              "column": 273
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            }
+          ]
+        },
+        {
+          "name": "_getBtnType",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 274
+            },
+            "end": {
+              "line": 20,
+              "column": 334
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            }
+          ]
+        },
+        {
+          "name": "_iconStyle",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 335
+            },
+            "end": {
+              "line": 20,
+              "column": 429
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 0,
+          "column": 33
+        },
+        "end": {
+          "line": 20,
+          "column": 430
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "action-buttons",
+          "description": "Action buttons to display below the description/copy text.\nPlease refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties",
+          "sourceRange": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 78
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "px-action-buttons"
+    },
+    {
       "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"1\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"selected\": true, \"color\": \"orange\"}' >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n    For title-action-button see https://github.com/PredixDev/px-buttons-design \n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
       "summary": "",
       "path": "dist/px-tile.js",
@@ -285,6 +538,28 @@
             "polymer": {}
           },
           "defaultValue": "{}"
+        },
+        {
+          "name": "actionButtons",
+          "type": "Object",
+          "description": "Action buttons to display below the description text.\n\nIf items <= 3 it will display the buttons/text inline.\n\nPlease refer to px-buttons-design (https://github.com/PredixDev/px-buttons-design) for a list of supported properties\n\nIf items > 3 it will display the list of elements in a dropdown.\n\nPlease refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties\n\nExample when items = 3:\n\n{\"items\":[{\"key\":\"1\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:phone\"},{\"key\":\"2\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:edit\"}]}\n\nExample when items > 3:\n\n{\"items\":[{\"key\":\"1\",\"val\":\"Edit\",\"icon\":\"px-utl:edit\",\"selected\":true},{\"key\":\"2\",\"val\":\"Copy\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"val\":\"Remove\",\"icon\":\"px-vis:trash-series\"},{\"key\":\"4\",\"val\":\"Notification\",\"icon\":\"px-nav:notification\"}],\"sortMode\":\"key\",\"buttonStyle\":\"icon\",\"icon\":\"px-nav:more\",\"displayValue\":\"Select\",\"disabled\":false,\"disableClear\":false,\"hideChevron\":true,\"multi\":false,\"searchMode\":false}\n\nEvent fired on item selection:\n\n`px-title-on-action-clicked`",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 9
+            },
+            "end": {
+              "line": 44,
+              "column": 78
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_actionButtonsChanged\""
+            }
+          },
+          "defaultValue": "{}"
         }
       ],
       "methods": [
@@ -294,11 +569,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 24,
+              "line": 46,
               "column": 7
             },
             "end": {
-              "line": 24,
+              "line": 46,
               "column": 81
             }
           },
@@ -311,11 +586,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 26,
+              "line": 48,
               "column": 7
             },
             "end": {
-              "line": 26,
+              "line": 48,
               "column": 171
             }
           },
@@ -328,11 +603,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 28,
+              "line": 50,
               "column": 7
             },
             "end": {
-              "line": 28,
+              "line": 50,
               "column": 136
             }
           },
@@ -345,11 +620,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 52,
               "column": 7
             },
             "end": {
-              "line": 30,
+              "line": 52,
               "column": 122
             }
           },
@@ -362,11 +637,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 54,
               "column": 7
             },
             "end": {
-              "line": 32,
+              "line": 54,
               "column": 73
             }
           },
@@ -376,6 +651,23 @@
               "name": "hovered"
             }
           ]
+        },
+        {
+          "name": "_actionButtonsChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 74
+            },
+            "end": {
+              "line": 58,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -392,7 +684,7 @@
           "column": 33
         },
         "end": {
-          "line": 36,
+          "line": 61,
           "column": 8
         }
       },
@@ -494,6 +786,22 @@
           },
           "metadata": {},
           "type": "Object"
+        },
+        {
+          "name": "action-buttons",
+          "description": "Action buttons to display below the description text.\n\nIf items <= 3 it will display the buttons/text inline.\n\nPlease refer to px-buttons-design (https://github.com/PredixDev/px-buttons-design) for a list of supported properties\n\nIf items > 3 it will display the list of elements in a dropdown.\n\nPlease refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties\n\nExample when items = 3:\n\n{\"items\":[{\"key\":\"1\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:phone\"},{\"key\":\"2\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:edit\"}]}\n\nExample when items > 3:\n\n{\"items\":[{\"key\":\"1\",\"val\":\"Edit\",\"icon\":\"px-utl:edit\",\"selected\":true},{\"key\":\"2\",\"val\":\"Copy\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"val\":\"Remove\",\"icon\":\"px-vis:trash-series\"},{\"key\":\"4\",\"val\":\"Notification\",\"icon\":\"px-nav:notification\"}],\"sortMode\":\"key\",\"buttonStyle\":\"icon\",\"icon\":\"px-nav:more\",\"displayValue\":\"Select\",\"disabled\":false,\"disableClear\":false,\"hideChevron\":true,\"multi\":false,\"searchMode\":false}\n\nEvent fired on item selection:\n\n`px-title-on-action-clicked`",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 9
+            },
+            "end": {
+              "line": 44,
+              "column": 78
+            }
+          },
+          "metadata": {},
+          "type": "Object"
         }
       ],
       "events": [
@@ -515,11 +823,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 60,
+              "line": 59,
               "column": 10
             },
             "end": {
-              "line": 60,
+              "line": 59,
               "column": 40
             }
           }
@@ -530,11 +838,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 81,
+              "line": 99,
               "column": 10
             },
             "end": {
-              "line": 81,
+              "line": 99,
               "column": 37
             }
           }

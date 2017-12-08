@@ -72,7 +72,8 @@
                  subtitle="{{props.subtitle.value}}"
                  description="{{props.description.value}}"
                  overlay-description="{{props.overlayDescription.value}}"
-                 title-action-button="{{props.titleActionButton.value}}">
+                 title-action-button="{{props.titleActionButton.value}}" 
+                 action-buttons="{{props.actionButtons.value}}">
           <img slot="thumbnail" src$="[[importPath]]turbine.jpg" />
           <div class="footer" slot="footer">
             <px-icon icon="px-fea:tag"></px-icon>
@@ -121,6 +122,36 @@
         }
       }
     },
+    
+    ready() {
+      
+      this.async(function() {
+        console.log('TODO - DELETE THIS BLOCK readdy called .....');
+        /*
+        let pxTile = Polymer.dom(this.root).querySelector('px-tile');
+        //pxTile.set('titleActionButton', {"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": false, "color": "red"});
+        //console.log('pxTile', pxTile);
+        pxTile.set('actionButtons', {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":true,"searchMode":false});
+        //pxTile.set('tertiaryActionButtons', {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"default","icon":"px-nav:hamburger","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":true});
+        //pxTile.set('tertiaryActionButtons', {"items": [{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red"},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"},{"key":"4","val":"Windows Phone","icon":"px-utl:phone","color":"orange"},{"key":"5","val":"Flip Phone","disabled":true,"icon":"px-utl:phone","color":"#C5D1D8"}]});
+        //pxTile.set('actionButtons', {"items": [{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red"},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"}]});
+        this.async(function(){
+          pxTile.set('actionButtons', {"items": [{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red"},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"},{"key":"4","val":"Windows Phone","icon":"px-utl:phone","color":"orange"},{"key":"5","val":"Flip Phone","disabled":true,"icon":"px-utl:phone","color":"#C5D1D8"}]});
+        
+          this.async(function(){
+            pxTile.set('actionButtons', {"items": [{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red","selected":true},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"},{"key":"4","val":"Windows Phone","icon":"px-utl:phone","color":"blue"}]});
+            this.async(function(){  
+              console.log('removing actionButtons');
+              pxTile.set('actionButtons', {});
+            }, 4000);
+          }, 4000);
+          
+        }, 4000);
+        */
+        
+      }, 4000);
+      
+    },
 
     demoProps: {
       title: {
@@ -151,6 +182,43 @@
       titleActionButton: {
         type: Object,
         defaultValue: {"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"},
+        inputType: 'code:JSON'
+      },
+      actionButtons: {
+        type: Object,
+        // dropdown
+        //defaultValue: {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false},
+        
+        
+        
+        //defaultValue: {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":true,"searchMode":false},
+        //defaultValue: {"items": [{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red"},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"},{"key":"4","val":"Windows Phone","icon":"px-utl:phone","color":"orange"},{"key":"5","val":"Flip Phone","disabled":true,"icon":"px-utl:phone","color":"#C5D1D8"}]},
+        
+        
+        
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","color":"red"},{"key":"2","val":"Android","color":"green"},{"key":"3","val":"Blackberry","color":"blue","bare":true}]},
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red"},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"}]},
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red","bare":true},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green","bare":true},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue","bare":true}]},
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","color":"red"},{"key":"2","val":"Android","color":"green"},{"key":"3","val":"Blackberry","color":"blue"}]},
+        
+        
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","color":"red","size":"btn--small","type":"btn--primary","icon":"px-utl:phone"},{"key":"2","val":"Android","color":"green","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Blackberry","color":"blue","size":"btn--small","icon":"px-utl:edit"}]},
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","color":"red","size":"btn--small","type":"btn--primary"},{"key":"2","val":"Android","color":"green","size":"btn--small"},{"key":"3","val":"Blackberry","color":"blue","size":"btn--small","type":"btn--tertiary"}]},
+        
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","size":"btn--small","icon":"px-utl:phone"},{"key":"2","val":"Android","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Blackberry","size":"btn--small","icon":"px-utl:edit"}]},
+        
+        
+        //defaultValue: {"items": [{"key":"1","val":"iPhone","icon":"px-utl:phone","color":"red"},{"key":"2","val":"Android","icon":"px-utl:phone","color":"green"},{"key":"3","val":"Blackberry","icon":"px-utl:phone","color":"blue"}]},
+        //defaultValue: {"items":[{"key":"1","val":"iPhone","color":"red"},{"key":"2","val":"Android","color":"green"},{"key":"3","val":"Blackberry","color":"blue"}]},
+        
+        //defaultValue: {"items":[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"}]},
+        //defaultValue: {"items":[{"key":"1","color":"red","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","color":"green","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","color":"blue","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:edit"}]},
+        //defaultValue: {"items":[{"key":"1","color":"red","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","color":"green","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","color":"blue","type":"btn--bare btn--icon","icon":"px-utl:edit"}]},
+        
+        // icons
+        //defaultValue: {"items":[{"key":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]},
+        
+        //defaultValue: {"items":[{"key":"1","icon":"px-utl:phone","color":"red"},{"key":"2","icon":"px-utl:phone","color":"green"},{"key":"3","icon":"px-utl:phone","color":"blue"}]},
         inputType: 'code:JSON'
       }
     }

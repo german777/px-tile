@@ -83,24 +83,27 @@ $inuit-enable-btn--icon : true;
   }
   .tile-text-wrapper {
     padding: 1rem;
-    height: var(--px-tile-text-height, calculateRem(125px));
+    position: absolute;
+    bottom: 0;
+    min-height: var(--px-tile-text-height, calculateRem(125px));
+    width: var(--px-tile-width, calculateRem(300px));
     background-color: var(--px-tile-text-background-color, lightgray);
     .title-span {
       color: var(--px-tile-title-color, darkslategray);
       line-height: calculateRem(22px);
-      padding-right: 5px;
     }
     .subtitle-span {
       color: var(--px-tile-subtitle-color, gray);
       line-height: calculateRem(14px);
     }
     .title {
-      height: 1.4rem;
+      height: 1.6rem;
       padding: 0.1rem 0 0 0;
       display: flex;
       align-items: left;
     }
     .subtitle {
+      padding: 0 0 calculateRem(10px) 0;
       display: flex;
       align-items: left;
     }
@@ -169,6 +172,14 @@ $inuit-enable-btn--icon : true;
 
 
 // Trumps
+.action-title {
+  margin-right: -1em;
+}
+.action-title .btn--bare{
+  
+}
+
+/*
 .action .btn+.btn.btn--small,
 .action .btn+.btn.btn--large,
 .action .btn+.btn.btn--huge {
@@ -187,3 +198,4 @@ $inuit-enable-btn--icon : true;
   min-height: 20px;
   padding-bottom: 1.4rem;
 }
+*/
