@@ -15,15 +15,9 @@
       }
     },
     /**
-     * Call _unlisten() to detach event listeners for action buttons.
+     * Detach event listeners for dropdown action buttons.
      */
     detached() {
-      this._unlisten();
-    },
-    /**
-     * Detach event listeners for action buttons.
-     */
-    _unlisten() {
       if(this.$$('#pxDropdown')) {
         this.unlisten(this.$$('#pxDropdown'), 'px-dropdown-selection-changed');
       }
@@ -36,9 +30,7 @@
     _actionButtonsChanged() {
       // set _notifyActionChange false to prevent firing px-dropdown-selection-changed while updating the new set of buttons
       this._notifyActionChange = false;
-      this._unlisten();
       this._isDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > 3;
-      this.set('items', this.actionButtons.items);
       if(this._isDropdown) {
         this.async(function(){
           let pxDropdown = this.$$('#pxDropdown');
@@ -52,18 +44,18 @@
             pxDropdown.set(key, this.actionButtons[key]);
           }
           this.async(function() {
-            let dropdown = Polymer.dom(pxDropdown.root).querySelector('#dropdown');
             // adjust dropdown to appear aligned to the right
+            let dropdown = Polymer.dom(pxDropdown.root).querySelector('#dropdown');
             dropdown.set('horizontalAlign', 'right');
             let button = Polymer.dom(pxDropdown.root).querySelector('#button');
             let pxIcon = Polymer.dom(button).querySelector('px-icon');
             if(pxIcon) {
-              pxIcon.style.right = '-12px';
+              pxIcon.style.right = '-8px';
             }
             this.listen(pxDropdown, 'px-dropdown-selection-changed', '_itemSelected');
             this._notifyActionChange = true;
           });
-        });
+        }, 100);
       } else {
         this._notifyActionChange = true;
       }
@@ -91,19 +83,9 @@
      * Fires px-title-action with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      */
     _handleSelection(detail) {
-      console.log('this._notifyActionChange', this._notifyActionChange);
       if(this._notifyActionChange) {
         this.fire('px-title-on-action-clicked', detail);
       }
-    },
-    _getBtnSize(item) {
-      return item.size || 'btn--default';
-    },
-    _getBtnType(item) {
-      return item.type || '';
-    },
-    _iconStyle(item) {
-      return item.icon && item.val? '--iron-icon-height: 12px': '';
     }
   });
 })();

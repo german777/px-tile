@@ -21,19 +21,19 @@
        * Single action button to display on the title section right side. 
        * See https://github.com/PredixDev/px-buttons-design 
        */titleActionButton:{type:Object,value:{}},/**
-       * Action buttons to display below the description text.
+       * Action buttons display below description.
        * 
-       * If items <= 3 it will display the buttons/text inline.
+       * When items <= 3 will display the buttons/text inline.
        * 
        * Please refer to px-buttons-design (https://github.com/PredixDev/px-buttons-design) for a list of supported properties
        * 
-       * If items > 3 it will display the list of elements in a dropdown.
+       * When items > 3 will display the list of elements in a dropdown.
        * 
        * Please refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties
        * 
        * Example when items = 3:
        * 
-       * {"items":[{"key":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]}
+       * {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}
        * 
        * Example when items > 3:
        * 
@@ -52,11 +52,7 @@
      * Detach event listeners for hoverable tiles.
      */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')},/**
      * Returns class to control overlay for hoverable tiles.
-     */_getClass:function _getClass(hovered){return hovered?'hovered':''},_actionButtonsChanged:function _actionButtonsChanged(){if(this.actionButtons.items&&this.actionButtons.items.length){this._hasActionButtons=true;//console.log('changing custom style to 2rem');
-//this.$.description.setAttribute('style', 'max-height: 2rem; margin-top: 10px;') 
-}else{//console.log('removing custom style of 2rem');
-this._hasActionButtons=false;//this.$.description.setAttribute('style', '');
-}}/**
+     */_getClass:function _getClass(hovered){return hovered?'hovered':''},_actionButtonsChanged:function _actionButtonsChanged(){this._hasActionButtons=this.actionButtons&&this.actionButtons.items!==undefined&&this.actionButtons.items.length>0}/**
      * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked  
      */})})();

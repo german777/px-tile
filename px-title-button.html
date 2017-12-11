@@ -30,14 +30,12 @@
     <style include="px-tile-styles"></style> 
     <template is="dom-if" if="{{_hasTitleActionButton}}">
       <div class="flex flex--justify">
-        <div class="action-btn">
-          <button id="actionBtn" class="btn btn--bare btn--icon" on-click="_onTitleActionSelected">
-            <px-icon class="title-icon"
-             icon='{{titleActionButton.icon}}' 
-             title="{{titleActionButton.val}}" 
-             style$="color:{{titleActionButton.color}};  stroke:{{titleActionButton.color}}"></px-icon>
-          </button>
-        </div>
+         <button id="actionBtn" class="btn btn--bare btn--icon" on-click="_onTitleActionSelected">
+           <px-icon class="title-icon"
+            icon='{{titleActionButton.icon}}' 
+            title="{{titleActionButton.val}}" 
+            style$="color:{{titleActionButton.color}};  stroke:{{titleActionButton.color}}"></px-icon>
+         </button>
       </div>
     </template>
   </template>

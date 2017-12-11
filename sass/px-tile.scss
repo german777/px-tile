@@ -103,6 +103,7 @@ $inuit-enable-btn--icon : true;
       align-items: left;
       .title-btn {
         margin-top: -4px;
+        margin-right: -3px;
       }
     }
     .subtitle {
@@ -114,6 +115,9 @@ $inuit-enable-btn--icon : true;
       position: relative;
       margin-right: 1rem;
       color: var(--px-tile-text-color, darkslategray);
+    }
+    .action-btns {
+      margin-top: calculateRem(10px);
     }
     .block-with-text {
       @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: var(--px-tile-text-background-color, lightgray ));
@@ -146,6 +150,7 @@ $inuit-enable-btn--icon : true;
     padding: 0 1.3333rem;
     .title-btn {
       margin-top: -6px;
+      margin-right: -6px;
     }
   }
   .subtitle {
@@ -163,6 +168,10 @@ $inuit-enable-btn--icon : true;
     padding: 1rem 1.3333rem;
     margin-top: 1.6rem;
     height: 3.66667rem;
+  }
+  .action-overlay-btns {
+    margin-bottom: calculateRem(15px);
+    margin-right: calculateRem(15px);
   }
   .header-wrapper, .text, .footer {
     transition: margin-top 0.2s cubic-bezier(0.78, 0.13, 0.16, 0.87) 0.1s;

@@ -20,9 +20,9 @@
     
     actionButtons is a JSON object such as: 
     E.g. for items = 3
-    let titleActionButton = {"items":[{"key":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]};
+    let actionButtons = {"items":[{"key":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]};
     E.g for items > 3
-    let titleActionButton = {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}
+    let actionButtons = {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}
     
     See https://github.com/PredixDev/px-buttons-design for button options 
     See https://github.com/PredixDev/px-dropdown for dropdown options
@@ -36,33 +36,33 @@
 <dom-module id="px-action-buttons">
   <template>
     <style include="px-tile-styles"></style>
-    <div class="title epsilon flex flex--middle flex--right">
-	    <template is="dom-if" if="{{!_isDropdown}}">
-	      <div class="action flex">
-	       <template is="dom-repeat" items="{{items}}">
-	          <button class$="btn {{_getBtnSize(item)}} {{_getBtnType(item)}}" style$="color:{{item.color}}; stroke:{{item.color}}" on-tap="_onSelected">
-	            <template is="dom-if" if="{{item.icon}}">
-	             <px-icon style$="{{_iconStyle(item)}}" icon="{{item.icon}}"></px-icon>
-	           </template>
-	            <template is="dom-if" if="{{item.val}}">
-	              <span>{{item.val}}</span>
-	            </template>
-	         </button>
-	       </template>
-	      </div>
-	    </template>
-	    <template is="dom-if" if="{{_isDropdown}}"> 
-	     <px-dropdown id="pxDropdown"
-	       items="{{items}}"
-	       sort-mode="key"
-	       select-by="key"
-	       button-style="icon"
-	       icon="px-nav:more"
-	       disable-clear
-	       hide-chevron>
-	     </px-dropdown>
-	    </template>
-	  </div>
+    <template is="dom-if" if="{{!_isDropdown}}">
+      <div class="flex flex--right">
+		    <template is="dom-repeat" items="{{actionButtons.items}}">
+           <button class$="btn {{item.size}} {{item.type}} flex--middle" 
+            style$="color: {{item.color}}; stroke: {{item.color}};" on-tap="_onSelected">
+		         <template is="dom-if" if="{{item.icon}}">
+		          <px-icon icon="{{item.icon}}"></px-icon>
+		        </template>
+		         <template is="dom-if" if="{{item.val}}">
+		           <span>{{item.val}}</span>
+		         </template>
+		      </button>
+		    </template>
+	    </div>
+    </template>
+    <template is="dom-if" if="{{_isDropdown}}"> 
+      <div class="flex flex--right">
+				<px-dropdown id="pxDropdown"
+				  sort-mode="key"
+				  select-by="key"
+				  button-style="icon"
+				  icon="px-nav:more"
+				  disable-clear
+				  hide-chevron>
+				</px-dropdown>
+      </div>
+    </template>
   </template>
 </dom-module>
 <script src="dist/px-action-buttons.js"></script>
