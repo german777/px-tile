@@ -15,12 +15,16 @@
       }
     },
     /**
+     * Attach event listeners for dropdown action buttons.
+     */
+    attached() {
+      this.listen(this, 'px-dropdown-selection-changed', '_itemSelected');
+    },
+    /**
      * Detach event listeners for dropdown action buttons.
      */
     detached() {
-      if(this.$$('#pxDropdown')) {
-        this.unlisten(this.$$('#pxDropdown'), 'px-dropdown-selection-changed');
-      }
+      this.unlisten(this, 'px-dropdown-selection-changed', '_itemSelected');
     },
     /**
      * Observer when actionButtons changes.  
@@ -32,7 +36,7 @@
       this._notifyActionChange = false;
       this._isDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > 3;
       if(this._isDropdown) {
-        this.async(function(){
+        this.async(function() {
           let pxDropdown = this.$$('#pxDropdown');
           if(!this.actionButtons.multi) {
             // remove selected if passed on when is not multi selection
@@ -50,9 +54,8 @@
             let button = Polymer.dom(pxDropdown.root).querySelector('#button');
             let pxIcon = Polymer.dom(button).querySelector('px-icon');
             if(pxIcon) {
-              pxIcon.style.right = '-8px';
+              pxIcon.style.right = '-6px';
             }
-            this.listen(pxDropdown, 'px-dropdown-selection-changed', '_itemSelected');
             this._notifyActionChange = true;
           });
         }, 100);

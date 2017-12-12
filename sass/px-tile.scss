@@ -130,7 +130,7 @@ $inuit-enable-btn--icon : true;
   top: 0;
   background-color: var(--px-tile-overlay-background-color, black);
   color: var(--px-tile-overlay-text-color, white);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.4s cubic-bezier(.78,.13,.16,.87);
   display: flex;
   flex-direction: column;

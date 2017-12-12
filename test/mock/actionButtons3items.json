@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "key": "1",
+      "size": "btn--small",
+      "type": "btn--bare btn--icon",
+      "icon": "px-utl:link"
+    },
+    {
+      "key": "2",
+      "size": "btn--small",
+      "type": "btn--bare btn--icon",
+      "icon": "px-utl:copy"
+    },
+    {
+      "key": "3",
+      "size": "btn--small",
+      "type": "btn--bare btn--icon",
+      "icon": "px-utl:download"
+    }
+  ]
+}

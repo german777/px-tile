@@ -75,12 +75,12 @@
                  title-action-button="{{props.titleActionButton.value}}" 
                  action-buttons="{{props.actionButtons.value}}">
           <img slot="thumbnail" src$="[[importPath]]turbine.jpg" />
-          <div class="footer" slot="footer">
+          <!-- <div class="footer" slot="footer">
             <px-icon icon="px-fea:tag"></px-icon>
             <px-alert-label type="unknown" label="Tag 1"></px-alert-label>
             <px-alert-label type="unknown" label="Tag 2"></px-alert-label>
             <px-alert-label type="unknown" label="Tag 3"></px-alert-label>
-          </div>
+          </div> -->
         </px-tile>
       </px-demo-component>
       <!-- END Component ------------------------------------------------------>
@@ -151,20 +151,20 @@
       },
       titleActionButton: {
         type: Object,
-        defaultValue: {"key":"101","val":"Favorite","icon":"px-nav:favorite", "color": "orange"},
+        defaultValue: {"key":"101","val":"Favorite","icon":"px-nav:favorite"},
         inputType: 'code:JSON'
       },
       actionButtons: {
         type: Object,
         //  Examples when items <= 3
         // Only icons
-        defaultValue: {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]},
+        //defaultValue: {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]},
         // Buttons
-        //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small"},{"key":"2","val":"Copy","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small","type":"btn--tertiary"}]},
+        //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small"},{"key":"2","val":"Copy","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small"}]},
         // Buttons with icons
         //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small","icon":"px-utl:link"},{"key":"2","val":"Copy","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Download","size":"btn--small","type":"btn--tertiary","icon":"px-utl:download"}]},
         // Buttons with text only
-        //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small","type":"btn--bare--primary"},{"key":"2","val":"Copy","size":"btn--small","type":"btn--bare--primary"},{"key":"3","val":"Download","size":"btn--small","type":"btn--bare--primary"}]},
+        defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small","type":"btn--bare--primary"},{"key":"2","val":"Copy","size":"btn--small","type":"btn--bare--primary"},{"key":"3","val":"Download","size":"btn--small","type":"btn--bare--primary"}]},
 
         // Example with items > 3.  This will show the dropdown.
         //defaultValue: {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false},

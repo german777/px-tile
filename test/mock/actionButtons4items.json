@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "key": "1",
+      "val": "Edit",
+      "icon": "px-utl:edit",
+      "selected": true
+    },
+    {
+      "key": "2",
+      "val": "Copy",
+      "icon": "px-utl:copy"
+    },
+    {
+      "key": "3",
+      "val": "Remove",
+      "icon": "px-vis:trash-series"
+    },
+    {
+      "key": "4",
+      "val": "Notification",
+      "icon": "px-nav:notification"
+    }
+  ],
+  "sortMode": "key",
+  "buttonStyle": "icon",
+  "icon": "px-nav:more",
+  "displayValue": "Select",
+  "disabled": false,
+  "disableClear": false,
+  "hideChevron": true,
+  "multi": false,
+  "searchMode": false
+}
