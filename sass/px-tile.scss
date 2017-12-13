@@ -146,6 +146,7 @@ $inuit-enable-btn--icon : true;
     padding: 0 1.3333rem;
     .title-btn {
       margin-top: -6px;
+      margin-right: -6px;
     }
   }
   .subtitle {
@@ -179,6 +180,8 @@ $inuit-enable-btn--icon : true;
   visibility: hidden;
   display: none !important;
 }
-
+.btn-overlay {
+  color: var(--px-tile-overlay-text-color, lightgray);
+}
 
 // Trumps

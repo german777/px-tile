@@ -52,6 +52,7 @@
       <style include="px-theme-styles" is="custom-style"></style>
     </custom-style>
 
+
     <!--
       Load dark theme files for later use. Stamp dynamic theme switcher, which
       listens for theme update messages from the parent page and applies them.
@@ -100,12 +101,6 @@
   <body>
     <!-- Elements wait on the page and are upgraded after demo/index.html is loaded. -->
     <px-tile-demo></px-tile-demo>
-    <script>
-      window.addEventListener('px-title-on-action-clicked', function(evt){
-        console.log('evt.detail', evt.detail);
-      });
-    </script>
-    
 
   </body>
 </html>

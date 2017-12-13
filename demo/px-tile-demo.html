@@ -150,7 +150,20 @@
       },
       titleActionButton: {
         type: Object,
-        defaultValue: {"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"},
+        // default button with icon and color
+        //defaultValue: {"key":"101","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"},
+        // default button and icon
+        //defaultValue: {"key":"101","val":"Favorite","icon":"px-nav:favorite"},
+        // default small button and icon
+        //defaultValue: {"key":"101","val":"Favorite","size":"btn--small","icon":"px-nav:favorite"},
+        // bare button with icon and text
+        //defaultValue: {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare","icon":"px-nav:favorite"},
+        // bare button with just text
+        //defaultValue: {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare"},
+        // bare button with just icon and some margin on the right
+        //defaultValue: {"key":"101","size":"btn--small","type":"btn--bare","icon":"px-nav:favorite", "style": "margin-right: 5px;"},
+        // bare button with just icon
+        defaultValue: {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"},
         inputType: 'code:JSON'
       }
     }
