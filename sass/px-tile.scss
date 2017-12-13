@@ -188,6 +188,8 @@ $inuit-enable-btn--icon : true;
   visibility: hidden;
   display: none !important;
 }
-
+.btn-overlay {
+  color: var(--px-tile-overlay-text-color, lightgray);
+}
 
 // Trumps

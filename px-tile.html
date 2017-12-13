@@ -18,7 +18,7 @@
       description="description text"
       overlay-description="overlay description text"
       hoverable 
-      title-action-button='{"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"}' 
+      title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}' 
       action-buttons='{"items":[{"key":"1","val":"Edit","icon":"px-utl:edit"},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}' >
       <img slot="thumbnail" src="../turbine.jpg"/>
       <div slot="footer">Footer Content Here</div>
@@ -63,9 +63,9 @@ Custom property | Description | Default
           <slot name="thumbnail"></slot>
         </div>
         <div id="tile-text-wrapper" class="tile-text-wrapper">
-          <div class="title flex--justify">
+          <div class="title flex flex--justify">
             <span class="epsilon truncate title-span">{{title}}</span>
-            <px-title-button id="pxTitleButton" title-action-button="{{titleActionButton}}" class="title-btn"></px-title-button>
+            <px-title-button id="pxTitleButton" title-action-button="{{titleActionButton}}" hovered="{{_hovered}}" class="title-btn"></px-title-button>
           </div>
           <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
           <div class="text zeta"><div class="block-with-text">{{description}}</div></div>
@@ -80,7 +80,7 @@ Custom property | Description | Default
         <div class="header-wrapper">
           <div class="title inline--flex">
             <span class="epsilon truncate title-span">{{title}}</span>
-            <px-title-button id="pxOverlayTitleButton" title-action-button="{{titleActionButton}}" class="title-btn"></px-title-button>
+            <px-title-button id="pxOverlayTitleButton" title-action-button="{{titleActionButton}}" hovered="{{_hovered}}" class="title-btn"></px-title-button>
           </div>
           <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
         </div>

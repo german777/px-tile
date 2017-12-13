@@ -16,7 +16,7 @@
     <px-title-button title-action-button="{{titleActionButton}}"></px-title-button>
     
     Where titleActionButton is a JSON object such as: 
-    let titleActionButton = {"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"};
+    let titleActionButton = {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"};
     See https://github.com/PredixDev/px-buttons-design 
     
 @element px-title-button
@@ -29,14 +29,16 @@
   <template>
     <style include="px-tile-styles"></style> 
     <template is="dom-if" if="{{_hasTitleActionButton}}">
-      <div class="flex flex--justify">
-         <button id="actionBtn" class="btn btn--bare btn--icon" on-click="_onTitleActionSelected">
-           <px-icon class="title-icon"
-            icon='{{titleActionButton.icon}}' 
-            title="{{titleActionButton.val}}" 
-            style$="color:{{titleActionButton.color}};  stroke:{{titleActionButton.color}}"></px-icon>
-         </button>
-      </div>
+       <button id="actionBtn" class$="btn {{_getBtnClazz(titleActionButton)}} {{_btnHoveredclass}}"  
+         style$="{{_getBtnColor(titleActionButton)}} {{titleActionButton.style}}" 
+         on-tap="_onTitleActionSelected">
+         <template is="dom-if" if="{{titleActionButton.icon}}">
+           <px-icon icon="{{titleActionButton.icon}}"></px-icon>
+         </template>
+         <template is="dom-if" if="{{titleActionButton.val}}">
+           <span>{{titleActionButton.val}}</span>
+         </template>
+       </button>
     </template>
   </template>
 </dom-module>
