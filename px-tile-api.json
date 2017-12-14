@@ -237,6 +237,7 @@
       "tagname": "px-title-button"
     },
     {
+<<<<<<< HEAD
       "description": "### Usage\n    This is a helper component to support display of button on hover effect in px-tile and avoid duplicate code\n    \n    <px-action-buttons action-buttons=\"{{actionButtons}}\"></px-action-buttons>\n    \n    If items <= 3 it will display the elements one after the other\n    If items > 3 it will display the list of elements in a dropdown\n    \n    actionButtons is a JSON object such as: \n    E.g. for items = 3\n    let actionButtons = {\"items\":[{\"key\":\"1\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:phone\"},{\"key\":\"2\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:edit\"}]};\n    E.g for items > 3\n    let actionButtons = {\"items\":[{\"key\":\"1\",\"val\":\"Edit\",\"icon\":\"px-utl:edit\",\"selected\":true},{\"key\":\"2\",\"val\":\"Copy\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"val\":\"Remove\",\"icon\":\"px-vis:trash-series\"},{\"key\":\"4\",\"val\":\"Notification\",\"icon\":\"px-nav:notification\"}],\"sortMode\":\"key\",\"buttonStyle\":\"icon\",\"icon\":\"px-nav:more\",\"displayValue\":\"Select\",\"disabled\":false,\"disableClear\":false,\"hideChevron\":true,\"multi\":false,\"searchMode\":false}\n    \n    See https://github.com/PredixDev/px-buttons-design for button options \n    See https://github.com/PredixDev/px-dropdown for dropdown options",
       "summary": "",
       "path": "dist/px-action-buttons.js",
@@ -561,6 +562,9 @@
     },
     {
       "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"}' \n      action-buttons='{\"items\":[{\"key\":\"1\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:link\"},{\"key\":\"2\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:download\"}]}' >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n### Buttons and Dropdown reference\n    https://github.com/PredixDev/px-buttons-design \n    https://github.com/PredixDev/px-dropdown\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
+=======
+      "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: -15px;\"}' >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n    For title-action-button see https://github.com/PredixDev/px-buttons-design \n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
+>>>>>>> title_action_button
       "summary": "",
       "path": "dist/px-tile.js",
       "properties": [
@@ -689,7 +693,11 @@
         {
           "name": "titleActionButton",
           "type": "Object",
+<<<<<<< HEAD
           "description": "Single action button to display on the title section right side. \n\nSee ` px-buttons-design ` https://github.com/PredixDev/px-buttons-design for more details\n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
+=======
+          "description": "Single action button to display on the title section right side. \n\nSee https://github.com/PredixDev/px-buttons-design \n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 40px;\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
+>>>>>>> title_action_button
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -736,11 +744,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
+<<<<<<< HEAD
               "line": 76,
               "column": 7
             },
             "end": {
               "line": 76,
+=======
+              "line": 43,
+              "column": 7
+            },
+            "end": {
+              "line": 43,
+>>>>>>> title_action_button
               "column": 81
             }
           },
@@ -753,12 +769,21 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
+<<<<<<< HEAD
               "line": 78,
               "column": 7
             },
             "end": {
               "line": 79,
               "column": 68
+=======
+              "line": 45,
+              "column": 7
+            },
+            "end": {
+              "line": 45,
+              "column": 171
+>>>>>>> title_action_button
             }
           },
           "metadata": {},
@@ -770,11 +795,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
+<<<<<<< HEAD
               "line": 81,
               "column": 7
             },
             "end": {
               "line": 81,
+=======
+              "line": 47,
+              "column": 7
+            },
+            "end": {
+              "line": 47,
+>>>>>>> title_action_button
               "column": 136
             }
           },
@@ -787,11 +820,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
+<<<<<<< HEAD
               "line": 83,
               "column": 7
             },
             "end": {
               "line": 83,
+=======
+              "line": 49,
+              "column": 7
+            },
+            "end": {
+              "line": 49,
+>>>>>>> title_action_button
               "column": 122
             }
           },
@@ -804,11 +845,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
+<<<<<<< HEAD
               "line": 85,
               "column": 7
             },
             "end": {
               "line": 85,
+=======
+              "line": 51,
+              "column": 7
+            },
+            "end": {
+              "line": 51,
+>>>>>>> title_action_button
               "column": 73
             }
           },
@@ -851,7 +900,11 @@
           "column": 33
         },
         "end": {
+<<<<<<< HEAD
           "line": 97,
+=======
+          "line": 54,
+>>>>>>> title_action_button
           "column": 8
         }
       },
@@ -940,7 +993,11 @@
         },
         {
           "name": "title-action-button",
+<<<<<<< HEAD
           "description": "Single action button to display on the title section right side. \n\nSee ` px-buttons-design ` https://github.com/PredixDev/px-buttons-design for more details\n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
+=======
+          "description": "Single action button to display on the title section right side. \n\nSee https://github.com/PredixDev/px-buttons-design \n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 40px;\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
+>>>>>>> title_action_button
           "sourceRange": {
             "start": {
               "line": 41,
@@ -1005,11 +1062,19 @@
           "range": {
             "file": "px-tile.html",
             "start": {
+<<<<<<< HEAD
               "line": 88,
               "column": 10
             },
             "end": {
               "line": 88,
+=======
+              "line": 79,
+              "column": 10
+            },
+            "end": {
+              "line": 79,
+>>>>>>> title_action_button
               "column": 37
             }
           }
