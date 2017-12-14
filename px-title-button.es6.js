@@ -16,10 +16,10 @@
       /**
        * hovered to add additional class on elements when hovering
        */
-      hovered: {
+      isOverlay: {
         type: Boolean,
         value: false,
-        observer: '_hoveredChanged'
+        observer: '_isOverlayChanged'
       }
     },
     /**
@@ -28,6 +28,7 @@
      */
     _titleActionButtonChanged() {
       this._hasTitleActionButton = (this.titleActionButton && (this.titleActionButton.key || this.titleActionButton.val)) !== undefined;
+      this._isOverlayChanged();
     },
     /**
      * Return button class type and size if any
@@ -67,10 +68,20 @@
     /**
      * Callback to set specific classes for overlay container
      */
-    _hoveredChanged() {
-      this._btnHoveredclass = '';
-      if(this.hovered) {
-        this._btnHoveredclass = 'btn-overlay';
+    _isOverlayChanged() {
+      if(this.titleActionButton) {
+        this._btnHoveredclass = '';
+        if(this.isOverlay) {
+          console.log('this.titleActionButton.type', this.titleActionButton.type);
+          this._btnHoveredclass = 'btn-overlay';
+          if(!this.titleActionButton.type) {
+            this._btnHoveredclass = '';
+          }
+//          if(this.titleActionButton.type && this.titleActionButton.type.indexOf('btn--bare') !== -1) {
+//            console.log('not bare');
+//            this._btnHoveredclass = '';
+//          }
+        }
       }
     }
   });

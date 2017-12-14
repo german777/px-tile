@@ -3,10 +3,10 @@
        * See https://github.com/PredixDev/px-buttons-design for more details.
        */titleActionButton:{type:Object,value:{},observer:'_titleActionButtonChanged'},/**
        * hovered to add additional class on elements when hovering
-       */hovered:{type:Boolean,value:false,observer:'_hoveredChanged'}},/**
+       */isOverlay:{type:Boolean,value:false,observer:'_isOverlayChanged'}},/**
      * Observer when actionButton changes.
      * Sets _hasTitleActionButton
-     */_titleActionButtonChanged:function _titleActionButtonChanged(){this._hasTitleActionButton=(this.titleActionButton&&(this.titleActionButton.key||this.titleActionButton.val))!==undefined},/**
+     */_titleActionButtonChanged:function _titleActionButtonChanged(){this._hasTitleActionButton=(this.titleActionButton&&(this.titleActionButton.key||this.titleActionButton.val))!==undefined;this._isOverlayChanged()},/**
      * Return button class type and size if any
      * See https://github.com/PredixDev/px-buttons-design for more details.
      */_getBtnClazz:function _getBtnClazz(titleActionButton){var clazz=titleActionButton.size||'';clazz=clazz+' '+(titleActionButton.type||'');return clazz},/**
@@ -18,5 +18,9 @@
      * @event px-title-on-action-clicked
      */_handleSelection:function _handleSelection(detail){this.fire('px-title-on-action-clicked',detail)},/**
      * Callback to set specific classes for overlay container
-     */_hoveredChanged:function _hoveredChanged(){this._btnHoveredclass='';if(this.hovered){this._btnHoveredclass='btn-overlay'}}})})();
+     */_isOverlayChanged:function _isOverlayChanged(){if(this.titleActionButton){this._btnHoveredclass='';if(this.isOverlay){console.log('this.titleActionButton.type',this.titleActionButton.type);this._btnHoveredclass='btn-overlay';if(!this.titleActionButton.type){this._btnHoveredclass=''}//          if(this.titleActionButton.type && this.titleActionButton.type.indexOf('btn--bare') !== -1) {
+//            console.log('not bare');
+//            this._btnHoveredclass = '';
+//          }
+}}}})})();
 //# sourceMappingURL=px-title-button.js.map

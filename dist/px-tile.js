@@ -20,7 +20,7 @@
        */overlayDescription:{type:String,value:'Overlay description'},/**
        * Single action button to display on the title section right side. 
        * 
-       * See https://github.com/PredixDev/px-buttons-design 
+       * See https://www.predix-ui.com/#/css/visual/buttons/px-buttons-design 
        * 
        * `style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) 
        * 
@@ -36,7 +36,7 @@
        * 
        * Bare small button with just text  ` {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare"} `   
        * 
-       * Bare small button with just icon and some margin on the right `  {"key":"101","size":"btn--small","type":"btn--bare","icon":"px-nav:favorite", "style": "margin-right: 5px;"} `
+       * Bare small button with just icon and some margin on the right `  {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite", "style": "margin-right: 5px;"} `
        * 
        * Bare small button with just icon `  {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"} ` 
        */titleActionButton:{type:Object,value:{}}},/**
