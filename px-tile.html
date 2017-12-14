@@ -19,7 +19,7 @@
       overlay-description="overlay description text"
       hoverable 
       title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}' 
-      action-buttons='{"items":[{"key":"1","val":"Edit","icon":"px-utl:edit"},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}' >
+      action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}' >
       <img slot="thumbnail" src="../turbine.jpg"/>
       <div slot="footer">Footer Content Here</div>
     </px-tile>
@@ -65,7 +65,7 @@ Custom property | Description | Default
         <div id="tile-text-wrapper" class="tile-text-wrapper">
           <div class="title flex flex--justify">
             <span class="epsilon truncate title-span">{{title}}</span>
-            <px-title-button id="pxTitleButton" title-action-button="{{titleActionButton}}" hovered="{{_hovered}}" class="title-btn"></px-title-button>
+            <px-title-button id="pxTitleButton" title-action-button="{{titleActionButton}}" class="title-btn"></px-title-button>
           </div>
           <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
           <div class="text zeta"><div class="block-with-text">{{description}}</div></div>
@@ -84,13 +84,13 @@ Custom property | Description | Default
           </div>
           <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
         </div>
-        <div class="text">{{overlayDescription}}</div>
+        <div class="text zeta">{{overlayDescription}}</div>
         <div class="footer">
           <slot name="footer"></slot>
         </div>
         <template is="dom-if" if="{{_hasActionButtons}}">
           <div class="action-overlay-btns">
-            <px-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}"></px-action-buttons>
+            <px-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}" hovered="{{_hovered}}" hover-text-color="{{_hoverTextColor}}"></px-action-buttons>
           </div>
         </template>
       </div>

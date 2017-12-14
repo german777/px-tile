@@ -130,7 +130,7 @@ $inuit-enable-btn--icon : true;
   top: 0;
   background-color: var(--px-tile-overlay-background-color, black);
   color: var(--px-tile-overlay-text-color, white);
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.4s cubic-bezier(.78,.13,.16,.87);
   display: flex;
   flex-direction: column;
@@ -161,13 +161,13 @@ $inuit-enable-btn--icon : true;
   .text {
     padding: 0 1.3333rem;
     height: var(--px-tile-overlay-desc-text-height, 9.1rem);
+    min-height: var(--px-tile-overlay-desc-text-height, 9.1rem);
     overflow: hidden;
-    margin-top: 1.6rem;
+    line-height: 1rem;
   }
   .footer {
     padding: 1rem 1.3333rem;
     margin-top: 1.6rem;
-    height: 3.66667rem;
   }
   .action-overlay-btns {
     margin-bottom: calculateRem(15px);
@@ -180,7 +180,7 @@ $inuit-enable-btn--icon : true;
 
 .hovered.overlay {
   opacity: 1;
-  .header-wrapper, .text, .footer {
+  .header-wrapper, .footer {
     margin-top: 1rem;
   }
 }

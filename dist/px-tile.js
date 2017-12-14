@@ -20,7 +20,7 @@
        */overlayDescription:{type:String,value:'Overlay description'},/**
        * Single action button to display on the title section right side. 
        * 
-       * See https://github.com/PredixDev/px-buttons-design 
+       * See ` px-buttons-design ` https://github.com/PredixDev/px-buttons-design for more details
        * 
        * `style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) 
        * 
@@ -44,35 +44,56 @@
        * 
        * When items <= 3 will display the buttons/text inline.
        * 
-       * Please refer to px-buttons-design (https://github.com/PredixDev/px-buttons-design) for a list of supported properties
+       * Please refer to ` px-buttons-design ` (https://github.com/PredixDev/px-buttons-design) for more details
        * 
        * When items > 3 will display the list of elements in a dropdown.
        * 
-       * Please refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties
+       * Please refer to ` px-dropdown ` (https://github.com/PredixDev/px-dropdown) for more details
        * 
-       * Example when items = 3:
+       *  `style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..). See example "Buttons with text only" below
        * 
-       * {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}
+       * Some examples when items <= 3:
        * 
-       * Example when items > 3:
+       * Only icons:  ` {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]} ` 
        * 
-       * {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}
+       * Small buttons:  ` {"items":[{"key":"1","val":"Link","size":"btn--small"},{"key":"2","val":"Copy","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small"}]} ` 
+       * 
+       * Small buttons with icons:  ` {"items":[{"key":"1","val":"Link","size":"btn--small","icon":"px-utl:link"},{"key":"2","val":"Copy","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Download","size":"btn--small","icon":"px-utl:download"}]} ` 
+       * 
+       * Buttons with text only:  ` {"items":[{"key":"1","val":"Link","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -15px;"},{"key":"2","val":"Copy","size":"btn--small","type":"btn--bare--primary"},{"key":"3","val":"Download","size":"btn--small","type":"btn--bare--primary"}]} ` 
+       * 
+       * 
+       * 
+       * Example when items > 3:  
+       * 
+       * ` {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false} ` 
        * 
        * Event fired on item selection:
        * 
        * `px-title-on-action-clicked`
+       * 
        */actionButtons:{type:Object,value:{},observer:'_actionButtonsChanged'}},/**
      * Method used internally for flipping the hovered status of a tile.
      */_hover:function _hover(){if(this.hoverable){this._hovered=!this._hovered}},/**
      * On change callback to remove overlay
-     */_hoverableChanged:function _hoverableChanged(){this.$.overlay.classList.add('overlay-remove');if(this.hoverable){this.$.overlay.classList.remove('overlay-remove')}},/**
+     */_hoverableChanged:function _hoverableChanged(){this.$.overlay.classList.add('overlay-remove');if(this.hoverable){this.$.overlay.classList.remove('overlay-remove');// extract overlay text color to pass to other components
+this._hoverTextColor=window.getComputedStyle(this.$.overlay).color}},/**
      * Attach event listeners for hoverable tiles.
      */attached:function attached(){this.listen(this.$.overlay,'mouseenter','_hover');this.listen(this.$.overlay,'mouseleave','_hover')},/**
      * Detach event listeners for hoverable tiles.
      */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')},/**
      * Returns class to control overlay for hoverable tiles.
      */_getClass:function _getClass(hovered){return hovered?'hovered':''},_actionButtonsChanged:function _actionButtonsChanged(){this._hasActionButtons=this.actionButtons&&this.actionButtons.items!==undefined&&this.actionButtons.items.length>0}/**
-     * Fires px-title-on-action-clicked with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
      * @event px-title-on-action-clicked  
+     * 
+     * Event ` px-title-on-action-clicked ` is fired when an item is selected from either titleActionButton or actionButtons with selection detail. E.g. {key: "1", val: "Favorite"}
+     * 
+     * Example:
+     *  
+     * ` window.addEventListener('px-title-on-action-clicked', function(evt){ ` 
+     * 
+     * `    console.log(evt.detail); ` 
+
+     * ` }); `
      */})})();
 //# sourceMappingURL=px-tile.js.map

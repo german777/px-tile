@@ -51,6 +51,16 @@
     <custom-style>
       <style include="px-theme-styles" is="custom-style"></style>
     </custom-style>
+    
+<!--     <link rel="import" href="../px-dark-theme/px-dark-theme-styles.html">
+    <custom-style>
+      <style include="px-dark-theme-styles" is="custom-style"></style>
+    </custom-style>
+    
+    <link rel="import" href="../px-dark-demo-theme/px-dark-demo-theme-styles.html">
+    <custom-style>
+      <style include="px-dark-demo-theme-styles" is="custom-style"></style>
+    </custom-style> -->
 
 
     <!--
@@ -101,6 +111,11 @@
   <body>
     <!-- Elements wait on the page and are upgraded after demo/index.html is loaded. -->
     <px-tile-demo></px-tile-demo>
+    <script>
+      window.addEventListener('px-title-on-action-clicked', function(evt){
+        console.log('evt.detail', evt.detail);
+      });
+    </script>
 
   </body>
 </html>

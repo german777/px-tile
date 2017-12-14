@@ -12,7 +12,25 @@
         type: Object,
         value: {},
         observer: '_actionButtonsChanged'
+      },
+      /**
+       * hovered to add additional class on elements when hovering
+       */
+      hovered: {
+        type: Boolean,
+        value: false,
+        observer: '_hoveredChanged'
+      },
+      /**
+       * Current text color of overlay to apply other elements when hovering
+       */
+      hoverTextColor: {
+        type: String,
+        value: ''
       }
+    },
+    created() {
+      this._maxIcons = 3;
     },
     /**
      * Attach event listeners for dropdown action buttons.
@@ -34,17 +52,17 @@
     _actionButtonsChanged() {
       // set _notifyActionChange false to prevent firing px-dropdown-selection-changed while updating the new set of buttons
       this._notifyActionChange = false;
-      this._isDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > 3;
+      this._isDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > this._maxIcons;
       if(this._isDropdown) {
         this.async(function() {
           let pxDropdown = this.$$('#pxDropdown');
           if(!this.actionButtons.multi) {
             // remove selected if passed on when is not multi selection
-            for(var x in this.actionButtons.items) {
+            for(let x in this.actionButtons.items) {
               delete this.actionButtons.items[x].selected;
             }
           }
-          for(var key in this.actionButtons) {
+          for(let key in this.actionButtons) {
             pxDropdown.set(key, this.actionButtons[key]);
           }
           this.async(function() {
@@ -52,9 +70,10 @@
             let dropdown = Polymer.dom(pxDropdown.root).querySelector('#dropdown');
             dropdown.set('horizontalAlign', 'right');
             let button = Polymer.dom(pxDropdown.root).querySelector('#button');
-            let pxIcon = Polymer.dom(button).querySelector('px-icon');
-            if(pxIcon) {
-              pxIcon.style.right = '-6px';
+            this.button = button;
+            this.pxIcon = Polymer.dom(button).querySelector('px-icon');
+            if(this.pxIcon) {
+              this.pxIcon.style.right = '-6px';
             }
             this._notifyActionChange = true;
           });
@@ -88,6 +107,51 @@
     _handleSelection(detail) {
       if(this._notifyActionChange) {
         this.fire('px-title-on-action-clicked', detail);
+      }
+    },
+    /**
+     * Return button class type and size if any
+     * See https://github.com/PredixDev/px-buttons-design for more details.
+     */
+    _getBtnClazz(item) {
+      let clazz = item.size || '';
+      clazz = clazz + ' ' + (item.type || '');
+      return clazz;
+    },
+    /**
+     * Return style for color.  This property is part of px-button so honor if passed on.
+     */
+    _getBtnColor(item) {
+      let color = '';
+      if(item.color) {
+        color = 'color: ' + item.color + '; stroke: ' + item.color + '; ';
+      }
+      return color;
+    },
+    /**
+     * Callback to set specific classes for overlay container
+     */
+    _hoveredChanged() {
+      // add class to buttons to change color of text when hovering if these are bare buttons
+      if(this.actionButtons.items && this.actionButtons.items.length <= this._maxIcons) {
+        let hoveredClazz = ' btn-overlay ';
+        for(let x in this.actionButtons.items) {
+          let type = this.actionButtons.items[x].type;
+          type = type? type.replace(hoveredClazz,'') : '';
+          if(this.hovered) {
+            if(type.indexOf('btn--bare') !== -1) {
+              type = type + hoveredClazz;
+            }
+          }
+          this.actionButtons.items[x].type = type;
+          this.set('actionButtons.items.' + x, JSON.parse(JSON.stringify(this.actionButtons.items[x])));
+        }
+      } else if(this.pxIcon) {
+        // this is a dropdown then change the color of the icon on hovering
+        this.pxIcon.style.color = '';
+        if(this.hovered) {
+          this.pxIcon.style.color = this.hoverTextColor;
+        }
       }
     }
   });
