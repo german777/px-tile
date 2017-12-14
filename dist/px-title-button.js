@@ -18,9 +18,5 @@
      * @event px-title-on-action-clicked
      */_handleSelection:function _handleSelection(detail){this.fire('px-title-on-action-clicked',detail)},/**
      * Callback to set specific classes for overlay container
-     */_isOverlayChanged:function _isOverlayChanged(){if(this.titleActionButton){this._btnHoveredclass='';if(this.isOverlay){console.log('this.titleActionButton.type',this.titleActionButton.type);this._btnHoveredclass='btn-overlay';if(!this.titleActionButton.type){this._btnHoveredclass=''}//          if(this.titleActionButton.type && this.titleActionButton.type.indexOf('btn--bare') !== -1) {
-//            console.log('not bare');
-//            this._btnHoveredclass = '';
-//          }
-}}}})})();
+     */_isOverlayChanged:function _isOverlayChanged(){if(this.titleActionButton){this._btnHoveredclass='';if(this.isOverlay){this._btnHoveredclass='btn-overlay';if(!this.titleActionButton.type){this._btnHoveredclass=''}}}}})})();
 //# sourceMappingURL=px-title-button.js.map

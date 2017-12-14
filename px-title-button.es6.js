@@ -72,15 +72,10 @@
       if(this.titleActionButton) {
         this._btnHoveredclass = '';
         if(this.isOverlay) {
-          console.log('this.titleActionButton.type', this.titleActionButton.type);
           this._btnHoveredclass = 'btn-overlay';
           if(!this.titleActionButton.type) {
             this._btnHoveredclass = '';
           }
-//          if(this.titleActionButton.type && this.titleActionButton.type.indexOf('btn--bare') !== -1) {
-//            console.log('not bare');
-//            this._btnHoveredclass = '';
-//          }
         }
       }
     }
