@@ -65,7 +65,6 @@ suite('Action Buttons Test for px-tile', function(){
       selectedValue = evt.detail;
     });
     tileEl.set('actionButtons', actionButtons4items);
-    
     flush(function() {
       let pxActionButtons = tileEl.$$('#pxActionButtons');
       pxActionButtons._actionButtonsChanged();
@@ -75,4 +74,21 @@ suite('Action Buttons Test for px-tile', function(){
       done();
     });
   });
+  
+  test('Set overlay action buttons btn-overlay class', function(done) {
+    tileEl.set('actionButtons', actionButtons3items);
+    var overlay = Polymer.dom(tileEl.root).querySelector('.overlay');
+    overlay.classList.add('hovered');
+    tileEl._hovered = true;
+    flush(function() {
+      let pxActionButtons = tileEl.$$('#pxOverlayActionButtons');
+      let items = pxActionButtons.actionButtons.items;
+      for(let x in items) {
+        let hasOverlayClass = items[x].type.indexOf('btn-overlay') > 0;
+        assert.equal(hasOverlayClass, true, 'Overlay button key: ' + items[x].key + ' has no btn-overlay class');
+      }
+      done();
+    });
+  });
+  
 });

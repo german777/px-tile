@@ -24,20 +24,22 @@ suite('Custom Automation Tests for px-tile', function() {
     assert.equal(img.tagName, 'IMG');
   });
 
-  test('Hover works, overlay has title, subtitle, description, and footer text', function() {
+  test('Hover works, overlay has title, subtitle, description, and footer text', function(done) {
     var overlay = Polymer.dom(tileEl.root).querySelector('.overlay');
     overlay.classList.add('hovered');
-    window.setTimeout(function() {
-      var opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
-      assert.equal(opacity, '1');
-      var title = overlay.querySelector('.title-span').textContent.trim();
-      var subtitle = overlay.querySelector('.subtitle-span').textContent.trim();
-      var overlayDescription = overlay.querySelector('.text').textContent.trim();
-      assert.equal(title, 'Title');
-      assert.equal(subtitle, 'Subtitle');
-      assert.equal(overlayDescription, 'Overlay Description text');
-      assert.equal(footer, 'Footer');
-    },500);
+    flush(function() {
+      window.setTimeout(function() {
+        var opacity = window.getComputedStyle(overlay).getPropertyValue('opacity');
+        assert.equal(opacity, '1');
+        var title = overlay.querySelector('.title-span').textContent.trim();
+        var subtitle = overlay.querySelector('.subtitle-span').textContent.trim();
+        var overlayDescription = overlay.querySelector('.text').textContent.trim();
+        assert.equal(title, 'Title text');
+        assert.equal(subtitle, 'Subtitle text');
+        assert.equal(overlayDescription, 'Overlay Description text');
+        done();
+      },500);
+    });
 
   });
 });

@@ -90,7 +90,7 @@
        * 
        * When items > 3 will display the list of elements in a dropdown.
        * 
-       * Please refer to ` px-dropdown ` (https://github.com/PredixDev/px-dropdown) for more details
+       * Please refer to ` px-dropdown ` (https://www.predix-ui.com/#/elements/px-dropdown) for more details
        * 
        *  `style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..). See example "Buttons with text only" below
        * 
