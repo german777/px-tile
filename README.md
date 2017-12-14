@@ -37,7 +37,8 @@ Finally, use the component in your application:
   description="description text"
   overlay-description="overlay description text"
   hoverable 
-  title-action-button='{"key":"1","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"}' >
+  title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}' 
+  action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}' >
   <div slot="footer">Footer Content Here</div>
 </px-tile>
 ```
