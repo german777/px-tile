@@ -81,7 +81,6 @@
       line-height: calculateRem(14px);
     }
     .title {
-      height: 1.6rem;
       padding: 0.1rem 0 0 0;
       align-items: left;
     }
@@ -117,11 +116,9 @@
   .title {
     background: none;
     margin-top: 0.6rem;
-    height: 1.6rem;
     padding: 0 1.3333rem;
   }
   .subtitle {
-    height: 1.2rem;
     line-height: calculateRem(14px);
     padding: 0 1.3333rem;
   }

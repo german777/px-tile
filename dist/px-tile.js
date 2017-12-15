@@ -6,18 +6,18 @@
        * Whether the tile is currently being hovered.
        */_hovered:{type:Boolean,value:false},/**
        * Main text label for the tile.
-       */title:{type:String,value:'Title'},/**
+       */title:{type:String,value:''},/**
        * Subtitle text for the tile.
-       */subtitle:{type:String,value:'Subtitle text'},/**
+       */subtitle:{type:String,value:''},/**
         * Description information to be displayed underneath tile and subtitle.
         * Default : Only the first ~3 lines of text will be displayed, after which it will be truncated.
         * You can customize this using by adjusting `--px-tile-desc-text-height` SASS variable. (e.g. 1 line = 1 rem,
         * to set to 5 lines truncated, set --px-tile-desc-text-height : 5rem)
-       */description:{type:String,value:'Description'},/**
+       */description:{type:String,value:''},/**
        * Description information to be displayed in the overlay of a hoverable card.
-       * It has more space to display text content and can be adjusted along side with
-       * total height of the tile
-       */overlayDescription:{type:String,value:'Overlay description'}},/**
+       * It has more space to display text content and can be adjusted along with
+       * total height of the tile.
+       */overlayDescription:{type:String,value:''}},/**
      * Method used internally for flipping the hovered status of a tile.
      */_hover:function _hover(){if(this.hoverable){this._hovered=!this._hovered}},/**
      * Attach event listeners for hoverable tiles.
