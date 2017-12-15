@@ -31,7 +31,7 @@ Second, import the component to your application with the following tag in your 
 Finally, use the component in your application:
 
 ```
-<px-tile title="title" description="description" hoverable>
+<px-tile title="title" subtitle="Subtitle text" description="Description" overlay-description="Overlay Description text" hoverable>
   <div slot="thumbnail"><img src="../turbine.jpg"/></div>
   <div slot="footer">Footer Content Here</div>
 </px-tile>
