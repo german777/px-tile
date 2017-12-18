@@ -30,7 +30,7 @@
       if (!webComponentsSupported) {
         var script = document.createElement('script');
         script.async = true;
-        script.src = '../webcomponentsjs/webcomponents-lite.js';
+        script.src = '../../webcomponentsjs/webcomponents-lite.js';
         script.onload = onload;
         document.head.appendChild(script);
       } else {
@@ -43,13 +43,10 @@
     <link rel="import" href="../../px-icon-set/px-icon-set.html" />
     <link rel="import" href="../../px-icon-set/px-icon.html" />
     <link rel="import" href="../../px-alert-label/px-alert-label.html" />
-
     <link rel="import" href="../../px-theme/px-theme-styles.html">
-    <style include="px-theme-styles" is="custom-style"></style>
 
-    <link rel="import" href="../../px-demo/css/px-demo-styles.html" />
     <custom-style>
-      <style include="px-demo-styles" is="custom-style">
+      <style include="px-theme-styles" is="custom-style">
         px-tile {
           margin: 1rem;
           cursor: pointer;
@@ -78,9 +75,9 @@
   </head>
 
   <body>
-    <div class="flex flex--wrap">
+    <div style="display:flex; flex-wrap:wrap;">
       <px-tile onclick="goToLink()"
-               title="Component Name g"
+               title="Component Name"
                description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
                hoverable="true">
         <div class="thumbnail" slot="thumbnail">

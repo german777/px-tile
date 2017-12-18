@@ -29,7 +29,7 @@
           "defaultValue": "{}"
         },
         {
-          "name": "hovered",
+          "name": "isOverlay",
           "type": "boolean",
           "description": "hovered to add additional class on elements when hovering",
           "privacy": "public",
@@ -40,12 +40,12 @@
             },
             "end": {
               "line": 5,
-              "column": 70
+              "column": 74
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_hoveredChanged\""
+              "observer": "\"_isOverlayChanged\""
             }
           },
           "defaultValue": "false"
@@ -63,7 +63,7 @@
             },
             "end": {
               "line": 8,
-              "column": 192
+              "column": 217
             }
           },
           "metadata": {},
@@ -130,7 +130,7 @@
         },
         {
           "name": "_handleSelection",
-          "description": "Fires px-title-on-action-clicked with selection detail. E.g. {key: \"1\", val: \"Favorite\", selected: true}",
+          "description": "Fires px-title-on-action-clicked with selection detail. E.g. {key: \"1\", val: \"Favorite\"}",
           "privacy": "protected",
           "sourceRange": {
             "start": {
@@ -150,7 +150,7 @@
           ]
         },
         {
-          "name": "_hoveredChanged",
+          "name": "_isOverlayChanged",
           "description": "Callback to set specific classes for overlay container",
           "privacy": "protected",
           "sourceRange": {
@@ -160,7 +160,7 @@
             },
             "end": {
               "line": 20,
-              "column": 129
+              "column": 222
             }
           },
           "metadata": {},
@@ -182,7 +182,7 @@
         },
         "end": {
           "line": 20,
-          "column": 130
+          "column": 223
         }
       },
       "privacy": "public",
@@ -205,7 +205,7 @@
           "type": "Object"
         },
         {
-          "name": "hovered",
+          "name": "is-overlay",
           "description": "hovered to add additional class on elements when hovering",
           "sourceRange": {
             "start": {
@@ -214,7 +214,7 @@
             },
             "end": {
               "line": 5,
-              "column": 70
+              "column": 74
             }
           },
           "metadata": {},
@@ -237,7 +237,7 @@
       "tagname": "px-title-button"
     },
     {
-      "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: -15px;\"}' >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n    For title-action-button see https://github.com/PredixDev/px-buttons-design \n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
+      "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"}' >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n    For title-action-button see https://github.com/PredixDev/px-buttons-design \n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-text-height`  | Height of overlay description text | `9.1rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
       "summary": "",
       "path": "dist/px-tile.js",
       "properties": [
@@ -295,13 +295,13 @@
             },
             "end": {
               "line": 8,
-              "column": 42
+              "column": 37
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "\"Title\""
+          "defaultValue": "\"\""
         },
         {
           "name": "subtitle",
@@ -315,13 +315,13 @@
             },
             "end": {
               "line": 10,
-              "column": 53
+              "column": 40
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "\"Subtitle text\""
+          "defaultValue": "\"\""
         },
         {
           "name": "description",
@@ -335,18 +335,18 @@
             },
             "end": {
               "line": 15,
-              "column": 54
+              "column": 43
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "\"Description\""
+          "defaultValue": "\"\""
         },
         {
           "name": "overlayDescription",
           "type": "string",
-          "description": "Description information to be displayed in the overlay of a hoverable card.\nIt has more space to display text content and can be adjusted along side with\ntotal height of the tile",
+          "description": "Description information to be displayed in the overlay of a hoverable card.\nIt has more space to display text content and can be adjusted along with\ntotal height of the tile.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -355,18 +355,18 @@
             },
             "end": {
               "line": 19,
-              "column": 69
+              "column": 50
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "\"Overlay description\""
+          "defaultValue": "\"\""
         },
         {
           "name": "titleActionButton",
           "type": "Object",
-          "description": "Single action button to display on the title section right side. \n\nSee https://github.com/PredixDev/px-buttons-design \n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 40px;\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
+          "description": "Single action button to display on the title section right side. \n\nSee https://www.predix-ui.com/#/css/visual/buttons/px-buttons-design \n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -522,7 +522,7 @@
             },
             "end": {
               "line": 8,
-              "column": 42
+              "column": 37
             }
           },
           "metadata": {},
@@ -538,7 +538,7 @@
             },
             "end": {
               "line": 10,
-              "column": 53
+              "column": 40
             }
           },
           "metadata": {},
@@ -554,7 +554,7 @@
             },
             "end": {
               "line": 15,
-              "column": 54
+              "column": 43
             }
           },
           "metadata": {},
@@ -562,7 +562,7 @@
         },
         {
           "name": "overlay-description",
-          "description": "Description information to be displayed in the overlay of a hoverable card.\nIt has more space to display text content and can be adjusted along side with\ntotal height of the tile",
+          "description": "Description information to be displayed in the overlay of a hoverable card.\nIt has more space to display text content and can be adjusted along with\ntotal height of the tile.",
           "sourceRange": {
             "start": {
               "line": 19,
@@ -570,7 +570,7 @@
             },
             "end": {
               "line": 19,
-              "column": 69
+              "column": 50
             }
           },
           "metadata": {},
@@ -578,7 +578,7 @@
         },
         {
           "name": "title-action-button",
-          "description": "Single action button to display on the title section right side. \n\nSee https://github.com/PredixDev/px-buttons-design \n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 40px;\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
+          "description": "Single action button to display on the title section right side. \n\nSee https://www.predix-ui.com/#/css/visual/buttons/px-buttons-design \n\n`style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) \n\nExamples:\n\nDefault button with icon and color ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\", \"color\": \"orange\"} ` \n\nDefault button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"icon\":\"px-nav:favorite\"} ` \n\nSmall button and icon ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"icon\":\"px-nav:favorite\"} ` \n\nBare small button with icon and text `  {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\",\"icon\":\"px-nav:favorite\"} `  \n\nBare small button with just text  ` {\"key\":\"101\",\"val\":\"Favorite\",\"size\":\"btn--small\",\"type\":\"btn--bare\"} `   \n\nBare small button with just icon and some margin on the right `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\", \"style\": \"margin-right: 5px;\"} `\n\nBare small button with just icon `  {\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"} `",
           "sourceRange": {
             "start": {
               "line": 41,

@@ -1,3 +1,13 @@
+v2.0.0
+==================
+* merge #1
+* `description` now appears on the bottom of the tile whereas new property `overlay-description` appears on hover
+* additional css variables for controlling various visual aspects of tile
+
+v1.1.1
+==================
+* fix simple_demo
+
 v1.1.0
 ==================
 * Polymer 1.x/2.x hybrid element support
