@@ -43,10 +43,7 @@
     "web-component-tester": "^6.3.0"
   },
   "resolutions": {
-    "webcomponentsjs": "^1.0.0",
-    "px-api-viewer": "^2.0.0",
-    "iron-doc-viewer": "^3.0.0",
-    "px-code-editor": "^3.0.0"
+    "webcomponentsjs": "^1.0.0"
   },
   "variants": {
     "1.x": {
