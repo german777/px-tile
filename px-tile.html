@@ -9,9 +9,14 @@
 <link rel="import" href="css/px-tile-styles.html">
 
 <!--
+Px-tile tile can be customized with px theme, title, subtitle, description, buttons, imagery or px components. This also means that applications may choose to include or exclude any of these elements. It also provides actionable callback functionalities(text,button,icon e.g.) meaning developers may choose to utilize them to perform customizable actions based on user's input.
+
+Typically, Px-tile can be utilized for actions such as: contact cards, work orders, inspections, media tiles, or an overview of a device.
 
 ### Usage
 
+	#### image-based thumbnail
+	```
     <px-tile
       title="title text"
       subtitle="subtitle text"
@@ -25,6 +30,34 @@
        </div>
       <div slot="footer">Footer Content Here</div>
     </px-tile>
+	```
+
+	#### px-chart-based thumbnail
+	```
+    <px-tile
+      title="title text"
+      subtitle="subtitle text"
+      description="description text"
+      overlay-description="overlay description text"
+      action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}' >
+      hoverable >
+      <div slot="thumbnail" class="px-simple-horizontal-bar-chart">
+        <px-simple-horizontal-bar-chart
+          id="default-chart"
+          width="auto"
+          height="160"
+          chart-data="[100,200,300,400,500,360]"
+          colors='["#123453","#234784","#345453","#467564","#578785","#578756"]'
+          domain-max="500"
+          legend-labels='[
+              "No Action", "Scheduled Maintenance", "Sensor Repair",
+              "Unplanned Maintenance", "Ops Changes", "Forced Outage", "eight"
+          ]'>
+        </px-simple-horizontal-bar-chart>
+        </div>
+      <div slot="footer">Footer Content Here</div>
+    </px-tile>
+	```
     
 ### Buttons and Dropdown reference
     https://github.com/PredixDev/px-buttons-design 
