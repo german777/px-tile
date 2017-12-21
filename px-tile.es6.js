@@ -164,6 +164,24 @@
       this._hasActionButtons = this.actionButtons && 
       this.actionButtons.items !== undefined && 
       this.actionButtons.items.length > 0;
+    },
+    _hasData(title, subtitle, key, actionButtons) {
+      return (actionButtons && actionButtons.items && actionButtons.items.length > 0) || 
+        this._hasTitleSubtitleAndActionBtn(title, subtitle, key);
+    },
+    _hasTitleSubtitleAndActionBtn(title, subtitle, key) {
+      subtitle = subtitle || '';
+      if(title || subtitle || key) {
+        return subtitle.trim().length > 0 || this._hasTitleAndActionBtn(title, key);
+      }
+      return false;
+    },
+    _hasTitleAndActionBtn(title, key) {
+      title = title || '';
+      if(title || key) {
+        return title.trim().length > 0 || key !== undefined;
+      }
+      return false;
     }
     /**
      * @event px-title-on-action-clicked  

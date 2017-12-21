@@ -44,7 +44,7 @@ $inuit-enable-btn--icon : true;
   position: relative;
   line-height: $lineHeight;
   max-height: var(--px-tile-desc-text-height, $lineHeight * $lineCount);
-  text-align: justify;
+  text-align: left;
   margin-right: -1em;
   padding-right: 1em;
   &:before {
@@ -69,28 +69,29 @@ $inuit-enable-btn--icon : true;
   position: relative;
 }
 .tile, .overlay {
-  min-width: var(--px-tile-width, calculateRem(100px));
+  min-width: var(--px-tile-width, calculateRem(100px)); 
   min-height: var(--px-tile-height, calculateRem(100px));
   width: var(--px-tile-width, calculateRem(300px));
   height: var(--px-tile-height, calculateRem(300px));
+  overflow: hidden;
 }
 .tile{
   background-color: var(--px-tile-background-color, lightgray);
   .thumbnail {
-    width: var(--px-tile-thumbnail-width, calculateRem(300px));
-    height: var(--px-tile-thumbnail-height, calculateRem(175px));
     background-color: var(--px-tile-thumbnail-background-color, white);
   }
   .tile-text-wrapper {
-    padding: 1rem;
+    padding: calculateRem(15px);
     position: absolute;
     bottom: 0;
-    min-height: var(--px-tile-text-height, calculateRem(125px));
     width: var(--px-tile-width, calculateRem(300px));
     background-color: var(--px-tile-text-background-color, lightgray);
     .title-span {
       color: var(--px-tile-title-color, darkslategray);
       line-height: calculateRem(22px);
+    }
+    .title-container {
+      padding-bottom: calculateRem(10px);
     }
     .subtitle-span {
       color: var(--px-tile-subtitle-color, gray);
@@ -102,22 +103,19 @@ $inuit-enable-btn--icon : true;
       display: flex;
       align-items: left;
       .title-btn {
-        margin-top: -4px;
+        margin-top: 0px;
         margin-right: -3px;
       }
     }
     .subtitle {
-      padding: 0 0 calculateRem(10px) 0;
       display: flex;
       align-items: left;
     }
     .text {
       position: relative;
       margin-right: 1rem;
+      margin-bottom: calculateRem(10px);
       color: var(--px-tile-text-color, darkslategray);
-    }
-    .action-btns {
-      margin-top: calculateRem(10px);
     }
     .block-with-text {
       @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: var(--px-tile-text-background-color, lightgray ));
@@ -132,12 +130,8 @@ $inuit-enable-btn--icon : true;
   color: var(--px-tile-overlay-text-color, white);
   opacity: 0;
   transition: opacity 0.4s cubic-bezier(.78,.13,.16,.87);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   .header-wrapper{
     margin-top: 1.6rem;
-    height: 3.2rem;
     .title-span {
       width: 100%;
     }
@@ -145,11 +139,9 @@ $inuit-enable-btn--icon : true;
   .title {
     background: none;
     margin-top: 0.6rem;
-    height: 1.6rem;
     width: var(--px-tile-width, calculateRem(300px));
     padding: 0 1.3333rem;
     .title-btn {
-      margin-top: -6px;
       margin-right: -6px;
     }
   }
@@ -159,15 +151,14 @@ $inuit-enable-btn--icon : true;
     padding: 0 1.3333rem;
   }
   .text {
-    padding: 0 1.3333rem;
-    height: var(--px-tile-overlay-desc-text-height, 9.1rem);
-    min-height: var(--px-tile-overlay-desc-text-height, 9.1rem);
-    overflow: hidden;
-    line-height: 1rem;
+    padding: calculateRem(8px) 1.3333rem 0;
+    line-height: var(--px-tile-overlay-desc-line-height, calculateRem(15px));
+    font-size: var(--px-tile-overlay-desc-font-size, calculateRem(12px));
   }
   .footer {
-    padding: 1rem 1.3333rem;
-    margin-top: 1.6rem;
+    padding: 0 1.3333rem;
+    margin-top: calculateRem(5px);
+    margin-bottom: calculateRem(10px);
   }
   .action-overlay-btns {
     margin-bottom: calculateRem(15px);
@@ -175,6 +166,15 @@ $inuit-enable-btn--icon : true;
   }
   .header-wrapper, .text, .footer {
     transition: margin-top 0.2s cubic-bezier(0.78, 0.13, 0.16, 0.87) 0.1s;
+  }
+  .overlay-top-content {
+    overflow: hidden;
+  }
+  .footer-container {
+    position: absolute;
+    bottom: 0;
+    width: var(--px-tile-width, calculateRem(300px));
+    background-color: var(--px-tile-overlay-background-color, black);
   }
 }
 

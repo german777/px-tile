@@ -74,13 +74,16 @@
                  overlay-description="{{props.overlayDescription.value}}"
                  title-action-button="{{props.titleActionButton.value}}" 
                  action-buttons="{{props.actionButtons.value}}">
-          <img slot="thumbnail" src$="[[importPath]]turbine.jpg" />
-<!--           <div class="footer" slot="footer">
-            <px-icon icon="px-fea:tag"></px-icon>
+          <div slot="thumbnail">
+            <img src$="[[importPath]]turbine.jpg" />
+          </div>
+          
+          <div class="footer" slot="footer">
+<!--             <px-icon icon="px-fea:tag"></px-icon>
             <px-alert-label type="unknown" label="Tag 1"></px-alert-label>
             <px-alert-label type="unknown" label="Tag 2"></px-alert-label>
-            <px-alert-label type="unknown" label="Tag 3"></px-alert-label>
-          </div>  -->
+            <px-alert-label type="unknown" label="Tag 3"></px-alert-label> -->
+          </div> 
         </px-tile>
       </px-demo-component>
       <!-- END Component ------------------------------------------------------>
