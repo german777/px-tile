@@ -160,26 +160,36 @@
     _getClass(hovered) {
       return hovered ? 'hovered' : '';
     },
+    /**
+     * On change callback for actionButtons
+     */
     _actionButtonsChanged() {
-      this._hasActionButtons = this.actionButtons && 
-      this.actionButtons.items !== undefined && 
-      this.actionButtons.items.length > 0;
+      this._hasActionButtons = this.actionButtons &&  this.actionButtons.items !== undefined &&  this.actionButtons.items.length > 0;
     },
-    _hasData(title, subtitle, key, actionButtons) {
+    /**
+     * Returns true if either title, subtitle, titleActionButtonKey, or actionButtons exist
+     */
+    _hasData(title, subtitle, titleActionButtonKey, actionButtons) {
       return (actionButtons && actionButtons.items && actionButtons.items.length > 0) || 
-        this._hasTitleSubtitleAndActionBtn(title, subtitle, key);
+        this._hasTitleSubtitleAndActionBtn(title, subtitle, titleActionButtonKey);
     },
-    _hasTitleSubtitleAndActionBtn(title, subtitle, key) {
+    /**
+     * Returns true if either title, subtitle, or titleActionButtonKey exist
+     */
+    _hasTitleSubtitleAndActionBtn(title, subtitle, titleActionButtonKey) {
       subtitle = subtitle || '';
-      if(title || subtitle || key) {
-        return subtitle.trim().length > 0 || this._hasTitleAndActionBtn(title, key);
+      if(title || subtitle || titleActionButtonKey) {
+        return subtitle.trim().length > 0 || this._hasTitleAndActionBtn(title, titleActionButtonKey);
       }
       return false;
     },
-    _hasTitleAndActionBtn(title, key) {
+    /**
+     * returns if either title or titleActionButtonKey exist
+     */
+    _hasTitleAndActionBtn(title, titleActionButtonKey) {
       title = title || '';
-      if(title || key) {
-        return title.trim().length > 0 || key !== undefined;
+      if(title || titleActionButtonKey) {
+        return title.trim().length > 0 || titleActionButtonKey !== undefined;
       }
       return false;
     }

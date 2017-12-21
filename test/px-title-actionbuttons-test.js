@@ -3,7 +3,7 @@ suite('Action Buttons Test for px-tile', function(){
   let actionButtons3items;
   let actionButtons4items;
   
-  //setup async calls to load requierd mock json before running the test
+  //setup async calls to load required mock json before running the test
   $.ajaxSetup({
     async: false
   });

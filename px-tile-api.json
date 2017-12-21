@@ -342,7 +342,7 @@
       "tagname": "px-action-buttons"
     },
     {
-      "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"}' \n      action-buttons='{\"items\":[{\"key\":\"1\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:link\"},{\"key\":\"2\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:download\"}]}' >\n      <img slot=\"thumbnail\" src=\"../turbine.jpg\"/>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n### Buttons and Dropdown reference\n    https://github.com/PredixDev/px-buttons-design \n    https://github.com/PredixDev/px-dropdown\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-line-height`  | Line Height of overlay description text | `1rem`\n`--px-tile-overlay-desc-font-size`  | Font Size of overlay description text | `0.8rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
+      "description": "### Usage\n\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable \n      title-action-button='{\"key\":\"101\",\"size\":\"btn--small\",\"type\":\"btn--icon\",\"icon\":\"px-nav:favorite\"}' \n      action-buttons='{\"items\":[{\"key\":\"1\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:link\"},{\"key\":\"2\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:copy\"},{\"key\":\"3\",\"size\":\"btn--small\",\"type\":\"btn--bare btn--icon\",\"icon\":\"px-utl:download\"}]}' >\n      <div slot=\"thumbnail\">\n         <img src$=\"../turbine.jpg\" />\n       </div>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n    \n### Buttons and Dropdown reference\n    https://github.com/PredixDev/px-buttons-design \n    https://github.com/PredixDev/px-dropdown\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-overlay-desc-line-height`  | Line Height of overlay description text | `1rem`\n`--px-tile-overlay-desc-font-size`  | Font Size of overlay description text | `0.8rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`",
       "summary": "",
       "path": "dist/px-tile.js",
       "properties": [
@@ -603,16 +603,16 @@
         },
         {
           "name": "_actionButtonsChanged",
-          "description": "",
+          "description": "On change callback for actionButtons",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 85,
-              "column": 74
+              "line": 87,
+              "column": 7
             },
             "end": {
-              "line": 85,
-              "column": 244
+              "line": 87,
+              "column": 177
             }
           },
           "metadata": {},
@@ -620,16 +620,16 @@
         },
         {
           "name": "_hasData",
-          "description": "",
+          "description": "Returns true if either title, subtitle, titleActionButtonKey, or actionButtons exist",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 85,
-              "column": 245
+              "line": 89,
+              "column": 7
             },
             "end": {
-              "line": 85,
-              "column": 434
+              "line": 89,
+              "column": 230
             }
           },
           "metadata": {},
@@ -641,7 +641,7 @@
               "name": "subtitle"
             },
             {
-              "name": "key"
+              "name": "titleActionButtonKey"
             },
             {
               "name": "actionButtons"
@@ -650,16 +650,16 @@
         },
         {
           "name": "_hasTitleSubtitleAndActionBtn",
-          "description": "",
+          "description": "Returns true if either title, subtitle, or titleActionButtonKey exist",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 85,
-              "column": 435
+              "line": 91,
+              "column": 7
             },
             "end": {
-              "line": 85,
-              "column": 655
+              "line": 91,
+              "column": 278
             }
           },
           "metadata": {},
@@ -671,22 +671,22 @@
               "name": "subtitle"
             },
             {
-              "name": "key"
+              "name": "titleActionButtonKey"
             }
           ]
         },
         {
           "name": "_hasTitleAndActionBtn",
-          "description": "",
+          "description": "returns if either title or titleActionButtonKey exist",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 85,
-              "column": 656
+              "line": 93,
+              "column": 7
             },
             "end": {
-              "line": 85,
-              "column": 810
+              "line": 93,
+              "column": 212
             }
           },
           "metadata": {},
@@ -695,7 +695,7 @@
               "name": "title"
             },
             {
-              "name": "key"
+              "name": "titleActionButtonKey"
             }
           ]
         }
@@ -714,7 +714,7 @@
           "column": 33
         },
         "end": {
-          "line": 97,
+          "line": 105,
           "column": 8
         }
       },
@@ -853,11 +853,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 63,
+              "line": 65,
               "column": 10
             },
             "end": {
-              "line": 63,
+              "line": 65,
               "column": 40
             }
           }
@@ -868,11 +868,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 119,
+              "line": 121,
               "column": 12
             },
             "end": {
-              "line": 119,
+              "line": 121,
               "column": 39
             }
           }

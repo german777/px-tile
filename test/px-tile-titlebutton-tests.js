@@ -2,7 +2,7 @@ suite('Title Action Button Tests for px-tile', function() {
   let tileEl;
   let titleActionButton;
 
-  // setup async calls to load requierd mock json before running the test
+  // setup async calls to load required mock json before running the test
   $.ajaxSetup({
     async: false
   });
