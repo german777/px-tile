@@ -14,7 +14,7 @@
      * Sets flag _isDropdown true if actionButtons size is greater than 3, false otherwise.
      * If _isDropdown === true it will update px-dropdown options menu
      */_actionButtonsChanged:function _actionButtonsChanged(){// set _notifyActionChange false to prevent firing px-dropdown-selection-changed while updating the new set of buttons
-this._notifyActionChange=false;this._isDropdown=this.actionButtons&&this.actionButtons.items&&this.actionButtons.items.length>this._maxIcons;if(this._isDropdown){this.async(function(){var pxDropdown=this.$$('#pxDropdown');pxDropdown.style.height='24px';if(!this.actionButtons.multi){// remove selected if passed on when is not multi selection
+this._notifyActionChange=false;this._isDropdown=this.actionButtons&&this.actionButtons.items&&this.actionButtons.items.length>this._maxIcons;if(this._isDropdown){this.async(function(){var pxDropdown=this.$$('#pxDropdown');pxDropdown.style.height='20px';if(!this.actionButtons.multi){// remove selected if passed on when is not multi selection
 for(var x in this.actionButtons.items){delete this.actionButtons.items[x].selected}}for(var key in this.actionButtons){pxDropdown.set(key,this.actionButtons[key])}this.async(function(){// adjust dropdown to appear aligned to the right
 var dropdown=Polymer.dom(pxDropdown.root).querySelector('#dropdown');dropdown.set('horizontalAlign','right');var button=Polymer.dom(pxDropdown.root).querySelector('#button');this.button=button;this.pxIcon=Polymer.dom(button).querySelector('px-icon');if(this.pxIcon){this.pxIcon.style.right='-6px'}this._notifyActionChange=true})},100)}else{this._notifyActionChange=true}},/**
      * Callback for on-tap event for action items when the list size is 3 or less
