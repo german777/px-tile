@@ -41,7 +41,9 @@
     "px-box-sizing-design": "^1.0.2",
     "px-helpers-design": "^1.0.7",
     "web-component-tester": "^6.3.0",
-    "px-dark-theme": "^2.1.0"
+    "px-dark-theme": "^2.1.0",
+    "px-vis": "^4.4.7",
+    "px-simple-horizontal-bar-chart": "^1.0.3"
   },
   "resolutions": {
     "webcomponentsjs": "^1.0.0",
