@@ -56,6 +56,7 @@
       if(this._isDropdown) {
         this.async(function() {
           let pxDropdown = this.$$('#pxDropdown');
+          pxDropdown.style.height = '24px';
           if(!this.actionButtons.multi) {
             // remove selected if passed on when is not multi selection
             for(let x in this.actionButtons.items) {

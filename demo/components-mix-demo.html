@@ -82,9 +82,16 @@
     <link rel="import" href="../px-tile.html" />
 
     <script>
-        function goToLink() {
+/*         function goToLink() {
             window.location.href = 'https://predix-ui.com';
-        }
+        } */
+        window.addEventListener('px-title-on-action-clicked', function(evt){
+          console.log(evt.detail); 
+          var el = document.getElementById('selection');
+          if(el) {
+            el.innerText = JSON.stringify(evt.detail);
+          }
+        }); 
     </script>
 
 </head>
@@ -96,17 +103,27 @@
     .thumbnail{
         text-align: center;
     }
-
+    .info {
+      padding: 20px;
+    }
+    .selection {
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+    }
 </style>
+<div class="info">
+  https://www.predix-ui.com/#/elements/px-tile
+</div>
 
 <div style="display:flex; flex-wrap:wrap;">
-    <px-tile onclick="goToLink()"
+    <px-tile 
              title="Title text"
              subtitle="Subtitle text"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
              title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
-             action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"key":"1","val":"Link","size":"btn--small"},{"key":"2","val":"Copy","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small"}]}'
              hoverable>
         <div class="thumbnail" slot="thumbnail">
             <img src="turbine.jpg"/>
@@ -118,13 +135,13 @@
             <px-alert-label type="unknown" label="Yeah brah"></px-alert-label>
         </div>
     </px-tile>
-    <px-tile onclick="goToLink()"
+    <px-tile 
              title="Title text"
              subtitle="Subtitle text"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
              title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:connection"}'
-             action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"key":"1","val":"Link","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -15px;"},{"key":"2","val":"Copy","size":"btn--small","type":"btn--bare--primary"},{"key":"3","val":"Download","size":"btn--small","type":"btn--bare--primary"}]}'
              hoverable>
         <div class="thumbnail" slot="thumbnail">
             <img src="gas_turbine.png" />
@@ -136,23 +153,23 @@
             <px-alert-label type="unknown" label="Yeah brah"></px-alert-label>
         </div>
     </px-tile>
-    <px-tile onclick="goToLink()"
+    <px-tile 
              title="Title text"
              subtitle="Subtitle text"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna eget lacinia odio sem nec elit. Donec sed odio dui.  Etiam porta sem malesuada magna mollis euismod. eget lacinia odio sem nec elit. Donec sed odio dui Etiam porta sem malesuada magna mollis euismod."
              title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:reload"}'
-             action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"key":"1","val":"Link","size":"btn--small","icon":"px-utl:link"},{"key":"2","val":"Copy","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Download","size":"btn--small","icon":"px-utl:download"}]}'
              hoverable>
         <div slot="thumbnail" class="px-vis-pie-chart"><px-vis-pie-custom-component></px-vis-pie-custom-component></div>
     </px-tile>
-    <px-tile onclick="goToLink()"
+    <px-tile 
              title="Title text"
              subtitle="Subtitle text"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
              title-action-button='{"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
-             action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"},{"key":"4","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:reload"}]}'
+             action-buttons='{"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}'
              hoverable>
         <div slot="thumbnail" class="px-simple-horizontal-bar-chart">
             <px-simple-horizontal-bar-chart
@@ -176,6 +193,9 @@
         </div>
     </px-tile>
 
+</div>
+
+<div id="selection" class="selection">
 </div>
 
 </body>
