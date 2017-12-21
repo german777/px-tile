@@ -26,14 +26,14 @@
        */
       title: {
         type: String,
-        value: 'Title'
+        value: ''
       },
       /**
        * Subtitle text for the tile.
        */
       subtitle: {
         type: String,
-        value: 'Subtitle text'
+        value: ''
       },
        /**
         * Description information to be displayed underneath tile and subtitle.
@@ -43,16 +43,16 @@
        */
       description: {
         type: String,
-        value: 'Description'
+        value: ''
       },
       /**
        * Description information to be displayed in the overlay of a hoverable card.
-       * It has more space to display text content and can be adjusted along side with
-       * total height of the tile
+       * It has more space to display text content and can be adjusted along with
+       * total height of the tile.
        */
       overlayDescription: {
         type: String,
-        value: 'Overlay description'
+        value: ''
       },
       /**
        * Single action button to display on the title section right side. 
