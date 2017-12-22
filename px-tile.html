@@ -96,6 +96,10 @@ Custom property | Description | Default
 `--px-tile-overlay-desc-font-size`  | Font Size of overlay description text | `0.8rem`
 `--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`
 `--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`
+`--px-tile-overlay-action-buttons-position` | Position of overlay action buttons | `inherit`
+`--px-tile-overlay-action-buttons-bottom` | Bottom position of overlay action buttons | `inherit`
+`--px-tile-overlay-action-buttons-right` | Right position of overlay action buttons | `inherit`
+`--px-tile-overlay-width` | Width of overlay action buttons | `inherit`
 
 
 @element px-tile
@@ -171,7 +175,9 @@ Custom property | Description | Default
 		          <slot name="footer"></slot>
 		        </div>
 		        <template is="dom-if" if="{{_hasActionButtons}}">
+		          <div class="action-overlay-btns">
 		          <px-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}" hovered="{{_hovered}}" hover-text-color="{{_hoverTextColor}}"></px-action-buttons>
+		          </div>
 		        </template>
 	        </div>
         </div>

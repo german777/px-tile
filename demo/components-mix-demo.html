@@ -86,6 +86,11 @@
               --px-tile-about-padding: 0px;
               --px-tile-about-right: 0px;
               --px-tile-text-background-color: #D8E0E5;
+              
+              --px-tile-overlay-action-buttons-position: absolute;
+              --px-tile-overlay-action-buttons-bottom: -12px; 
+              --px-tile-overlay-action-buttons-right: -14px;
+              --px-tile-overlay-width: 25px;
             }
             .center-text {
               height: 135px;
@@ -261,13 +266,14 @@
     </px-tile>
     
     <px-tile class="square-container" 
-            action-buttons='{"items":[{"key":"8","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'>
+            action-buttons='{"items":[{"key":"8","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}' >
           <div slot="thumbnail" >
               <div class="center-text">01</div>
           </div>
     </px-tile>
     <px-tile class="square-container" 
-            action-buttons='{"items":[{"key":"10","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'>
+            action-buttons='{"items":[{"key":"10","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}' 
+            hoverable>
           <div slot="thumbnail" >
               <div class="center-text">02</div>
           </div>
