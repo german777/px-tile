@@ -13,6 +13,13 @@ Px-tile tile can be customized with px theme, title, subtitle, description, butt
 
 Typically, Px-tile can be utilized for actions such as: contact cards, work orders, inspections, media tiles, or an overview of a device.
 
+### Note
+
+There are two <slot> elements in which you can add content:  `<div slot="thumbnail"></div>`  and  `<div slot="footer"></div>`.  
+Since these <slot> elements are used to display content you are responsible for styling, make sure the content follows the Predix guidelines. 
+You can find an example demo under `demo/components-mix-demo.html` showing how to use these <slot> elements.
+
+
 ### Usage
 
 	#### image-based thumbnail
@@ -74,10 +81,17 @@ Custom property | Description | Default
 `--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`
 `--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`
 `--px-tile-background-color` | Background color of the tile | `lightgray`
+`--px-tile-about-min-height` | Height of the bottom bar | `inherit`
+`--px-tile-about-width` | Width of the bottom bar | `inherit`
+`--px-tile-about-padding` | Padding of the bottom bar | `inherit`
+`--px-tile-about-right` | Right of the bottom bar | `inherit`
 `--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`
 `--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`
 `--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`
 `--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`
+`--px-tile-action-buttons-position` | Position of action buttons | `inherit`
+`--px-tile-action-buttons-right` | Right position of action buttons | `inherit`
+`--px-tile-action-buttons-bottom` | Bottom position of action buttons | `inherit`
 `--px-tile-overlay-desc-line-height`  | Line Height of overlay description text | `1rem`
 `--px-tile-overlay-desc-font-size`  | Font Size of overlay description text | `0.8rem`
 `--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`
@@ -99,7 +113,7 @@ Custom property | Description | Default
           <slot name="thumbnail"></slot>
         </div>
         <template is="dom-if" if="{{_hasData(title, subtitle, titleActionButton.key, actionButtons)}}">
-	        <div id="tile-text-wrapper" class="tile-text-wrapper">
+	        <div id="tile-text-wrapper" class="tile-text-wrapper tile-text-adjust">
 	          <template is="dom-if" if="{{_hasTitleSubtitleAndActionBtn(title, subtitle, titleActionButton.key)}}">
 		          <div class="title-container">
 		            <template is="dom-if" if="{{_hasTitleAndActionBtn(title, titleActionButton.key)}}">
@@ -122,7 +136,9 @@ Custom property | Description | Default
 	            <div class="text zeta"><div class="block-with-text">{{description}}</div></div>
 	          </template>
 	          <template is="dom-if" if="{{_hasActionButtons}}">
-	            <px-action-buttons id="pxActionButtons" action-buttons="{{actionButtons}}"></px-action-buttons>
+              <div class="action-buttons-wrapper">
+                <px-action-buttons id="pxActionButtons" action-buttons="{{actionButtons}}"></px-action-buttons>
+              </div>
 	          </template>
 	        </div>
         </template>
@@ -155,9 +171,7 @@ Custom property | Description | Default
 		          <slot name="footer"></slot>
 		        </div>
 		        <template is="dom-if" if="{{_hasActionButtons}}">
-		          <div class="action-overlay-btns">
-		            <px-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}" hovered="{{_hovered}}" hover-text-color="{{_hoverTextColor}}"></px-action-buttons>
-		          </div>
+		          <px-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}" hovered="{{_hovered}}" hover-text-color="{{_hoverTextColor}}"></px-action-buttons>
 		        </template>
 	        </div>
         </div>

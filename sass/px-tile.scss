@@ -36,6 +36,7 @@ $inuit-enable-btn--call-to-action : true;
 $inuit-enable-btn--bare : true;
 $inuit-enable-btn--bare--primary : true;
 $inuit-enable-btn--icon : true;
+$inuit-enable-btn--disabled : true;
 @import "px-buttons-design/_objects.buttons.scss";
 
 /* mixin for multiline */
@@ -120,7 +121,14 @@ $inuit-enable-btn--icon : true;
     .block-with-text {
       @include multiLineEllipsis($lineHeight: 1rem, $lineCount: 2, $bgColor: var(--px-tile-text-background-color, lightgray ));
     }
+    
   }
+  .tile-text-wrapper.tile-text-adjust {
+      min-height: var(--px-tile-about-min-height, 0);
+      width: var(--px-tile-about-width, 300px);
+      padding: var(--px-tile-about-padding, 1rem);
+      right: var(--px-tile-about-right, inherit);
+    }
 }
 
 .overlay {
@@ -160,10 +168,6 @@ $inuit-enable-btn--icon : true;
     margin-top: calculateRem(5px);
     margin-bottom: calculateRem(10px);
   }
-  .action-overlay-btns {
-    margin-bottom: calculateRem(15px);
-    margin-right: calculateRem(15px);
-  }
   .header-wrapper, .text, .footer {
     transition: margin-top 0.2s cubic-bezier(0.78, 0.13, 0.16, 0.87) 0.1s;
   }
@@ -172,7 +176,8 @@ $inuit-enable-btn--icon : true;
   }
   .footer-container {
     position: absolute;
-    bottom: 0;
+    bottom: var(--px-tile-action-buttons-bottom, 15px);
+    right: var(--px-tile-action-buttons-right, 15px);  
     width: var(--px-tile-width, calculateRem(300px));
     background-color: var(--px-tile-overlay-background-color, black);
   }
@@ -191,5 +196,9 @@ $inuit-enable-btn--icon : true;
 .btn-overlay {
   color: var(--px-tile-overlay-text-color, lightgray);
 }
-
+.action-buttons-wrapper {
+  position: var(--px-tile-action-buttons-position, inherit);   
+  right: var(--px-tile-action-buttons-right, inherit);   
+  bottom: var(--px-tile-action-buttons-bottom, inherit);      
+}
 // Trumps

@@ -7,6 +7,13 @@
 
 <dom-module id="px-vis-pie-custom-component">
     <template>
+      <style>
+		    .chart-element {
+		      margin-top: -5px;
+		      min-height: 330px;
+		    }
+		  </style>
+      <div class="chart-element">
         <px-vis-svg
                 svg="{{svg}}"
                 width="[[width]]"
@@ -26,6 +33,7 @@
                 complete-series-config="[[completeSeriesConfig]]"
                 series-id="[[seriesId]]"
                 px-svg-elem="[[pxSvgElem]]"></px-vis-pie>
+      </div>
     </template>
 </dom-module>
 
