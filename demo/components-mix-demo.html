@@ -65,7 +65,7 @@
                 --px-tile-subtitle-color: #2c404c;
                 --px-tile-title-color: #121f26;
             }
-            .px-tile-wrapper {
+            .px-tile-custom {
               --px-tile-height: 10rem;
               --px-tile-background-color: #B6C3CC;
               --px-tile-about-min-height: 10rem;
@@ -104,6 +104,7 @@
             .footer {
                 display: flex;
                 align-items: center;
+                margin-left: 15px;
             }
             px-alert-label {
                 margin-left: 0.66667rem;
@@ -121,9 +122,6 @@
     <link rel="import" href="../px-tile.html" />
 
     <script>
-/*         function goToLink() {
-            window.location.href = 'https://predix-ui.com';
-        } */
         window.addEventListener('px-title-on-action-clicked', function(evt){
           console.log(evt.detail); 
           var msg = document.getElementById('selection-mssg');
@@ -187,7 +185,7 @@
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
              title-action-button='{"key":"102","size":"btn--small","type":"btn--icon","icon":"px-nav:connection"}'
-             action-buttons='{"items":[{"key":"1","val":"Return","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -15px;"},{"key":"2","val":"Scrap","size":"btn--small","type":"btn--bare--primary"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"key":"1","val":"Return","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -20px;"},{"key":"2","val":"Scrap","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -10px;"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
              hoverable>
         <div class="thumbnail" slot="thumbnail">
             <img src="gas_turbine.png" />
@@ -233,7 +231,7 @@
         </div>
     </px-tile>
 
-    <px-tile class="px-tile-wrapper"
+    <px-tile class="px-tile-custom"
              title="SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45"
              subtitle="Subtitle text"
              description="07/30/2017 by Anita Lazman"
@@ -242,7 +240,7 @@
     >
     </px-tile>
 
-    <px-tile class="px-tile-wrapper"
+    <px-tile class="px-tile-custom"
              title="SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45"
              subtitle="Subtitle text"
              description="07/30/2017 by Anita Lazman"
@@ -252,7 +250,7 @@
     </px-tile>
 
 
-    <px-tile class="px-tile-wrapper small-container"
+    <px-tile class="px-tile-custom small-container"
              title="SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45"
              subtitle="Inspected by Chelsea Hammond on 11/26/2017"
              title-action-button='{"key":"107","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
@@ -269,7 +267,7 @@
 
     <px-tile class="square-container"
              action-buttons='{"items":[{"key":"10","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
-             hoverable>
+             >
         <div slot="thumbnail" >
             <div class="center-text">02</div>
         </div>

@@ -127,7 +127,7 @@ $inuit-enable-btn--disabled : true;
     min-height: var(--px-tile-about-min-height, 0);
     width: var(--px-tile-about-width, 300px);
     padding: var(--px-tile-about-padding, 1rem);
-    right: var(--px-tile-about-right, inherit);
+    right: var(--px-tile-about-right);
   }
 }
 
@@ -197,15 +197,15 @@ $inuit-enable-btn--disabled : true;
   color: var(--px-tile-overlay-text-color, lightgray);
 }
 .action-buttons-wrapper {
-  position: var(--px-tile-action-buttons-position, inherit);   
-  right: var(--px-tile-action-buttons-right, inherit);   
-  bottom: var(--px-tile-action-buttons-bottom, inherit);   
+  position: var(--px-tile-action-buttons-position);   
+  right: var(--px-tile-action-buttons-right);   
+  bottom: var(--px-tile-action-buttons-bottom);   
      
 }
 .action-overlay-btns {
-  position: var(--px-tile-overlay-action-buttons-position, inherit);  
-  bottom: var(--px-tile-overlay-action-buttons-bottom, inherit);  
-  right: var(--px-tile-overlay-action-buttons-right, inherit);  
-  width: var(--px-tile-overlay-width, inherit); 
+  position: var(--px-tile-overlay-action-buttons-position);  
+  bottom: var(--px-tile-overlay-action-buttons-bottom);  
+  right: var(--px-tile-overlay-action-buttons-right);  
+  width: var(--px-tile-overlay-width); 
 }
 // Trumps
