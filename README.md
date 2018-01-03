@@ -71,6 +71,10 @@ $ gulp serve
 
 Navigate to the root of that server (e.g. http://localhost:8080/) in a browser to open the API documentation page, with link to the "Demo" / working examples.
 
+1. Interactive demo - http://localhost:8080/
+2. Simple demo - http://localhost:8080/demo/simple_demo.html
+3. Various usages demo - http://localhost:8080/demo/components-mix-demo.html
+
 ### GE Coding Style Guide
 [GE JS Developer's Guide](https://github.com/GeneralElectric/javascript)
 
