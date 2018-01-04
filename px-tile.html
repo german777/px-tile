@@ -116,13 +116,13 @@ Custom property | Description | Default
         <div id="thumbnail" class="thumbnail">
           <slot name="thumbnail"></slot>
         </div>
-        <template is="dom-if" if="{{_hasData(title, subtitle, titleActionButton.key, actionButtons)}}">
+        <template is="dom-if" if="{{_hasData}}">
 	        <div id="tile-text-wrapper" class="tile-text-wrapper tile-text-adjust">
-	          <template is="dom-if" if="{{_hasTitleSubtitleAndActionBtn(title, subtitle, titleActionButton.key)}}">
+	          <template is="dom-if" if="{{_hasTitleSubtitleActionBtn}}">
 		          <div class="title-container">
-		            <template is="dom-if" if="{{_hasTitleAndActionBtn(title, titleActionButton.key)}}">
+		            <template is="dom-if" if="{{_hasTitleActionBtn}}">
 				          <div class="title flex flex--justify">
-				            <template is="dom-if" if="{{title}}">
+				            <template is="dom-if" if="{{_hasTitle}}">
 				              <span class="epsilon truncate title-span">{{title}}</span>
 				            </template>
 				            <span></span> <!-- empty span to right align titleActionButton -->
@@ -131,7 +131,7 @@ Custom property | Description | Default
 				            </template>
 				          </div>
 			          </template>
-			          <template is="dom-if" if="{{subtitle}}">
+			          <template is="dom-if" if="{{_hasSubtitle}}">
 			            <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
 			          </template>
 		          </div>
@@ -151,9 +151,9 @@ Custom property | Description | Default
 	      <div class="flex flex--col flex--justify full-height">
 		      <div class="overlay-top-content">
 		        <div class="header-wrapper">
-		          <template is="dom-if" if="{{_hasTitleAndActionBtn(title, titleActionButton.key)}}">
+		          <template is="dom-if" if="{{_hasTitleActionBtn}}">
 			          <div class="title flex flex--justify">
-			            <template is="dom-if" if="{{title}}">
+			            <template is="dom-if" if="{{_hasTitle}}">
 			              <span class="epsilon truncate title-span">{{title}}</span>
 			            </template>
 			            <span></span> <!-- empty span to right align titleActionButton -->
@@ -162,7 +162,7 @@ Custom property | Description | Default
 			            </template>
 			          </div>
 		          </template>
-		          <template is="dom-if" if="{{subtitle}}">
+		          <template is="dom-if" if="{{_hasSubtitle}}">
 		            <div class="subtitle zeta truncate"><span class="subtitle-span">{{subtitle}}</span></div>
 		          </template>
 		        </div>

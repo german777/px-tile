@@ -6,18 +6,18 @@
        * Whether the tile is currently being hovered.
        */_hovered:{type:Boolean,value:false},/**
        * Main text label for the tile.
-       */title:{type:String,value:''},/**
+       */title:{type:String,value:'',observer:'_onDataChanged'},/**
        * Subtitle text for the tile.
-       */subtitle:{type:String,value:''},/**
+       */subtitle:{type:String,value:'',observer:'_onDataChanged'},/**
         * Description information to be displayed underneath tile and subtitle.
         * Default : Only the first ~3 lines of text will be displayed, after which it will be truncated.
         * You can customize this using by adjusting `--px-tile-desc-text-height` SASS variable. (e.g. 1 line = 1 rem,
         * to set to 5 lines truncated, set --px-tile-desc-text-height : 5rem)
-       */description:{type:String,value:''},/**
+       */description:{type:String,value:'',observer:'_onDataChanged'},/**
        * Description information to be displayed in the overlay of a hoverable card.
        * It has more space to display text content and can be adjusted along with
        * total height of the tile.
-       */overlayDescription:{type:String,value:''},/**
+       */overlayDescription:{type:String,value:'',observer:'_onDataChanged'},/**
        * Single action button to display on the title section right side. 
        * 
        * See ` px-buttons-design ` https://www.predix-ui.com/#/css/visual/buttons/px-buttons-design for more details
@@ -39,7 +39,7 @@
        * Bare small button with just icon and some margin on the right `  {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite", "style": "margin-right: 5px;"} `
        * 
        * Bare small button with just icon `  {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"} ` 
-       */titleActionButton:{type:Object,value:{}},/**
+       */titleActionButton:{type:Object,value:{},observer:'_onDataChanged'},/**
        * Action buttons display below description.
        * 
        * When items <= 3 will display the buttons/text inline.
@@ -72,7 +72,7 @@
        * 
        * `px-title-on-action-clicked`
        * 
-       */actionButtons:{type:Object,value:{},observer:'_actionButtonsChanged'}},/**
+       */actionButtons:{type:Object,value:{},observer:'_onDataChanged'}},/**
      * Method used internally for flipping the hovered status of a tile.
      */_hover:function _hover(){if(this.hoverable){this._hovered=!this._hovered}},/**
      * On change callback to remove overlay
@@ -84,14 +84,8 @@ this._hoverTextColor=window.getComputedStyle(this.$.overlay).color}},/**
      */detached:function detached(){this.unlisten(this.$.overlay,'mouseenter');this.unlisten(this.$.overlay,'mouseleave')},/**
      * Returns class to control overlay for hoverable tiles.
      */_getClass:function _getClass(hovered){return hovered?'hovered':''},/**
-     * On change callback for actionButtons
-     */_actionButtonsChanged:function _actionButtonsChanged(){this._hasActionButtons=this.actionButtons&&this.actionButtons.items!==undefined&&this.actionButtons.items.length>0},/**
-     * Returns true if either title, subtitle, titleActionButtonKey, or actionButtons exist
-     */_hasData:function _hasData(title,subtitle,titleActionButtonKey,actionButtons){return actionButtons&&actionButtons.items&&actionButtons.items.length>0||this._hasTitleSubtitleAndActionBtn(title,subtitle,titleActionButtonKey)},/**
-     * Returns true if either title, subtitle, or titleActionButtonKey exist
-     */_hasTitleSubtitleAndActionBtn:function _hasTitleSubtitleAndActionBtn(title,subtitle,titleActionButtonKey){subtitle=subtitle||'';if(title||subtitle||titleActionButtonKey){return subtitle.trim().length>0||this._hasTitleAndActionBtn(title,titleActionButtonKey)}return false},/**
-     * returns if either title or titleActionButtonKey exist
-     */_hasTitleAndActionBtn:function _hasTitleAndActionBtn(title,titleActionButtonKey){title=title||'';if(title||titleActionButtonKey){return title.trim().length>0||titleActionButtonKey!==undefined}return false}/**
+     * On change callback for either property to set flags to either show/hide elements on px-tile
+     */_onDataChanged:function _onDataChanged(){this._hasTitle=this.title&&this.title.length>0;this._hasSubtitle=this.subtitle&&this.subtitle.length>0;this._hasActionButtons=this.actionButtons&&this.actionButtons.items!==undefined&&this.actionButtons.items.length>0;this._hasTitleActionBtn=this._hasTitle||this.titleActionButton&&this.titleActionButton.key.length>0;this._hasTitleSubtitleActionBtn=this._hasSubtitle||this._hasTitleActionBtn;this._hasData=this._hasActionButtons||this._hasTitleSubtitleActionBtn}/**
      * @event px-title-on-action-clicked  
      * 
      * Event ` px-title-on-action-clicked ` is fired when an item is selected from either titleActionButton or actionButtons with selection detail. E.g. {key: "1", val: "Favorite"}

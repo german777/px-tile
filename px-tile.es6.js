@@ -26,14 +26,16 @@
        */
       title: {
         type: String,
-        value: ''
+        value: '',
+        observer: '_onDataChanged'
       },
       /**
        * Subtitle text for the tile.
        */
       subtitle: {
         type: String,
-        value: ''
+        value: '',
+        observer: '_onDataChanged'
       },
        /**
         * Description information to be displayed underneath tile and subtitle.
@@ -43,7 +45,8 @@
        */
       description: {
         type: String,
-        value: ''
+        value: '',
+        observer: '_onDataChanged'
       },
       /**
        * Description information to be displayed in the overlay of a hoverable card.
@@ -52,7 +55,8 @@
        */
       overlayDescription: {
         type: String,
-        value: ''
+        value: '',
+        observer: '_onDataChanged'
       },
       /**
        * Single action button to display on the title section right side. 
@@ -79,7 +83,8 @@
        */
       titleActionButton: {
         type: Object,
-        value: {}
+        value: {},
+        observer: '_onDataChanged'
       },
       /**
        * Action buttons display below description.
@@ -118,7 +123,7 @@
       actionButtons: {
         type: Object,
         value: {},
-        observer: '_actionButtonsChanged'
+        observer: '_onDataChanged'
       }
     },
     /**
@@ -161,37 +166,15 @@
       return hovered ? 'hovered' : '';
     },
     /**
-     * On change callback for actionButtons
+     * On change callback for either property to set flags to either show/hide elements on px-tile
      */
-    _actionButtonsChanged() {
+    _onDataChanged() {
+      this._hasTitle = this.title && this.title.length > 0;
+      this._hasSubtitle = this.subtitle && this.subtitle.length > 0;
       this._hasActionButtons = this.actionButtons &&  this.actionButtons.items !== undefined &&  this.actionButtons.items.length > 0;
-    },
-    /**
-     * Returns true if either title, subtitle, titleActionButtonKey, or actionButtons exist
-     */
-    _hasData(title, subtitle, titleActionButtonKey, actionButtons) {
-      return (actionButtons && actionButtons.items && actionButtons.items.length > 0) || 
-        this._hasTitleSubtitleAndActionBtn(title, subtitle, titleActionButtonKey);
-    },
-    /**
-     * Returns true if either title, subtitle, or titleActionButtonKey exist
-     */
-    _hasTitleSubtitleAndActionBtn(title, subtitle, titleActionButtonKey) {
-      subtitle = subtitle || '';
-      if(title || subtitle || titleActionButtonKey) {
-        return subtitle.trim().length > 0 || this._hasTitleAndActionBtn(title, titleActionButtonKey);
-      }
-      return false;
-    },
-    /**
-     * returns if either title or titleActionButtonKey exist
-     */
-    _hasTitleAndActionBtn(title, titleActionButtonKey) {
-      title = title || '';
-      if(title || titleActionButtonKey) {
-        return title.trim().length > 0 || titleActionButtonKey !== undefined;
-      }
-      return false;
+      this._hasTitleActionBtn = this._hasTitle || (this.titleActionButton && this.titleActionButton.key.length > 0);
+      this._hasTitleSubtitleActionBtn = this._hasSubtitle || this._hasTitleActionBtn;
+      this._hasData = this._hasActionButtons || this._hasTitleSubtitleActionBtn;
     }
     /**
      * @event px-title-on-action-clicked  
