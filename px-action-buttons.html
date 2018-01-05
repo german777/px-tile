@@ -20,9 +20,9 @@
     
     actionButtons is a JSON object such as: 
     E.g. for items = 3
-    let actionButtons = {"items":[{"key":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"key":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]};
+    let actionButtons = {"items":[{"id":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"id":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"id":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]};
     E.g for items > 3
-    let actionButtons = {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}
+    let actionButtons = {"items":[{"id":"1","label":"Edit","icon":"px-utl:edit","selected":true},{"id":"2","label":"Copy","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}
     
     See https://github.com/PredixDev/px-buttons-design for button options 
     See https://github.com/PredixDev/px-dropdown for dropdown options
@@ -36,23 +36,23 @@
 <dom-module id="px-action-buttons">
   <template>
     <style include="px-tile-styles"></style>
-    <template is="dom-if" if="{{!_isDropdown}}">
+    <template is="dom-if" if="{{_isDisplayButtons}}">
       <div class="flex flex--right">
-		    <template is="dom-repeat" items="{{actionButtons.items}}">
-           <button class$="btn {{_getBtnClazz(item)}} {{item.hoveredClazz}}" 
+		    <template is="dom-repeat" items="[[actionButtons.items]]">
+           <button class$="btn {{_getBtnClazz(item)}}" 
             style$="{{_getBtnColor(item)}} {{item.style}}" 
             on-tap="_onSelected">
 		         <template is="dom-if" if="{{item.icon}}">
 		          <px-icon icon="{{item.icon}}"></px-icon>
 		        </template>
-		         <template is="dom-if" if="{{item.val}}">
-		           <span>{{item.val}}</span>
+		         <template is="dom-if" if="{{!item.buttonIcon}}">
+		           <span>{{item.label}}</span>
 		         </template>
 		      </button>
 		    </template>
 	    </div>
     </template>
-    <template is="dom-if" if="{{_isDropdown}}"> 
+    <template is="dom-if" if="{{_isDisplayDropdown}}"> 
       <div class="flex flex--right">
 				<px-dropdown id="pxDropdown"
 				  sort-mode="key"

@@ -14,19 +14,25 @@
         observer: '_actionButtonsChanged'
       },
       /**
-       * hovered to add additional class on elements when hovering
-       */
-      hovered: {
-        type: Boolean,
-        value: false,
-        observer: '_hoveredChanged'
-      },
-      /**
        * Current text color of overlay to apply other elements when hovering
        */
       hoverTextColor: {
         type: String,
         value: ''
+      },
+      /**
+       * Boolean to find out if items list is in overlay
+       */
+      isOverlay: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Boolean to display primary button
+       */
+      isPrimary: {
+        type: Boolean,
+        value: false
       }
     },
     created() {
@@ -46,25 +52,55 @@
     },
     /**
      * Observer when actionButtons changes.  
-     * Sets flag _isDropdown true if actionButtons size is greater than 3, false otherwise.
-     * If _isDropdown === true it will update px-dropdown options menu
+     * Sets flag _isDisplayDropdown true if actionButtons size is greater than default items size 3, false otherwise.
+     * Sets flag _isDisplayButtons true if actionButtons size is less or equal than default items size 3, false otherwise.
+     * If _isDisplayDropdown === true it will update px-dropdown options menu
      */
     _actionButtonsChanged() {
       // set _notifyActionChange false to prevent firing px-dropdown-selection-changed while updating the new set of buttons
       this._notifyActionChange = false;
-      this._isDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > this._maxIcons;
-      if(this._isDropdown) {
+      //this._isDisplayDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > this._maxIcons;
+      let actionBtns = JSON.parse(JSON.stringify(this.actionButtons));
+      
+      let dropdownCount = 0;
+      for(let x in actionBtns.items) {
+        if(!actionBtns.items[x].isPrimary) {
+          dropdownCount++;
+        }
+      }
+      this._isDisplayDropdown = dropdownCount > this._maxIcons;
+      
+      if(this.isPrimary) {
+        this._isDisplayButtons = true;
+        this._isDisplayDropdown = false;
+      } else if(this._isDisplayDropdown) {
         this.async(function() {
           let pxDropdown = this.$$('#pxDropdown');
           pxDropdown.style.height = '20px';
-          if(!this.actionButtons.multi) {
-            // remove selected if passed on when is not multi selection
-            for(let x in this.actionButtons.items) {
-              delete this.actionButtons.items[x].selected;
+          for(let x in actionBtns.items) {
+            // px-dropdown has key and val
+            let item = actionBtns.items[x];
+            item.key = item.id || item.key;
+            item.val = item.label || item.val;
+            delete item.id;
+            delete item.label;
+            if(!actionBtns.multi) {
+              delete item.selected;
             }
           }
-          for(let key in this.actionButtons) {
-            pxDropdown.set(key, this.actionButtons[key]);
+          // there are only two options for sortMode and selectBy in px-dropdown
+          if(actionBtns.sortMode && actionBtns.sortMode === 'label') {
+            actionBtns.sortMode = 'val';
+          } else if(actionBtns.sortMode !== 'val') {
+            actionBtns.sortMode = 'key';
+          }
+          if(actionBtns.selectBy && actionBtns.selectBy === 'label') {
+            actionBtns.selectBy = 'val';
+          } else if(actionBtns.selectBy !== 'val') {
+            actionBtns.selectBy = 'key';
+          }
+          for(let id in actionBtns) {
+            pxDropdown.set(id, actionBtns[id]);
           }
           this.async(function() {
             // adjust dropdown to appear aligned to the right
@@ -75,13 +111,17 @@
             this.pxIcon = Polymer.dom(button).querySelector('px-icon');
             if(this.pxIcon) {
               this.pxIcon.style.right = '-6px';
+              if(this.isOverlay) {
+                this.pxIcon.style.color = this.hoverTextColor;
+              }
             }
             this._notifyActionChange = true;
           });
         }, 100);
       } else {
-        this._notifyActionChange = true;
+        this._isDisplayButtons = true;
       }
+      this._notifyActionChange = true;
     },
     /**
      * Callback for on-tap event for action items when the list size is 3 or less
@@ -89,8 +129,8 @@
     _onSelected(evt) {
       let item = evt.detail.model || evt.model.item;
       this._handleSelection({
-        val: item.val, 
-        key: item.key
+        label: item.label, 
+        id: item.id
       });
     },
     /**
@@ -99,15 +139,18 @@
     _itemSelected(evt) {
       let pxDropdown = this.$$('#pxDropdown');
       if(this.actionButtons.multi || pxDropdown._displayValueSelected === evt.detail.val) {
-        this._handleSelection(evt.detail);
+        this._handleSelection({
+          label: evt.detail.val, 
+          id: evt.detail.key
+        });
       }
     },
     /**
-     * Fires px-title-action with selection detail. E.g. {key: "1", val: "Favorite", selected: true}
+     * Fires px-title-action with selection detail. E.g. {"id": "1", "label": "Favorite", "selected": true}
      */
     _handleSelection(detail) {
       if(this._notifyActionChange) {
-        this.fire('px-title-on-action-clicked', detail);
+        this.fire('px-tile-action-tapped', detail);
       }
     },
     /**
@@ -115,9 +158,75 @@
      * See https://github.com/PredixDev/px-buttons-design for more details.
      */
     _getBtnClazz(item) {
-      let clazz = item.size || '';
-      clazz = clazz + ' ' + (item.type || '');
-      return clazz;
+      let clazzset = this._getBtnSize(item.size);
+      clazzset = this._getBtnType(item.type, clazzset);
+      if(item.buttonIcon === true) {
+        clazzset.push('btn--icon');
+      }
+      if(item.disabled === true) {
+        clazzset.push('btn--disabled');
+      }
+      if( (this.isPrimary && !item.isPrimary) || (!this.isPrimary && item.isPrimary) ) { 
+        clazzset.push('hidden');
+      }
+      return clazzset.join(" ").trim();
+    },
+    /**
+     * Returns button type class
+     */
+    _getBtnType(type, array) {
+      array = array || [];
+      if(type) {
+        switch(type.trim()) {
+          case 'primary':
+            array.push('btn--primary');
+            break;
+          case 'call to action':
+            array.push('btn--call-to-action');
+            break;
+          case 'tertiary':
+            array.push('btn--tertiary');
+            break;
+          case 'bare':
+            array.push('btn--bare');
+            if(this.isOverlay) {
+              array.push('btn-overlay');
+            }
+            break;
+          case 'bare primary':
+            array.push('btn--bare--primary');
+            if(this.isOverlay) {
+              array.push('btn-overlay');
+            } else {
+              array.push('btn-tile-bare-primary');
+            }
+            break;
+        }
+      }
+      return array;
+    },
+    /**
+     * Returns button size class
+     */
+    _getBtnSize(size, array) {
+      array = array || [];
+      if(size) {
+        switch(size.trim()) {
+          case 'small':
+            array.push('btn--small');
+            break;
+          case 'large':
+            array.push('btn--large');
+            break;
+          case 'huge':
+            array.push('btn--huge');
+            break;
+          case 'full':
+            array.push('btn--full');
+            break;
+        }
+      }
+      return array;
     },
     /**
      * Return style for color.  This property is part of px-button so honor if passed on.
@@ -128,32 +237,6 @@
         color = 'color: ' + item.color + '; stroke: ' + item.color + '; ';
       }
       return color;
-    },
-    /**
-     * Callback to set specific classes for overlay container
-     */
-    _hoveredChanged() {
-      // add class to buttons to change color of text when hovering if these are bare buttons
-      if(this.actionButtons.items && this.actionButtons.items.length <= this._maxIcons) {
-        let hoveredClazz = ' btn-overlay ';
-        for(let x in this.actionButtons.items) {
-          let type = this.actionButtons.items[x].type;
-          type = type? type.replace(hoveredClazz,'') : '';
-          if(this.hovered) {
-            if(type.indexOf('btn--bare') !== -1) {
-              type = type + hoveredClazz;
-            }
-          }
-          this.actionButtons.items[x].type = type;
-          this.set('actionButtons.items.' + x, JSON.parse(JSON.stringify(this.actionButtons.items[x])));
-        }
-      } else if(this.pxIcon) {
-        // this is a dropdown then change the color of the icon on hovering
-        this.pxIcon.style.color = '';
-        if(this.hovered) {
-          this.pxIcon.style.color = this.hoverTextColor;
-        }
-      }
     }
   });
 })();

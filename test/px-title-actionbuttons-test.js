@@ -38,14 +38,14 @@ suite('Action Buttons Test for px-tile', function(){
   test('Select first action button when items <= 3', function( done) {
     tileEl.set('actionButtons', actionButtons3items);
     let selectedValue;
-    window.addEventListener('px-title-on-action-clicked', function(evt) {
+    window.addEventListener('px-tile-action-tapped', function(evt) {
       selectedValue = evt.detail;
     });
     flush(function() {
       let pxActionButtons = tileEl.$$('#pxActionButtons');
       let btn = Polymer.dom(pxActionButtons.root).querySelectorAll('button')[0];
       $(btn).click();
-      assert.equal(selectedValue.key, actionButtons3items.items[0].key);
+      assert.equal(selectedValue.id, actionButtons3items.items[0].id);
       done();
     });
   });
@@ -70,7 +70,8 @@ suite('Action Buttons Test for px-tile', function(){
       pxActionButtons._actionButtonsChanged();
       let pxDropdown = pxActionButtons.$$('#pxDropdown');
       pxDropdown.fire('iron-select', {item: actionButtons4items.items[0]});
-      assert.equal(selectedValue.val, actionButtons4items.items[0].val);
+      console.log('selectedValue', selectedValue);
+      assert.equal(selectedValue.label, actionButtons4items.items[0].label);
       done();
     });
   });
@@ -85,7 +86,7 @@ suite('Action Buttons Test for px-tile', function(){
       let items = pxActionButtons.actionButtons.items;
       for(let x in items) {
         let hasOverlayClass = items[x].type.indexOf('btn-overlay') > 0;
-        assert.equal(hasOverlayClass, true, 'Overlay button key: ' + items[x].key + ' has no btn-overlay class');
+        assert.equal(hasOverlayClass, true, 'Overlay button id: ' + items[x].id + ' has no btn-overlay class');
       }
       done();
     });

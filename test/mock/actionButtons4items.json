@@ -1,28 +1,28 @@
 {
   "items": [
     {
-      "key": "1",
-      "val": "Edit",
+      "id": "1",
+      "label": "Edit",
       "icon": "px-utl:edit",
       "selected": true
     },
     {
-      "key": "2",
-      "val": "Copy",
+      "id": "2",
+      "label": "Copy",
       "icon": "px-utl:copy"
     },
     {
-      "key": "3",
-      "val": "Remove",
+      "id": "3",
+      "label": "Remove",
       "icon": "px-vis:trash-series"
     },
     {
-      "key": "4",
-      "val": "Notification",
+      "id": "4",
+      "label": "Notification",
       "icon": "px-nav:notification"
     }
   ],
-  "sortMode": "key",
+  "sortMode": "id",
   "buttonStyle": "icon",
   "icon": "px-nav:more",
   "displayValue": "Select",

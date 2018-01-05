@@ -84,12 +84,13 @@
               --px-tile-about-min-height: 25px;
               --px-tile-about-width: 25px;
               --px-tile-about-padding: 0px;
-              --px-tile-about-right: 0px;
+              --px-tile-about-right: 5px;
+              --px-tile-about-bottom: 5px;
               --px-tile-text-background-color: #D8E0E5;
               
               --px-tile-overlay-action-buttons-position: absolute;
-              --px-tile-overlay-action-buttons-bottom: -12px; 
-              --px-tile-overlay-action-buttons-right: -14px;
+              --px-tile-overlay-action-buttons-bottom: -7px; 
+              --px-tile-overlay-action-buttons-right: -9px;
               --px-tile-overlay-width: 25px;
             }
             .center-text {
@@ -122,7 +123,7 @@
     <link rel="import" href="../px-tile.html" />
 
     <script>
-        window.addEventListener('px-title-on-action-clicked', function(evt){
+        window.addEventListener('px-tile-action-tapped', function(evt){
           console.log(evt.detail); 
           var msg = document.getElementById('selection-mssg');
           var el = document.getElementById('selection');
@@ -167,7 +168,7 @@
              subtitle="10Y 01 Stage 1 Bucket"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
-             action-buttons='{"items":[{"key":"1","val":"Return","size":"btn--small"},{"key":"2","val":"Scrap","size":"btn--small"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"id":"1","label":"Return","size":"small"},{"id":"2","label":"Scrap","size":"small"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}'
              hoverable>
         <div class="thumbnail" slot="thumbnail">
             <img src="turbine.jpg"/>
@@ -184,8 +185,7 @@
              subtitle="1F 04 Stage 1 Bucket"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
-             title-action-button='{"key":"102","size":"btn--small","type":"btn--icon","icon":"px-nav:connection"}'
-             action-buttons='{"items":[{"key":"1","val":"Return","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -20px;"},{"key":"2","val":"Scrap","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -10px;"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"id":"102","label":"Link","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:connection","isPrimary":true},{"id":"1","label":"Return","size":"small","type":"bare primary", "style":"margin-right: -20px;"},{"id":"2","label":"Scrap","size":"small","type":"bare primary", "style":"margin-right: -10px;"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}'
              hoverable>
         <div class="thumbnail" slot="thumbnail">
             <img src="gas_turbine.png" />
@@ -196,8 +196,7 @@
              subtitle="9F 04 Stage 1 Bucket"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna eget lacinia odio sem nec elit. Donec sed odio dui.  Etiam porta sem malesuada magna mollis euismod. eget lacinia odio sem nec elit. Donec sed odio dui Etiam porta sem malesuada magna mollis euismod."
-             title-action-button='{"key":"103","size":"btn--small","type":"btn--icon","icon":"px-nav:reload"}'
-             action-buttons='{"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
+             action-buttons='{"items":[{"id":"103","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:reload","isPrimary":true},{"id":"1","label":"Return","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link"},{"id":"2","label":"Scrap","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:copy"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}'
              hoverable>
         <div slot="thumbnail" class="px-vis-pie-chart"><px-vis-pie-custom-component></px-vis-pie-custom-component></div>
     </px-tile>
@@ -206,8 +205,7 @@
              subtitle="7E 01 Stage 1 Bucket"
              description="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
              overlay-description="Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna."
-             title-action-button='{"key":"104","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
-             action-buttons='{"items":[{"key":"1","val":"Return","icon":"px-utl:edit","selected":true},{"key":"2","val":"Scrap","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}'
+             action-buttons='{"items":[{"id":"104","label":"Favorite","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Return","icon":"px-utl:edit","selected":true},{"id":"2","label":"Scrap","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}'
              hoverable>
         <div slot="thumbnail" class="px-simple-horizontal-bar-chart">
             <px-simple-horizontal-bar-chart
@@ -235,39 +233,33 @@
              title="SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45"
              subtitle="Subtitle text"
              description="07/30/2017 by Anita Lazman"
-             title-action-button='{"key":"105","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
-             action-buttons='{"items":[{"key":"1","val":"Secondary Action","size":"btn--small", "type":"btn--tertiary"},{"key":"2","val":"Action","size":"btn--small","type":"btn--call-to-action"}]}'
-    >
+             action-buttons='{"items":[{"id":"105","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Secondary Action","size":"small", "type":"tertiary"},{"id":"2","label":"Action","size":"small","type":"call to action"}]}' >
     </px-tile>
 
     <px-tile class="px-tile-custom"
              title="SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45"
              subtitle="Subtitle text"
              description="07/30/2017 by Anita Lazman"
-             title-action-button='{"key":"106","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
-             action-buttons='{"items":[{"key":"1","val":"Return","size":"btn--small"},{"key":"2","val":"Scrap","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small"}]}'
-    >
+             action-buttons='{"items":[{"id":"106","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Return","size":"small"},{"id":"2","label":"Scrap","size":"small"},{"id":"3","label":"Download","size":"small"}]}' >
     </px-tile>
 
 
     <px-tile class="px-tile-custom small-container"
              title="SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45"
              subtitle="Inspected by Chelsea Hammond on 11/26/2017"
-             title-action-button='{"key":"107","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"}'
-             action-buttons='{"items":[{"key":"1","val":"Return","icon":"px-utl:edit","selected":true},{"key":"2","val":"Scrap","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}'
-    >
+             action-buttons='{"items":[{"id":"107","label":"Favorite","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Return","icon":"px-utl:edit","selected":true},{"id":"2","label":"Scrap","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}' >
     </px-tile>
 
     <px-tile class="square-container"
-             action-buttons='{"items":[{"key":"8","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}' >
+             action-buttons='{"items":[{"id":"20","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}' >
         <div slot="thumbnail" >
             <div class="center-text">01</div>
         </div>
     </px-tile>
 
     <px-tile class="square-container"
-             action-buttons='{"items":[{"key":"10","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]}'
-             >
+             action-buttons='{"items":[{"id":"23","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}' 
+             hoverable >
         <div slot="thumbnail" >
             <div class="center-text">02</div>
         </div>
@@ -278,9 +270,9 @@
 <div class="info-container">
 	<div class="info-item">
 	 <div class="code-sample">
-	    <p>Binding <i>'px-title-on-action-clicked'</i> event: </p>
+	    <p>Binding <i>'px-tile-action-tapped'</i> event: </p>
 	    <p><b>
-	    window.addEventListener('px-title-on-action-clicked', function(evt){ <br>
+	    window.addEventListener('px-tile-action-tapped', function(evt){ <br>
 	    &nbsp; &nbsp; console.log(evt.detail);  <br>
 	    });  <br>
 	    </b></p>

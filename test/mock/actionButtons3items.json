@@ -1,22 +1,25 @@
 {
   "items": [
     {
-      "key": "1",
-      "size": "btn--small",
-      "type": "btn--bare btn--icon",
-      "icon": "px-utl:link"
+      "id": "1",
+      "size": "small",
+      "type": "bare",
+      "icon": "px-utl:link",
+      "buttonIcon": true
     },
     {
-      "key": "2",
-      "size": "btn--small",
-      "type": "btn--bare btn--icon",
-      "icon": "px-utl:copy"
+      "id": "2",
+      "size": "small",
+      "type": "bare",
+      "icon": "px-utl:copy",
+      "buttonIcon": true
     },
     {
-      "key": "3",
-      "size": "btn--small",
-      "type": "btn--bare btn--icon",
-      "icon": "px-utl:download"
+      "id": "3",
+      "size": "small",
+      "type": "bare",
+      "icon": "px-utl:download",
+      "buttonIcon": true
     }
   ]
 }

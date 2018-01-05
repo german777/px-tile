@@ -128,6 +128,7 @@ $inuit-enable-btn--disabled : true;
     width: var(--px-tile-about-width, 300px);
     padding: var(--px-tile-about-padding, 1rem);
     right: var(--px-tile-about-right);
+    bottom: var(--px-tile-about-bottom, 0);
   }
 }
 
@@ -195,6 +196,9 @@ $inuit-enable-btn--disabled : true;
 }
 .btn-overlay {
   color: var(--px-tile-overlay-text-color, lightgray);
+}
+.btn-tile-bare-primary {
+  color: var(--px-btn-bare-color,#2c404c);
 }
 .action-buttons-wrapper {
   position: var(--px-tile-action-buttons-position);   

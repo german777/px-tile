@@ -76,7 +76,6 @@
                  subtitle="{{props.subtitle.value}}"
                  description="{{props.description.value}}"
                  overlay-description="{{props.overlayDescription.value}}"
-                 title-action-button="{{props.titleActionButton.value}}" 
                  action-buttons="{{props.actionButtons.value}}">
           <div slot="thumbnail">
             <img src$="[[importPath]]gas_turbine.png" />
@@ -156,38 +155,20 @@
         defaultValue: true,
         inputType: 'toggle'
       },
-      titleActionButton: {
-        type: Object,
-        // default button with icon and color
-        //defaultValue: {"key":"101","val":"Favorite","icon":"px-nav:favorite", "selected": true, "color": "orange"},
-        // default button and icon
-        //defaultValue: {"key":"101","val":"Favorite","icon":"px-nav:favorite"},
-        // default small button and icon
-        //defaultValue: {"key":"101","val":"Favorite","size":"btn--small","icon":"px-nav:favorite"},
-        // bare button with icon and text
-        //defaultValue: {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare","icon":"px-nav:favorite"},
-        // bare button with just text
-        //defaultValue: {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare"},
-        // bare button with just icon and some margin on the right
-        //defaultValue: {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite", "style": "margin-right: 5px;"},
-        // bare button with just icon
-        defaultValue: {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"},
-        inputType: 'code:JSON'
-      },
       actionButtons: {
         type: Object,
         //  Examples when items <= 3
         // Only icons
-        defaultValue: {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]},
+        defaultValue: {"items":[{"id":"103","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Return","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link"},{"id":"2","label":"Scrap","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:copy"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]},
         // Buttons
-        //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small"},{"key":"2","val":"Copy","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small"}]},
+        //defaultValue: {"items":[{"id":"1","label":"Link","size":"small"},{"id":"2","label":"Copy","size":"small"},{"id":"3","label":"Download","size":"small"}]},
         // Buttons with icons
-        //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small","icon":"px-utl:link"},{"key":"2","val":"Copy","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Download","size":"btn--small","icon":"px-utl:download"}]},
+        //defaultValue: {"items":[{"id":"1","label":"Link","size":"small","icon":"px-utl:link"},{"id":"2","label":"Copy","size":"small","icon":"px-utl:copy"},{"id":"3","label":"Download","size":"small","icon":"px-utl:download"}]},
         // Buttons with text only
-        //defaultValue: {"items":[{"key":"1","val":"Link","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -15px;"},{"key":"2","val":"Copy","size":"btn--small","type":"btn--bare--primary"},{"key":"3","val":"Download","size":"btn--small","type":"btn--bare--primary"}]},
+        //defaultValue: {"items":[{"id":"1","label":"Link","size":"small","type":"bare--primary", "style":"margin-right: -15px;"},{"id":"2","label":"Copy","size":"small","type":"bare--primary"},{"id":"3","label":"Download","size":"small","type":"bare--primary"}]},
 
         // Example with items > 3.  This will show the dropdown.
-        //defaultValue: {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false},
+        //defaultValue: {"items":[{"id":"1","label":"Edit","icon":"px-utl:edit","selected":true},{"id":"2","label":"Copy","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false},
         inputType: 'code:JSON'
       }
     }

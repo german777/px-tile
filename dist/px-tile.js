@@ -18,28 +18,6 @@
        * It has more space to display text content and can be adjusted along with
        * total height of the tile.
        */overlayDescription:{type:String,value:'',observer:'_onDataChanged'},/**
-       * Single action button to display on the title section right side. 
-       * 
-       * See ` px-buttons-design ` https://www.predix-ui.com/#/css/visual/buttons/px-buttons-design for more details
-       * 
-       * `style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..) 
-       * 
-       * Examples:
-       * 
-       * Default button with icon and color ` {"key":"101","val":"Favorite","icon":"px-nav:favorite", "color": "orange"} ` 
-       * 
-       * Default button and icon ` {"key":"101","val":"Favorite","icon":"px-nav:favorite"} ` 
-       * 
-       * Small button and icon ` {"key":"101","val":"Favorite","size":"btn--small","icon":"px-nav:favorite"} ` 
-       * 
-       * Bare small button with icon and text `  {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare","icon":"px-nav:favorite"} `  
-       * 
-       * Bare small button with just text  ` {"key":"101","val":"Favorite","size":"btn--small","type":"btn--bare"} `   
-       * 
-       * Bare small button with just icon and some margin on the right `  {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite", "style": "margin-right: 5px;"} `
-       * 
-       * Bare small button with just icon `  {"key":"101","size":"btn--small","type":"btn--icon","icon":"px-nav:favorite"} ` 
-       */titleActionButton:{type:Object,value:{},observer:'_onDataChanged'},/**
        * Action buttons display below description.
        * 
        * When items <= 3 will display the buttons/text inline.
@@ -54,23 +32,23 @@
        * 
        * Some examples when items <= 3:
        * 
-       * Only icons:  ` {"items":[{"key":"1","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:link"},{"key":"2","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"key":"3","size":"btn--small","type":"btn--bare btn--icon","icon":"px-utl:download"}]} ` 
+       * Only icons:  ` {"items":[{"id":"1","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link"},{"id":"2","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:copy"},{"id":"3","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]} ` 
        * 
-       * Small buttons:  ` {"items":[{"key":"1","val":"Link","size":"btn--small"},{"key":"2","val":"Copy","size":"btn--small"},{"key":"3","val":"Download","size":"btn--small"}]} ` 
+       * Small buttons:  ` {"items":[{"id":"1","label":"Link","size":"small"},{"id":"2","label":"Copy","size":"small"},{"id":"3","label":"Download","size":"small"}]} ` 
        * 
-       * Small buttons with icons:  ` {"items":[{"key":"1","val":"Link","size":"btn--small","icon":"px-utl:link"},{"key":"2","val":"Copy","size":"btn--small","icon":"px-utl:copy"},{"key":"3","val":"Download","size":"btn--small","icon":"px-utl:download"}]} ` 
+       * Small buttons with icons:  ` {"items":[{"id":"1","label":"Link","size":"small","icon":"px-utl:link"},{"id":"2","label":"Copy","size":"small","icon":"px-utl:copy"},{"id":"3","label":"Download","size":"small","icon":"px-utl:download"}]} ` 
        * 
-       * Buttons with text only:  ` {"items":[{"key":"1","val":"Link","size":"btn--small","type":"btn--bare--primary", "style":"margin-right: -15px;"},{"key":"2","val":"Copy","size":"btn--small","type":"btn--bare--primary"},{"key":"3","val":"Download","size":"btn--small","type":"btn--bare--primary"}]} ` 
+       * Buttons with text only:  ` {"items":[{"id":"1","label":"Link","size":"small","type":"bare--primary", "style":"margin-right: -15px;"},{"id":"2","label":"Copy","size":"small","type":"bare--primary"},{"id":"3","label":"Download","size":"small","type":"bare--primary"}]} ` 
        * 
        * 
        * 
        * Example when items > 3:  
        * 
-       * ` {"items":[{"key":"1","val":"Edit","icon":"px-utl:edit","selected":true},{"key":"2","val":"Copy","icon":"px-utl:copy"},{"key":"3","val":"Remove","icon":"px-vis:trash-series"},{"key":"4","val":"Notification","icon":"px-nav:notification"}],"sortMode":"key","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false} ` 
+       * ` {"items":[{"id":"1","label":"Edit","icon":"px-utl:edit","selected":true},{"id":"2","label":"Copy","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false} ` 
        * 
        * Event fired on item selection:
        * 
-       * `px-title-on-action-clicked`
+       * `px-tile-action-tapped`
        * 
        */actionButtons:{type:Object,value:{},observer:'_onDataChanged'}},/**
      * Method used internally for flipping the hovered status of a tile.
@@ -85,14 +63,14 @@ this._hoverTextColor=window.getComputedStyle(this.$.overlay).color}},/**
      * Returns class to control overlay for hoverable tiles.
      */_getClass:function _getClass(hovered){return hovered?'hovered':''},/**
      * On change callback for either property to set flags to either show/hide elements on px-tile
-     */_onDataChanged:function _onDataChanged(){this._hasTitle=this.title&&this.title.length>0;this._hasSubtitle=this.subtitle&&this.subtitle.length>0;this._hasActionButtons=this.actionButtons&&this.actionButtons.items!==undefined&&this.actionButtons.items.length>0;this._hasTitleActionBtn=this._hasTitle||this.titleActionButton&&this.titleActionButton.key.length>0;this._hasTitleSubtitleActionBtn=this._hasSubtitle||this._hasTitleActionBtn;this._hasData=this._hasActionButtons||this._hasTitleSubtitleActionBtn}/**
-     * @event px-title-on-action-clicked  
+     */_onDataChanged:function _onDataChanged(){var actionBtnsCount=0;if(this.actionButtons){for(var x in this.actionButtons.items){if(this.actionButtons.items[x].isPrimary){this._hasPrimaryBtn=true}else{actionBtnsCount++}}}this._hasActionButtons=actionBtnsCount>0;this._hasTitleActionBtn=this.title&&this.title.length>0||this._hasPrimaryBtn;this._hasTitleSubtitleActionBtn=this.subtitle&&this.subtitle.length>0||this._hasTitleActionBtn;this._hasData=this._hasActionButtons||this._hasTitleSubtitleActionBtn}/**
+     * @event px-tile-action-tapped  
      * 
-     * Event ` px-title-on-action-clicked ` is fired when an item is selected from either titleActionButton or actionButtons with selection detail. E.g. {key: "1", val: "Favorite"}
+     * Event ` px-tile-action-tapped ` is fired when an item is selected from actionButtons.items with selection detail. E.g. {"id": "1", "label": "Favorite"}
      * 
      * Example:
      *  
-     * ` window.addEventListener('px-title-on-action-clicked', function(evt){ ` 
+     * ` window.addEventListener('px-tile-action-tapped', function(evt){ ` 
      * 
      * `    console.log(evt.detail); ` 
 
