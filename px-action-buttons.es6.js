@@ -36,7 +36,9 @@
       }
     },
     created() {
-      this._maxIcons = 3;
+      this._MAX_ITEMS = 3;
+      this._MAX_PRIMARY_ITEMS = 1;
+      this._primaryBtnsIndx = [];
     },
     /**
      * Attach event listeners for dropdown action buttons.
@@ -59,17 +61,22 @@
     _actionButtonsChanged() {
       // set _notifyActionChange false to prevent firing px-dropdown-selection-changed while updating the new set of buttons
       this._notifyActionChange = false;
-      //this._isDisplayDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > this._maxIcons;
       let actionBtns = JSON.parse(JSON.stringify(this.actionButtons));
-      
+      actionBtns.maxButtons = actionBtns.maxButtons || this._MAX_ITEMS;
+      actionBtns.maxPrimaryButtons = actionBtns.maxPrimaryButtons || this._MAX_PRIMARY_ITEMS;
       let dropdownCount = 0;
+      this._primaryBtnsIndx = [];
       for(let x in actionBtns.items) {
-        if(!actionBtns.items[x].isPrimary) {
+        if(actionBtns.items[x].isPrimary && this._primaryBtnsIndx.length < actionBtns.maxPrimaryButtons) {
+          //actionBtns.items[x].index = x;
+          this._primaryBtnsIndx[actionBtns.items[x].id] = x;
+        } else {
           dropdownCount++;
         }
       }
-      this._isDisplayDropdown = dropdownCount > this._maxIcons;
+      this._isDisplayDropdown = dropdownCount > actionBtns.maxButtons;
       
+      this._isDisplayButtons = false;
       if(this.isPrimary) {
         this._isDisplayButtons = true;
         this._isDisplayDropdown = false;
@@ -87,6 +94,10 @@
             if(!actionBtns.multi) {
               delete item.selected;
             }
+          }
+          // remove items.isPrimary buttons from dropdown list
+          for(let x in this._primaryBtnsIndx) {
+            actionBtns.items.splice(this._primaryBtnsIndx[x], 1);
           }
           // there are only two options for sortMode and selectBy in px-dropdown
           if(actionBtns.sortMode && actionBtns.sortMode === 'label') {
@@ -158,6 +169,8 @@
      * See https://github.com/PredixDev/px-buttons-design for more details.
      */
     _getBtnClazz(item) {
+      // if index is undefinded then is allowed to show as primary button
+      var index = this._primaryBtnsIndx[item.id]; 
       let clazzset = this._getBtnSize(item.size);
       clazzset = this._getBtnType(item.type, clazzset);
       if(item.buttonIcon === true) {
@@ -166,7 +179,9 @@
       if(item.disabled === true) {
         clazzset.push('btn--disabled');
       }
-      if( (this.isPrimary && !item.isPrimary) || (!this.isPrimary && item.isPrimary) ) { 
+      if( (this.isPrimary && !item.isPrimary) || 
+          (!this.isPrimary && item.isPrimary)  || 
+          (this.isPrimary && index === undefined) ) { 
         clazzset.push('hidden');
       }
       return clazzset.join(" ").trim();

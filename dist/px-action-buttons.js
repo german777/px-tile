@@ -7,7 +7,7 @@
        * Boolean to find out if items list is in overlay
        */isOverlay:{type:Boolean,value:false},/**
        * Boolean to display primary button
-       */isPrimary:{type:Boolean,value:false}},created:function created(){this._maxIcons=3},/**
+       */isPrimary:{type:Boolean,value:false}},created:function created(){this._MAX_ITEMS=3;this._MAX_PRIMARY_ITEMS=1;this._primaryBtnsIndx=[]},/**
      * Attach event listeners for dropdown action buttons.
      */attached:function attached(){this.listen(this,'px-dropdown-selection-changed','_itemSelected')},/**
      * Detach event listeners for dropdown action buttons.
@@ -17,9 +17,10 @@
      * Sets flag _isDisplayButtons true if actionButtons size is less or equal than default items size 3, false otherwise.
      * If _isDisplayDropdown === true it will update px-dropdown options menu
      */_actionButtonsChanged:function _actionButtonsChanged(){// set _notifyActionChange false to prevent firing px-dropdown-selection-changed while updating the new set of buttons
-this._notifyActionChange=false;//this._isDisplayDropdown = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > this._maxIcons;
-var actionBtns=JSON.parse(JSON.stringify(this.actionButtons));var dropdownCount=0;for(var x in actionBtns.items){if(!actionBtns.items[x].isPrimary){dropdownCount++}}this._isDisplayDropdown=dropdownCount>this._maxIcons;if(this.isPrimary){this._isDisplayButtons=true;this._isDisplayDropdown=false}else if(this._isDisplayDropdown){this.async(function(){var pxDropdown=this.$$('#pxDropdown');pxDropdown.style.height='20px';for(var _x in actionBtns.items){// px-dropdown has key and val
-var item=actionBtns.items[_x];item.key=item.id||item.key;item.val=item.label||item.val;delete item.id;delete item.label;if(!actionBtns.multi){delete item.selected}}// there are only two options for sortMode and selectBy in px-dropdown
+this._notifyActionChange=false;var actionBtns=JSON.parse(JSON.stringify(this.actionButtons));actionBtns.maxButtons=actionBtns.maxButtons||this._MAX_ITEMS;actionBtns.maxPrimaryButtons=actionBtns.maxPrimaryButtons||this._MAX_PRIMARY_ITEMS;var dropdownCount=0;this._primaryBtnsIndx=[];for(var x in actionBtns.items){if(actionBtns.items[x].isPrimary&&this._primaryBtnsIndx.length<actionBtns.maxPrimaryButtons){//actionBtns.items[x].index = x;
+this._primaryBtnsIndx[actionBtns.items[x].id]=x}else{dropdownCount++}}this._isDisplayDropdown=dropdownCount>actionBtns.maxButtons;this._isDisplayButtons=false;if(this.isPrimary){this._isDisplayButtons=true;this._isDisplayDropdown=false}else if(this._isDisplayDropdown){this.async(function(){var pxDropdown=this.$$('#pxDropdown');pxDropdown.style.height='20px';for(var _x in actionBtns.items){// px-dropdown has key and val
+var item=actionBtns.items[_x];item.key=item.id||item.key;item.val=item.label||item.val;delete item.id;delete item.label;if(!actionBtns.multi){delete item.selected}}// remove items.isPrimary buttons from dropdown list
+for(var _x2 in this._primaryBtnsIndx){actionBtns.items.splice(this._primaryBtnsIndx[_x2],1)}// there are only two options for sortMode and selectBy in px-dropdown
 if(actionBtns.sortMode&&actionBtns.sortMode==='label'){actionBtns.sortMode='val'}else if(actionBtns.sortMode!=='val'){actionBtns.sortMode='key'}if(actionBtns.selectBy&&actionBtns.selectBy==='label'){actionBtns.selectBy='val'}else if(actionBtns.selectBy!=='val'){actionBtns.selectBy='key'}for(var id in actionBtns){pxDropdown.set(id,actionBtns[id])}this.async(function(){// adjust dropdown to appear aligned to the right
 var dropdown=Polymer.dom(pxDropdown.root).querySelector('#dropdown');dropdown.set('horizontalAlign','right');var button=Polymer.dom(pxDropdown.root).querySelector('#button');this.button=button;this.pxIcon=Polymer.dom(button).querySelector('px-icon');if(this.pxIcon){this.pxIcon.style.right='-6px';if(this.isOverlay){this.pxIcon.style.color=this.hoverTextColor}}this._notifyActionChange=true})},100)}else{this._isDisplayButtons=true}this._notifyActionChange=true},/**
      * Callback for on-tap event for action items when the list size is 3 or less
@@ -30,7 +31,8 @@ var dropdown=Polymer.dom(pxDropdown.root).querySelector('#dropdown');dropdown.se
      */_handleSelection:function _handleSelection(detail){if(this._notifyActionChange){this.fire('px-tile-action-tapped',detail)}},/**
      * Return button class type and size if any
      * See https://github.com/PredixDev/px-buttons-design for more details.
-     */_getBtnClazz:function _getBtnClazz(item){var clazzset=this._getBtnSize(item.size);clazzset=this._getBtnType(item.type,clazzset);if(item.buttonIcon===true){clazzset.push('btn--icon')}if(item.disabled===true){clazzset.push('btn--disabled')}if(this.isPrimary&&!item.isPrimary||!this.isPrimary&&item.isPrimary){clazzset.push('hidden')}return clazzset.join(' ').trim()},/**
+     */_getBtnClazz:function _getBtnClazz(item){// if index is undefinded then is allowed to show as primary button
+var index=this._primaryBtnsIndx[item.id];var clazzset=this._getBtnSize(item.size);clazzset=this._getBtnType(item.type,clazzset);if(item.buttonIcon===true){clazzset.push('btn--icon')}if(item.disabled===true){clazzset.push('btn--disabled')}if(this.isPrimary&&!item.isPrimary||!this.isPrimary&&item.isPrimary||this.isPrimary&&index===undefined){clazzset.push('hidden')}return clazzset.join(' ').trim()},/**
      * Returns button type class
      */_getBtnType:function _getBtnType(type,array){array=array||[];if(type){switch(type.trim()){case'primary':array.push('btn--primary');break;case'call to action':array.push('btn--call-to-action');break;case'tertiary':array.push('btn--tertiary');break;case'bare':array.push('btn--bare');if(this.isOverlay){array.push('btn-overlay')}break;case'bare primary':array.push('btn--bare--primary');if(this.isOverlay){array.push('btn-overlay')}else{array.push('btn-tile-bare-primary')}break;}}return array},/**
      * Returns button size class
