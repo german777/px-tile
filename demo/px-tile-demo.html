@@ -66,13 +66,14 @@
           --px-tile-action-buttons-bottom: 15px;
         }
         .small-container {
-          --px-tile-height: 10rem;
+          --px-tile-height: 7rem;
+          --px-tile-about-min-height: 7rem;
           --px-tile-background-color: #B6C3CC;
-          --px-tile-about-min-height: 10rem;
           --px-tile-action-buttons-position: absolute;
           --px-tile-action-buttons-right: 15px;
           --px-tile-action-buttons-bottom: 15px;
         }
+
         /* square sample  */
         .square-container {
           --px-tile-height: 135px;
@@ -183,8 +184,6 @@
             </template>
 
             <template is="dom-if" if="{{isVariant7Content(chosenConfig.configName)}}" restamp="true">
-            </template>
-            <template is="dom-if" if="{{isVariant8Content(chosenConfig.configName)}}" restamp="true">
               <div slot="thumbnail" >
                 <div class="center-text">01</div>
               </div>
@@ -251,6 +250,7 @@
               title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
               subtitle: 'Subtitle text',
               description: '07/30/2017 by Anita Lazman',
+              overlayDescription: '',
               titleActionButton : {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:favorite'},
               actionButtons : {items:[{key:'1',val:'Secondary Action',size:'btn--small', type:'btn--tertiary'},{key:'2',val:'Action',size:'btn--small',type:'btn--call-to-action'}]},
               hoverable : false,
@@ -261,6 +261,7 @@
               title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
               subtitle: 'Subtitle text',
               description: '07/30/2017 by Anita Lazman',
+              overlayDescription: '',
               titleActionButton : {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:favorite'},
               actionButtons : {items:[{key:'1',val:'Return',size:'btn--small'},{key:'2',val:'Scrap',size:'btn--small'},{key:'3',val:'Download',size:'btn--small'}]},
               hoverable : false,
@@ -270,25 +271,16 @@
               configName: 'Variant 6',
               title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
               subtitle: 'Inspected by Chelsea Hammond on 11/26/2017',
-              description: '07/30/2017 by Anita Lazman',
+              description: '',
+              overlayDescription: '',
               titleActionButton: {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:favorite'},
               actionButtons: {items:[{key:'1',val:'Return',icon:'px-utl:edit',selected:true},{key:'2',val:'Scrap',icon:'px-utl:copy'},{key:'3',val:'Remove',icon:'px-vis:trash-series'},{key:'4',val:'Notification',icon:'px-nav:notification'}],sortMode:'key',buttonstyle:'icon',icon:'px-nav:more',displayvalue:'Select',disabled:false,disableClear:false,hideChevron:true,multi:false,searchMode:false},
               hoverable : false,
-              customClass: 'px-tile-custom small-container'
+              customClass: 'small-container'
 
             },
             {
               configName: 'Variant 7',
-              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
-              subtitle: 'Inspected by Chelsea Hammond on 11/26/2017',
-              description: '07/30/2017 by Anita Lazman',
-              titleActionButton: {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:favorite'},
-              actionButtons: {items:[{key:'1',val:'Return',icon:'px-utl:edit',selected:true},{key:'2',val:'Scrap',icon:'px-utl:copy'},{key:'3',val:'Remove',icon:'px-vis:trash-series'},{key:'4',val:'Notification',icon:'px-nav:notification'}],sortMode:'key',buttonstyle:'icon',icon:'px-nav:more',displayvalue:'Select',disabled:false,disableClear:false,hideChevron:true,multi:false,searchMode:false},
-              hoverable : false,
-              customClass: 'px-tile-custom small-container'
-            },
-            {
-              configName: 'Variant 8',
               actionButtons : {items:[{key:'8',size:'btn--small',type:'btn--bare btn--icon',icon:'px-utl:download'}]},
               title: '',
               subtitle: '',
@@ -330,9 +322,6 @@
     isVariant7Content: function(selectedTab) {
       return selectedTab === 'Variant 7';
     },
-    isVariant8Content: function(selectedTab) {
-      return selectedTab === 'Variant 8';
-    },
 
     demoProps: {
       title: {
@@ -363,6 +352,7 @@
       customClass:{
         type: String,
         defaultValue: '',
+        _visibleForConfig: false,
         inputType: 'text'
       },
       titleActionButton: {
