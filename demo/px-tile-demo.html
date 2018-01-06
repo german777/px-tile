@@ -57,6 +57,8 @@
         .px-simple-horizontal-bar-chart {
           padding: 1rem 0.5rem 1rem 1rem;
         }
+
+        /* compact layout without thumbnail on the top */
         .px-tile-custom {
           --px-tile-height: 10rem;
           --px-tile-background-color: #B6C3CC;
@@ -65,6 +67,7 @@
           --px-tile-action-buttons-right: 15px;
           --px-tile-action-buttons-bottom: 15px;
         }
+        /* smaller tag-like layout without thumbnail on the top */
         .small-container {
           --px-tile-height: 6rem;
           --px-tile-about-min-height: 6rem;
@@ -232,13 +235,15 @@
             {
               configName: 'Variant 1',
               actionButtons : '',
-              titleActionButton : {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:notification'}
+              titleActionButton : {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:notification'},
+              customClass: ''
 
             },
             {
               configName: 'Variant 2',
               actionButtons : '',
-              titleActionButton : {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:compare'}
+              titleActionButton : {key:'101',size:'btn--small',type:'btn--icon',icon:'px-nav:compare'},
+              customClass: ''
             },
             {
               configName: 'Variant 3',
