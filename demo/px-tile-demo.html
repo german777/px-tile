@@ -66,8 +66,8 @@
           --px-tile-action-buttons-bottom: 15px;
         }
         .small-container {
-          --px-tile-height: 7rem;
-          --px-tile-about-min-height: 7rem;
+          --px-tile-height: 6rem;
+          --px-tile-about-min-height: 6rem;
           --px-tile-background-color: #B6C3CC;
           --px-tile-action-buttons-position: absolute;
           --px-tile-action-buttons-right: 15px;
@@ -129,15 +129,14 @@
                    title-action-button="{{props.titleActionButton.value}}"
                    action-buttons="{{props.actionButtons.value}}"  >
 
+            <!-- Default -->
             <template is="dom-if" if="{{isDefaultContent(chosenConfig.configName)}}" restamp="true">
-
               <div slot="thumbnail">
                 <img src$="[[importPath]]gas_turbine.png" />
               </div>
-
               <div class="footer" slot="footer"></div>
             </template>
-
+            <!-- Variant 1 (use non-transparent JPG, and make use of footer slot with px labels. )-->
             <template is="dom-if" if="{{isVariant1Content(chosenConfig.configName)}}" restamp="true">
               <div class="thumbnail" slot="thumbnail">
                 <img src$="[[importPath]]turbine.jpg" />
@@ -150,12 +149,12 @@
               </div>
             </template>
 
-
+            <!-- Variant 2 (using slot, includes a simple version of px vis pie chart, no action buttons ) -->
             <template is="dom-if" if="{{isVariant2Content(chosenConfig.configName)}}" restamp="true">
               <div slot="thumbnail" class="px-vis-pie-chart"><px-vis-pie-custom-component></px-vis-pie-custom-component></div>
             </template>
 
-
+            <!-- Variant 3 (using slot, includes a px vis horizontal bar chart )  -->
             <template is="dom-if" if="{{isVariant3Content(chosenConfig.configName)}}" restamp="true">
               <div slot="thumbnail" class="px-simple-horizontal-bar-chart">
                 <px-simple-horizontal-bar-chart
@@ -173,16 +172,16 @@
               </div>
             </template>
 
-
+            <!-- Variant 4 (small version - no thumbnail portion, use of text-based action button) -->
             <template is="dom-if" if="{{isVariant4Content(chosenConfig.configName)}}" restamp="true">
             </template>
-
+            <!-- Variant 5 (small version - no thumbnail portion, use of text-based and color action button) -->
             <template is="dom-if" if="{{isVariant5Content(chosenConfig.configName)}}" restamp="true">
             </template>
-
+            <!-- Variant 6 (smaller version - no thumbnail portion,no action button, no description) -->
             <template is="dom-if" if="{{isVariant6Content(chosenConfig.configName)}}" restamp="true">
             </template>
-
+            <!-- Variant 7 (just a small box with a few characters )-->
             <template is="dom-if" if="{{isVariant7Content(chosenConfig.configName)}}" restamp="true">
               <div slot="thumbnail" >
                 <div class="center-text">01</div>
