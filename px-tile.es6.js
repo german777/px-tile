@@ -95,7 +95,7 @@
       actionButtons: {
         type: Object,
         value: {},
-        observer: '_onDataChanged'
+        observer: '_actionButtonsChanged'
       }
     },
     /**
@@ -138,20 +138,26 @@
       return hovered ? 'hovered' : '';
     },
     /**
-     * On change callback for either property to set flags to either show/hide elements on px-tile
+     * On change callback for actionButtons to set _hasActionButtons and _hasPrimaryBtn flag
      */
-    _onDataChanged() {
-      let actionBtnsCount = 0;
-      if(this.actionButtons) {
+    _actionButtonsChanged() {
+      this._hasPrimaryBtn = false;
+      this._hasActionButtons = this.actionButtons && this.actionButtons.items && this.actionButtons.items.length > 0;
+      if(this._hasActionButtons) {
+        let maxPrimaryButtons = this.actionButtons.maxPrimaryButtons || 1;
         for(let x in this.actionButtons.items) {
           if(this.actionButtons.items[x].isPrimary) {
             this._hasPrimaryBtn = true;
-          } else {
-            actionBtnsCount++;
+            break;
           }
         }
       }
-      this._hasActionButtons = actionBtnsCount > 0;
+      this._onDataChanged();
+    },
+    /**
+     * On change callback for either property to set _hasTitleActionBtn, _hasTitleSubtitleActionBtn, and _hasData flags 
+     */
+    _onDataChanged() {
       this._hasTitleActionBtn = this.title && this.title.length > 0|| this._hasPrimaryBtn;
       this._hasTitleSubtitleActionBtn = this.subtitle && this.subtitle.length > 0 || this._hasTitleActionBtn;
       this._hasData = this._hasActionButtons || this._hasTitleSubtitleActionBtn;

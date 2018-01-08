@@ -38,7 +38,7 @@
     <style include="px-tile-styles"></style>
     <template is="dom-if" if="{{_isDisplayButtons}}">
       <div class="flex flex--right">
-		    <template is="dom-repeat" items="[[actionButtons.items]]">
+		    <template is="dom-repeat" items="[[_items]]">
            <button class$="btn {{_getBtnClazz(item)}}" 
             style$="{{_getBtnColor(item)}} {{item.style}}" 
             on-tap="_onSelected">

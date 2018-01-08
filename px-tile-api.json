@@ -91,23 +91,6 @@
       ],
       "methods": [
         {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 9,
-              "column": 47
-            },
-            "end": {
-              "line": 9,
-              "column": 143
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
           "name": "attached",
           "description": "Attach event listeners for dropdown action buttons.",
           "privacy": "protected",
@@ -151,12 +134,33 @@
               "column": 7
             },
             "end": {
-              "line": 24,
-              "column": 462
+              "line": 23,
+              "column": 457
             }
           },
           "metadata": {},
           "params": []
+        },
+        {
+          "name": "_setupDropdownButtons",
+          "description": "Sets dropdown",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 25,
+              "column": 7
+            },
+            "end": {
+              "line": 28,
+              "column": 370
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "actionBtns"
+            }
+          ]
         },
         {
           "name": "_onSelected",
@@ -164,11 +168,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 26,
+              "line": 30,
               "column": 7
             },
             "end": {
-              "line": 26,
+              "line": 30,
               "column": 140
             }
           },
@@ -185,11 +189,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 28,
+              "line": 32,
               "column": 7
             },
             "end": {
-              "line": 28,
+              "line": 32,
               "column": 232
             }
           },
@@ -206,11 +210,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 34,
               "column": 7
             },
             "end": {
-              "line": 30,
+              "line": 34,
               "column": 130
             }
           },
@@ -227,12 +231,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 37,
               "column": 7
             },
             "end": {
-              "line": 34,
-              "column": 399
+              "line": 37,
+              "column": 371
             }
           },
           "metadata": {},
@@ -248,11 +252,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 39,
               "column": 7
             },
             "end": {
-              "line": 36,
+              "line": 39,
               "column": 499
             }
           },
@@ -272,11 +276,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 41,
               "column": 7
             },
             "end": {
-              "line": 38,
+              "line": 41,
               "column": 280
             }
           },
@@ -296,11 +300,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 40,
+              "line": 43,
               "column": 7
             },
             "end": {
-              "line": 40,
+              "line": 43,
               "column": 145
             }
           },
@@ -326,7 +330,7 @@
           "column": 33
         },
         "end": {
-          "line": 40,
+          "line": 43,
           "column": 146
         }
       },
@@ -553,12 +557,12 @@
             },
             "end": {
               "line": 52,
-              "column": 71
+              "column": 78
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_onDataChanged\""
+              "observer": "\"_actionButtonsChanged\""
             }
           },
           "defaultValue": "{}"
@@ -655,8 +659,8 @@
           ]
         },
         {
-          "name": "_onDataChanged",
-          "description": "On change callback for either property to set flags to either show/hide elements on px-tile",
+          "name": "_actionButtonsChanged",
+          "description": "On change callback for actionButtons to set _hasActionButtons and _hasPrimaryBtn flag",
           "privacy": "protected",
           "sourceRange": {
             "start": {
@@ -665,7 +669,24 @@
             },
             "end": {
               "line": 65,
-              "column": 507
+              "column": 416
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_onDataChanged",
+          "description": "On change callback for either property to set _hasTitleActionBtn, _hasTitleSubtitleActionBtn, and _hasData flags",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 67,
+              "column": 7
+            },
+            "end": {
+              "line": 67,
+              "column": 290
             }
           },
           "metadata": {},
@@ -686,7 +707,7 @@
           "column": 33
         },
         "end": {
-          "line": 77,
+          "line": 79,
           "column": 8
         }
       },
@@ -783,7 +804,7 @@
             },
             "end": {
               "line": 52,
-              "column": 71
+              "column": 78
             }
           },
           "metadata": {},
