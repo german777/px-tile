@@ -68,13 +68,13 @@ $inuit-enable-btn--disabled : true;
 // Component
 .tile__container {
   position: relative;
-  width: var(--px-tile-width, calculateRem(300px));
-  height: var(--px-tile-height, calculateRem(300px));
-  overflow: hidden;
 }
-.tile, .overlay {
-  min-width: 100%; 
-  min-height: 100%;
+.tile__container, .tile, .overlay {
+  width: var(--px-tile-width, calculateRem(300px));
+  max-width: var(--px-tile-width, calculateRem(300px));
+  height: var(--px-tile-height, calculateRem(300px));
+  max-height: var(--px-tile-height, calculateRem(300px));
+  overflow: hidden;
 }
 .tile{
   background-color: var(--px-tile-background-color, lightgray);

@@ -13,27 +13,18 @@
 ### Usage
     This is a helper component to support display of button on hover effect in px-tile and avoid duplicate code
     
-    <px-action-buttons action-buttons="{{actionButtons}}"></px-action-buttons>
+    <px-tile-action-buttons action-buttons="{{actionButtons}}"></px-tile-action-buttons>
     
     If items <= 3 it will display the elements one after the other
     If items > 3 it will display the list of elements in a dropdown
     
-    actionButtons is a JSON object such as: 
-    E.g. for items = 3
-    let actionButtons = {"items":[{"id":"1","type":"btn--bare btn--icon","icon":"px-utl:phone"},{"id":"2","type":"btn--bare btn--icon","icon":"px-utl:copy"},{"id":"3","type":"btn--bare btn--icon","icon":"px-utl:edit"}]};
-    E.g for items > 3
-    let actionButtons = {"items":[{"id":"1","label":"Edit","icon":"px-utl:edit","selected":true},{"id":"2","label":"Copy","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false}
-    
-    See https://github.com/PredixDev/px-buttons-design for button options 
-    See https://github.com/PredixDev/px-dropdown for dropdown options
-    
 
-@element px-action-buttons
+@element px-tile-action-buttons
 @blurb A tile component for actionable icons/buttons/text
 @homepage index.html
 @demo index.html
 -->
-<dom-module id="px-action-buttons">
+<dom-module id="px-tile-action-buttons">
   <template>
     <style include="px-tile-styles"></style>
     <template is="dom-if" if="{{_isDisplayButtons}}">
@@ -55,6 +46,7 @@
     <template is="dom-if" if="{{_isDisplayDropdown}}"> 
       <div class="flex flex--right">
 				<px-dropdown id="pxDropdown"
+				  items="[[_items]]"
 				  sort-mode="key"
 				  select-by="key"
 				  button-style="icon"
@@ -66,4 +58,4 @@
     </template>
   </template>
 </dom-module>
-<script src="dist/px-action-buttons.js"></script>
+<script src="dist/px-tile-action-buttons.js"></script>

@@ -1,18 +1,9 @@
 (function() {
   Polymer({
 
-    is: 'px-action-buttons',
+    is: 'px-tile-action-buttons',
 
     properties: {
-      /**
-       * Action buttons to display below the description/copy text.
-       * Please refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties
-       */
-      actionButtons: {
-        type: Object,
-        value: {},
-        observer: '_actionButtonsChanged'
-      },
       /**
        * Current text color of overlay to apply other elements when hovering
        */
@@ -23,16 +14,25 @@
       /**
        * Boolean to find out if items list is in overlay
        */
-      isOverlay: {
+      overlay: {
         type: Boolean,
         value: false
       },
       /**
        * Boolean to display primary button
        */
-      isPrimary: {
+      primary: {
         type: Boolean,
         value: false
+      },
+      /**
+       * Action buttons to display below the description/copy text.
+       * Please refer to px-dropdown (https://github.com/PredixDev/px-dropdown) for a list of supported properties
+       */
+      actionButtons: {
+        type: Object,
+        value: {},
+        observer: '_actionButtonsChanged'
       }
     },
     /**
@@ -77,14 +77,16 @@
           btns.push(actionBtns.items[x]);
         }
       }
-      if(this.isPrimary) {
+      this._isDisplayDropdown = false;
+      if(this.primary) {
         actionBtns.items = primaryBtns;
-        this._isDisplayDropdown = false;
       } else {
         actionBtns.items = btns;
         this._isDisplayDropdown = actionBtns.items.length > maxButtons;
       }
       this._isDisplayButtons = false;
+      
+      
       if(this._isDisplayDropdown)  {
         this._setupDropdownButtons(actionBtns);
       } else {
@@ -123,8 +125,11 @@
           actionBtns.selectBy = 'key';
         }
         for(let id in actionBtns) {
+          // set other properties from dropdown if passed
           pxDropdown.set(id, actionBtns[id]);
         }
+        // set _items here 
+        this._items = actionBtns.items;
         this.async(function() {
           // adjust dropdown to appear aligned to the right
           let dropdown = Polymer.dom(pxDropdown.root).querySelector('#dropdown');
@@ -134,7 +139,7 @@
           this.pxIcon = Polymer.dom(button).querySelector('px-icon');
           if(this.pxIcon) {
             this.pxIcon.style.right = '-6px';
-            if(this.isOverlay) {
+            if(this.overlay) {
               this.pxIcon.style.color = this.hoverTextColor;
             }
           }
@@ -184,8 +189,8 @@
       if(item.disabled === true) {
         clazzset.push('btn--disabled');
       }
-      if( (this.isPrimary && !item.isPrimary)  || 
-          (!this.isPrimary && item.isPrimary) ) { 
+      if( (this.primary && !item.isPrimary)  || 
+          (!this.primary && item.isPrimary) ) { 
         clazzset.push('hidden');
       }
       return clazzset.join(" ").trim();
@@ -208,13 +213,13 @@
             break;
           case 'bare':
             array.push('btn--bare');
-            if(this.isOverlay) {
+            if(this.overlay) {
               array.push('btn-overlay');
             }
             break;
           case 'bare primary':
             array.push('btn--bare--primary');
-            if(this.isOverlay) {
+            if(this.overlay) {
               array.push('btn-overlay');
             } else {
               array.push('btn-tile-bare-primary');

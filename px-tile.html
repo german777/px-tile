@@ -4,7 +4,7 @@
     'gulp serve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
 -->
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="px-action-buttons.html"/>
+<link rel="import" href="px-tile-action-buttons.html"/>
 <link rel="import" href="css/px-tile-styles.html">
 
 <!--
@@ -44,7 +44,7 @@ You can find an example demo under `demo/components-mix-demo.html` showing how t
       subtitle="subtitle text"
       description="description text"
       overlay-description="overlay description text"
-      action-buttons='{"items":[{"id":"1","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link"},{"id":"2","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:copy"},{"id":"3","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}' 
+      action-buttons='{"items":[{"id":"1","label":"Return","size":"small"},{"id":"2","label":"Scrap","size":"small"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]}' 
       hoverable >
       <div slot="thumbnail" class="px-simple-horizontal-bar-chart">
         <px-simple-horizontal-bar-chart
@@ -64,6 +64,19 @@ You can find an example demo under `demo/components-mix-demo.html` showing how t
     </px-tile>
 	```
     
+    
+    
+### Action Buttons object properties
+E.g. ` {"items":[{"id":"1","label":"Return","size":"small"},{"id":"2","label":"Scrap","size":"small"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}], "maxButtons": "2"}  `
+
+Object Key| Value Type | Options | Default
+:----|:----|:---|:---
+maxButtons * | Number | 1,2,3,4,... | 3
+items | Array | Objects, see below 'Buttons object properties' table  | []
+
+ **maxButtons is used to display max buttons below the description.
+
+
 ### Buttons object properties 
 E.g. ` {"id":"1","label":"Link","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link","isPrimary":true} `
 
@@ -71,7 +84,7 @@ Object Key| Value Type | Options | Default
 :----|:----|:---|:---
 `id` | Number | User defined | User defined
 `label` | String | User defined |  User defined
-`size` | String | `small, large, huge, full` | regular
+`size` | String | `small, regular, large, huge, full` | regular
 `type` | String | `primary, secondary, call to action, tertiary, bare, bare primary` | secondary
 `buttonIcon` | Boolean | `true, false` | false
 `icon` | String | See https://www.predix-ui.com/#/elements/px-icon-set | none
@@ -138,7 +151,7 @@ Custom property | Description | Default
 				            </template>
 				            <span></span> <!-- empty span to right align primary action button -->
 				            <template is="dom-if" if="{{_hasPrimaryBtn}}">
-				              <px-action-buttons id="pxTitleButton" action-buttons="{{actionButtons}}" is-primary="true"></px-action-buttons>
+				              <px-tile-action-buttons id="pxTilePrimaryBtns" action-buttons="{{actionButtons}}" primary="true"></px-tile-action-buttons>
 				            </template>
 				          </div>
 			          </template>
@@ -152,7 +165,7 @@ Custom property | Description | Default
 	          </template>
 	          <template is="dom-if" if="{{_hasActionButtons}}">
               <div class="action-buttons-wrapper">
-                <px-action-buttons id="pxActionButtons" action-buttons="{{actionButtons}}"></px-action-buttons>
+                <px-tile-action-buttons id="pxActionButtons" action-buttons="{{actionButtons}}"></px-tile-action-buttons>
               </div>
 	          </template>
 	        </div>
@@ -169,7 +182,7 @@ Custom property | Description | Default
 			            </template>
 			            <span></span> <!-- empty span to right align primary action button -->
 			            <template is="dom-if" if="{{_hasPrimaryBtn}}">
-			              <px-action-buttons id="pxOverlayTitleButton" action-buttons="{{actionButtons}}" is-primary="true" is-overlay="true" hover-text-color="{{_hoverTextColor}}"></px-action-buttons>
+			              <px-tile-action-buttons id="pxOverlayTitleButton" action-buttons="{{actionButtons}}" primary="true" overlay="true" hover-text-color="{{_hoverTextColor}}"></px-tile-action-buttons>
 			            </template>
 			          </div>
 		          </template>
@@ -187,7 +200,7 @@ Custom property | Description | Default
 		        </div>
 		        <template is="dom-if" if="{{_hasActionButtons}}">
 		          <div class="action-overlay-btns">
-		          <px-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}" is-overlay="true" hover-text-color="{{_hoverTextColor}}"></px-action-buttons>
+		          <px-tile-action-buttons id="pxOverlayActionButtons" action-buttons="{{actionButtons}}" overlay="true" hover-text-color="{{_hoverTextColor}}"></px-tile-action-buttons>
 		          </div>
 		        </template>
 	        </div>
