@@ -24,7 +24,7 @@
       /**
        * Main text label for the tile.
        */
-      title: {
+      mainTitle: {
         type: String,
         value: '',
         observer: '_onDataChanged'
@@ -132,7 +132,7 @@
      * On change callback for either property to set _hasTitleActionBtn, _hasTitleSubtitleActionBtn, and _hasData flags 
      */
     _onDataChanged() {
-      this._hasTitleActionBtn = this.title && this.title.length > 0|| this._hasPrimaryBtn;
+      this._hasTitleActionBtn = this.mainTitle && this.mainTitle.length > 0|| this._hasPrimaryBtn;
       this._hasTitleSubtitleActionBtn = this.subtitle && this.subtitle.length > 0 || this._hasTitleActionBtn;
       this._hasData = this._hasActionButtons || this._hasTitleSubtitleActionBtn;
     }

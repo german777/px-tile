@@ -8,7 +8,7 @@
 <link rel="import" href="css/px-tile-styles.html">
 
 <!--
-Px-tile tile can be customized with px theme, title, subtitle, description, buttons, imagery or px components. This also means that applications may choose to include or exclude any of these elements. It also provides actionable callback functionalities(text,button,icon e.g.) meaning developers may choose to utilize them to perform customizable actions based on user's input.
+Px-tile tile can be customized with px theme, mainTitle, subtitle, description, buttons, imagery or px components. This also means that applications may choose to include or exclude any of these elements. It also provides actionable callback functionalities(text,button,icon e.g.) meaning developers may choose to utilize them to perform customizable actions based on user's input.
 
 Typically, Px-tile can be utilized for actions such as: contact cards, work orders, inspections, media tiles, or an overview of a device.
 
@@ -24,7 +24,7 @@ You can find an example demo under `demo/components-mix-demo.html` showing how t
 	#### image-based thumbnail
 	```
     <px-tile
-      title="title text"
+      mainTitle="title text"
       subtitle="subtitle text"
       description="description text"
       overlay-description="overlay description text"
@@ -40,7 +40,7 @@ You can find an example demo under `demo/components-mix-demo.html` showing how t
 	#### px-chart-based thumbnail
 	```
     <px-tile
-      title="title text"
+      mainTitle="title text"
       subtitle="subtitle text"
       description="description text"
       overlay-description="overlay description text"
@@ -67,18 +67,43 @@ You can find an example demo under `demo/components-mix-demo.html` showing how t
     
     
 ### Action Buttons object properties
-E.g. ` {"items":[{"id":"1","label":"Return","size":"small"},{"id":"2","label":"Scrap","size":"small"},{"id":"3","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}], "maxButtons": "2"}  `
 
 Object Key| Value Type | Options | Default
 :----|:----|:---|:---
 maxButtons * | Number | 1,2,3,4,... | 3
 items | Array | Objects, see below 'Buttons object properties' table  | []
 
- **maxButtons is used to display max buttons below the description.
+ **maxButtons is used to display max buttons below the description, if max is reached it will display as dropdown menu.
+
+E.g. 
+```
+{
+  "items": [
+    {
+      "id": "1",
+      "label": "Return",
+      "size": "small"
+    },
+    {
+      "id": "2",
+      "label": "Scrap",
+      "size": "small"
+    },
+    {
+      "id": "3",
+      "label": "Download",
+      "size": "small",
+      "type": "bare",
+      "buttonIcon": true,
+      "icon": "px-utl:download"
+    }
+  ],
+  "maxButtons": "2"
+}
+```
 
 
 ### Buttons object properties 
-E.g. ` {"id":"1","label":"Link","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link","isPrimary":true} `
 
 Object Key| Value Type | Options | Default
 :----|:----|:---|:---
@@ -89,6 +114,25 @@ Object Key| Value Type | Options | Default
 `buttonIcon` | Boolean | `true, false` | false
 `icon` | String | See https://www.predix-ui.com/#/elements/px-icon-set | none
 `isPrimary` | Boolean | `true, false`  | false
+
+E.g. 
+```
+{
+  "id": "1",
+  "label": "Link",
+  "size": "small",
+  "type": "bare",
+  "buttonIcon": true,
+  "icon": "px-utl:link",
+  "isPrimary": true
+} 
+```
+
+### Event fired on item selection: 
+``` 
+px-tile-action-tapped 
+```
+See CustomEvent section below.
 
 
 
@@ -146,8 +190,8 @@ Custom property | Description | Default
 		          <div class="title-container">
 		            <template is="dom-if" if="{{_hasTitleActionBtn}}">
 				          <div class="title flex flex--justify">
-				            <template is="dom-if" if="{{title}}">
-				              <span class="epsilon truncate title-span">{{title}}</span>
+				            <template is="dom-if" if="{{mainTitle}}">
+				              <span class="epsilon truncate title-span">{{mainTitle}}</span>
 				            </template>
 				            <span></span> <!-- empty span to right align primary action button -->
 				            <template is="dom-if" if="{{_hasPrimaryBtn}}">
@@ -177,8 +221,8 @@ Custom property | Description | Default
 		        <div class="header-wrapper">
 		          <template is="dom-if" if="{{_hasTitleActionBtn}}">
 			          <div class="title flex flex--justify">
-			            <template is="dom-if" if="{{title}}">
-			              <span class="epsilon truncate title-span">{{title}}</span>
+			            <template is="dom-if" if="{{mainTitle}}">
+			              <span class="epsilon truncate title-span">{{mainTitle}}</span>
 			            </template>
 			            <span></span> <!-- empty span to right align primary action button -->
 			            <template is="dom-if" if="{{_hasPrimaryBtn}}">

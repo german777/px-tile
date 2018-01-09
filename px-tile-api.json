@@ -411,7 +411,7 @@
       "tagname": "px-tile-action-buttons"
     },
     {
-      "description": "Px-tile tile can be customized with px theme, title, subtitle, description, buttons, imagery or px components. This also means that applications may choose to include or exclude any of these elements. It also provides actionable callback functionalities(text,button,icon e.g.) meaning developers may choose to utilize them to perform customizable actions based on user's input.\n\nTypically, Px-tile can be utilized for actions such as: contact cards, work orders, inspections, media tiles, or an overview of a device.\n\n### Note\n\nThere are two <slot> elements in which you can add content:  `<div slot=\"thumbnail\"></div>`  and  `<div slot=\"footer\"></div>`.  \nSince these <slot> elements are used to display content you are responsible for styling, make sure the content follows the Predix guidelines. \nYou can find an example demo under `demo/components-mix-demo.html` showing how to use these <slot> elements.\n\n\n### Usage\n\n  #### image-based thumbnail\n  ```\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable  \n      action-buttons='{\"items\":[{\"id\":\"1\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:link\"},{\"id\":\"2\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:copy\"},{\"id\":\"3\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:download\"}]}' >\n      <div slot=\"thumbnail\">\n         <img src$=\"../turbine.jpg\" />\n       </div>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n  ```\n\n  #### px-chart-based thumbnail\n  ```\n    <px-tile\n      title=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      action-buttons='{\"items\":[{\"id\":\"1\",\"label\":\"Return\",\"size\":\"small\"},{\"id\":\"2\",\"label\":\"Scrap\",\"size\":\"small\"},{\"id\":\"3\",\"label\":\"Download\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:download\"}]}' \n      hoverable >\n      <div slot=\"thumbnail\" class=\"px-simple-horizontal-bar-chart\">\n        <px-simple-horizontal-bar-chart\n          id=\"default-chart\"\n          width=\"auto\"\n          height=\"160\"\n          chart-data=\"[100,200,300,400,500,360]\"\n          colors='[\"#123453\",\"#234784\",\"#345453\",\"#467564\",\"#578785\",\"#578756\"]'\n          domain-max=\"500\"\n          legend-labels='[\n              \"No Action\", \"Scheduled Maintenance\", \"Sensor Repair\",\n              \"Unplanned Maintenance\", \"Ops Changes\", \"Forced Outage\", \"eight\"\n          ]'>\n        </px-simple-horizontal-bar-chart>\n        </div>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n  ```\n    \n    \n    \n### Action Buttons object properties\nE.g. ` {\"items\":[{\"id\":\"1\",\"label\":\"Return\",\"size\":\"small\"},{\"id\":\"2\",\"label\":\"Scrap\",\"size\":\"small\"},{\"id\":\"3\",\"label\":\"Download\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:download\"}], \"maxButtons\": \"2\"}  `\n\nObject Key| Value Type | Options | Default\n:----|:----|:---|:---\nmaxButtons * | Number | 1,2,3,4,... | 3\nitems | Array | Objects, see below 'Buttons object properties' table  | []\n\n*maxButtons is used to display max buttons below the description.\n\n\n### Buttons object properties \nE.g. ` {\"id\":\"1\",\"label\":\"Link\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:link\",\"isPrimary\":true} `\n\nObject Key| Value Type | Options | Default\n:----|:----|:---|:---\n`id` | Number | User defined | User defined\n`label` | String | User defined |  User defined\n`size` | String | `small, regular, large, huge, full` | regular\n`type` | String | `primary, secondary, call to action, tertiary, bare, bare primary` | secondary\n`buttonIcon` | Boolean | `true, false` | false\n`icon` | String | See https://www.predix-ui.com/#/elements/px-icon-set | none\n`isPrimary` | Boolean | `true, false`  | false\n\n\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-about-min-height` | Height of the about bottom bar | `inherit`\n`--px-tile-about-padding` | Padding of the about bottom bar | `inherit`\n`--px-tile-about-right` | Right of the about bottom bar | `inherit`\n`--px-tile-about-bottom` | Bottom of the about bottom bar | `inherit`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-action-buttons-position` | Position of action buttons | `inherit`\n`--px-tile-action-buttons-right` | Right position of action buttons | `inherit`\n`--px-tile-action-buttons-bottom` | Bottom position of action buttons | `inherit`\n`--px-tile-overlay-desc-line-height`  | Line Height of overlay description text | `1rem`\n`--px-tile-overlay-desc-font-size`  | Font Size of overlay description text | `0.8rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`\n`--px-tile-overlay-action-buttons-position` | Position of overlay action buttons | `inherit`\n`--px-tile-overlay-action-buttons-bottom` | Bottom position of overlay action buttons | `inherit`\n`--px-tile-overlay-action-buttons-right` | Right position of overlay action buttons | `inherit`\n`--px-tile-overlay-width` | Width of overlay action buttons | `inherit`\n`--px-tile-desc-text-height` |  Multi-line truncation effect for description text with the specified rem value | `2rem`\n`--px-tile-text-height`  | Height of the about section (bottom section) | `8.333rem`",
+      "description": "Px-tile tile can be customized with px theme, mainTitle, subtitle, description, buttons, imagery or px components. This also means that applications may choose to include or exclude any of these elements. It also provides actionable callback functionalities(text,button,icon e.g.) meaning developers may choose to utilize them to perform customizable actions based on user's input.\n\nTypically, Px-tile can be utilized for actions such as: contact cards, work orders, inspections, media tiles, or an overview of a device.\n\n### Note\n\nThere are two <slot> elements in which you can add content:  `<div slot=\"thumbnail\"></div>`  and  `<div slot=\"footer\"></div>`.  \nSince these <slot> elements are used to display content you are responsible for styling, make sure the content follows the Predix guidelines. \nYou can find an example demo under `demo/components-mix-demo.html` showing how to use these <slot> elements.\n\n\n### Usage\n\n  #### image-based thumbnail\n  ```\n    <px-tile\n      mainTitle=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      hoverable  \n      action-buttons='{\"items\":[{\"id\":\"1\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:link\"},{\"id\":\"2\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:copy\"},{\"id\":\"3\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:download\"}]}' >\n      <div slot=\"thumbnail\">\n         <img src$=\"../turbine.jpg\" />\n       </div>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n  ```\n\n  #### px-chart-based thumbnail\n  ```\n    <px-tile\n      mainTitle=\"title text\"\n      subtitle=\"subtitle text\"\n      description=\"description text\"\n      overlay-description=\"overlay description text\"\n      action-buttons='{\"items\":[{\"id\":\"1\",\"label\":\"Return\",\"size\":\"small\"},{\"id\":\"2\",\"label\":\"Scrap\",\"size\":\"small\"},{\"id\":\"3\",\"label\":\"Download\",\"size\":\"small\",\"type\":\"bare\",\"buttonIcon\":true,\"icon\":\"px-utl:download\"}]}' \n      hoverable >\n      <div slot=\"thumbnail\" class=\"px-simple-horizontal-bar-chart\">\n        <px-simple-horizontal-bar-chart\n          id=\"default-chart\"\n          width=\"auto\"\n          height=\"160\"\n          chart-data=\"[100,200,300,400,500,360]\"\n          colors='[\"#123453\",\"#234784\",\"#345453\",\"#467564\",\"#578785\",\"#578756\"]'\n          domain-max=\"500\"\n          legend-labels='[\n              \"No Action\", \"Scheduled Maintenance\", \"Sensor Repair\",\n              \"Unplanned Maintenance\", \"Ops Changes\", \"Forced Outage\", \"eight\"\n          ]'>\n        </px-simple-horizontal-bar-chart>\n        </div>\n      <div slot=\"footer\">Footer Content Here</div>\n    </px-tile>\n  ```\n    \n    \n    \n### Action Buttons object properties\n\nObject Key| Value Type | Options | Default\n:----|:----|:---|:---\nmaxButtons * | Number | 1,2,3,4,... | 3\nitems | Array | Objects, see below 'Buttons object properties' table  | []\n\n*maxButtons is used to display max buttons below the description, if max is reached it will display as dropdown menu.\n\nE.g. \n```\n{\n  \"items\": [\n    {\n      \"id\": \"1\",\n      \"label\": \"Return\",\n      \"size\": \"small\"\n    },\n    {\n      \"id\": \"2\",\n      \"label\": \"Scrap\",\n      \"size\": \"small\"\n    },\n    {\n      \"id\": \"3\",\n      \"label\": \"Download\",\n      \"size\": \"small\",\n      \"type\": \"bare\",\n      \"buttonIcon\": true,\n      \"icon\": \"px-utl:download\"\n    }\n  ],\n  \"maxButtons\": \"2\"\n}\n```\n\n\n### Buttons object properties \n\nObject Key| Value Type | Options | Default\n:----|:----|:---|:---\n`id` | Number | User defined | User defined\n`label` | String | User defined |  User defined\n`size` | String | `small, regular, large, huge, full` | regular\n`type` | String | `primary, secondary, call to action, tertiary, bare, bare primary` | secondary\n`buttonIcon` | Boolean | `true, false` | false\n`icon` | String | See https://www.predix-ui.com/#/elements/px-icon-set | none\n`isPrimary` | Boolean | `true, false`  | false\n\nE.g. \n```\n{\n  \"id\": \"1\",\n  \"label\": \"Link\",\n  \"size\": \"small\",\n  \"type\": \"bare\",\n  \"buttonIcon\": true,\n  \"icon\": \"px-utl:link\",\n  \"isPrimary\": true\n} \n```\n\n### Event fired on item selection: \n``` \npx-tile-action-tapped \n```\nSee CustomEvent section below.\n\n\n\n### Styling\nThe following custom properties are also available for styling:\n\nCustom property | Description | Default\n:----------------|:-------------|:----------\n`--px-tile-width` | Width of the whole tile | `20rem`\n`--px-tile-height` | Height of the whole tile | `20rem`\n`--px-tile-thumbnail-width` | Width of the thumbnail portion | `20rem`\n`--px-tile-thumbnail-height` | Height of the thumbnail portion | `11.66667rem`\n`--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`\n`--px-tile-background-color` | Background color of the tile | `lightgray`\n`--px-tile-about-min-height` | Height of the about bottom bar | `inherit`\n`--px-tile-about-padding` | Padding of the about bottom bar | `inherit`\n`--px-tile-about-right` | Right of the about bottom bar | `inherit`\n`--px-tile-about-bottom` | Bottom of the about bottom bar | `inherit`\n`--px-tile-text-background-color` | Background color of the the bottom bar of the tile | `lightgray`\n`--px-tile-title-color` | Text color for title in the bottom bar | `darkslategray`\n`--px-tile-subtitle-color` | Text color for subtitle in the bottom bar | `gray`\n`--px-tile-text-color` | Text color for the description text in the bottom bar | `darkslategray`\n`--px-tile-action-buttons-position` | Position of action buttons | `inherit`\n`--px-tile-action-buttons-right` | Right position of action buttons | `inherit`\n`--px-tile-action-buttons-bottom` | Bottom position of action buttons | `inherit`\n`--px-tile-overlay-desc-line-height`  | Line Height of overlay description text | `1rem`\n`--px-tile-overlay-desc-font-size`  | Font Size of overlay description text | `0.8rem`\n`--px-tile-overlay-background-color` | Background color for the overlay of a hoverable tile | `black`\n`--px-tile-overlay-text-color` | Text color for the overlay of a hoverable tile | `white`\n`--px-tile-overlay-action-buttons-position` | Position of overlay action buttons | `inherit`\n`--px-tile-overlay-action-buttons-bottom` | Bottom position of overlay action buttons | `inherit`\n`--px-tile-overlay-action-buttons-right` | Right position of overlay action buttons | `inherit`\n`--px-tile-overlay-width` | Width of overlay action buttons | `inherit`\n`--px-tile-desc-text-height` |  Multi-line truncation effect for description text with the specified rem value | `2rem`\n`--px-tile-text-height`  | Height of the about section (bottom section) | `8.333rem`",
       "summary": "",
       "path": "dist/px-tile.js",
       "properties": [
@@ -458,7 +458,7 @@
           "defaultValue": "false"
         },
         {
-          "name": "title",
+          "name": "mainTitle",
           "type": "string",
           "description": "Main text label for the tile.",
           "privacy": "public",
@@ -469,7 +469,7 @@
             },
             "end": {
               "line": 8,
-              "column": 63
+              "column": 67
             }
           },
           "metadata": {
@@ -686,7 +686,7 @@
             },
             "end": {
               "line": 41,
-              "column": 290
+              "column": 298
             }
           },
           "metadata": {},
@@ -731,7 +731,7 @@
           "type": "boolean"
         },
         {
-          "name": "title",
+          "name": "main-title",
           "description": "Main text label for the tile.",
           "sourceRange": {
             "start": {
@@ -740,7 +740,7 @@
             },
             "end": {
               "line": 8,
-              "column": 63
+              "column": 67
             }
           },
           "metadata": {},
@@ -830,11 +830,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 140,
+              "line": 184,
               "column": 10
             },
             "end": {
-              "line": 140,
+              "line": 184,
               "column": 40
             }
           }
@@ -845,11 +845,11 @@
           "range": {
             "file": "px-tile.html",
             "start": {
-              "line": 198,
+              "line": 242,
               "column": 12
             },
             "end": {
-              "line": 198,
+              "line": 242,
               "column": 39
             }
           }
