@@ -64,9 +64,20 @@ You can find an example demo under `demo/components-mix-demo.html` showing how t
     </px-tile>
 	```
     
-### Buttons and Dropdown reference
-    https://github.com/PredixDev/px-buttons-design 
-    https://github.com/PredixDev/px-dropdown
+### Buttons object properties 
+E.g. ` {"id":"1","label":"Link","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link","isPrimary":true} `
+
+Object Key| Value Type | Options | Default
+:----|:----|:---|:---
+`id` | Number | User defined | User defined
+`label` | String | User defined |  User defined
+`size` | String | `small, large, huge, full` | regular
+`type` | String | `primary, secondary, call to action, tertiary, bare, bare primary` | secondary
+`buttonIcon` | Boolean | `true, false` | false
+`icon` | String | See https://www.predix-ui.com/#/elements/px-icon-set | none
+`isPrimary` | Boolean | `true, false`  | false
+
+
 
 ### Styling
 The following custom properties are also available for styling:
@@ -80,7 +91,6 @@ Custom property | Description | Default
 `--px-tile-thumbnail-background-color` | Background color of the thumbnail portion | `white`
 `--px-tile-background-color` | Background color of the tile | `lightgray`
 `--px-tile-about-min-height` | Height of the about bottom bar | `inherit`
-`--px-tile-about-width` | Width of the about bottom bar | `inherit`
 `--px-tile-about-padding` | Padding of the about bottom bar | `inherit`
 `--px-tile-about-right` | Right of the about bottom bar | `inherit`
 `--px-tile-about-bottom` | Bottom of the about bottom bar | `inherit`

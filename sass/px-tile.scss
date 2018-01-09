@@ -68,13 +68,13 @@ $inuit-enable-btn--disabled : true;
 // Component
 .tile__container {
   position: relative;
-}
-.tile, .overlay {
-  min-width: var(--px-tile-width, calculateRem(100px)); 
-  min-height: var(--px-tile-height, calculateRem(100px));
   width: var(--px-tile-width, calculateRem(300px));
   height: var(--px-tile-height, calculateRem(300px));
   overflow: hidden;
+}
+.tile, .overlay {
+  min-width: 100%; 
+  min-height: 100%;
 }
 .tile{
   background-color: var(--px-tile-background-color, lightgray);
@@ -85,7 +85,7 @@ $inuit-enable-btn--disabled : true;
     padding: calculateRem(15px);
     position: absolute;
     bottom: 0;
-    width: var(--px-tile-width, calculateRem(300px));
+    width: 100%;
     background-color: var(--px-tile-text-background-color, lightgray);
     .title-span {
       color: var(--px-tile-title-color, darkslategray);
@@ -125,7 +125,6 @@ $inuit-enable-btn--disabled : true;
   }
   .tile-text-wrapper.tile-text-adjust {
     min-height: var(--px-tile-about-min-height, 0);
-    width: var(--px-tile-about-width, 300px);
     padding: var(--px-tile-about-padding, 1rem);
     right: var(--px-tile-about-right);
     bottom: var(--px-tile-about-bottom, 0);
@@ -148,7 +147,7 @@ $inuit-enable-btn--disabled : true;
   .title {
     background: none;
     margin-top: 0.6rem;
-    width: var(--px-tile-width, calculateRem(300px));
+    width: 100%;
     padding: 0 1.3333rem;
     .title-btn {
       margin-right: -6px;
@@ -179,7 +178,7 @@ $inuit-enable-btn--disabled : true;
     position: absolute;
     bottom: var(--px-tile-action-buttons-bottom, 15px);
     right: var(--px-tile-action-buttons-right, 15px);  
-    width: var(--px-tile-width, calculateRem(300px));
+    width: 100%;
     background-color: var(--px-tile-overlay-background-color, black);
   }
 }

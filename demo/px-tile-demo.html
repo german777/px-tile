@@ -14,6 +14,12 @@
 <link rel="import" href="../../px-icon-set/px-icon.html" />
 <link rel="import" href="../../px-alert-label/px-alert-label.html" />
 
+<!-- px pie chart demo component import -->
+<link rel="import" href="px-vis-pie-custom-component.html">
+
+<!-- px horizontal bar chart demo component import -->
+<link rel="import" href="../../px-simple-horizontal-bar-chart/px-simple-horizontal-bar-chart.html"/>
+
 <!-- Imports for this component -->
 <link rel="import" href="../../px-demo/css/px-demo-styles.html" />
 <link rel="import" href="../px-tile.html" />
@@ -23,10 +29,7 @@
   <template>
     <custom-style>
       <style include="px-demo-styles" is="custom-style">
-        .footer {
-          display: flex;
-          align-items: center;
-        }
+
         px-icon {
           margin-right: 1.3333rem;
         }
@@ -47,9 +50,59 @@
           --px-tile-subtitle-color: #2c404c;
           --px-tile-title-color: #121f26;
         }
+        .footer {
+          display: flex;
+          align-items: center;
+        }
+        .px-simple-horizontal-bar-chart {
+          padding: 1rem 0.5rem 1rem 1rem;
+        }
 
+        /* compact layout without thumbnail on the top */
+        .px-tile-custom {
+          --px-tile-height: 10rem;
+          --px-tile-background-color: #B6C3CC;
+          --px-tile-about-min-height: 10rem;
+          --px-tile-action-buttons-position: absolute;
+          --px-tile-action-buttons-right: 15px;
+          --px-tile-action-buttons-bottom: 15px;
+        }
+        /* smaller tag-like layout without thumbnail on the top */
+        .small-container {
+          --px-tile-height: 6rem;
+          --px-tile-about-min-height: 6rem;
+          --px-tile-background-color: #B6C3CC;
+          --px-tile-action-buttons-position: absolute;
+          --px-tile-action-buttons-right: 15px;
+          --px-tile-action-buttons-bottom: 15px;
+        }
+
+        /* square sample  */
+        .square-container {
+           --px-tile-height: 135px;
+           --px-tile-width: 135px;
+           --px-tile-about-min-height: 25px;
+           --px-tile-about-padding: 0px;
+           --px-tile-about-right: 5px;
+           --px-tile-about-bottom: 5px;
+           --px-tile-text-background-color: #D8E0E5;
+           /* adjust overlay action buttons since the container is small  */
+           --px-tile-overlay-action-buttons-position: absolute;
+           --px-tile-overlay-action-buttons-bottom: -7px; 
+           --px-tile-overlay-action-buttons-right: -9px;
+           --px-tile-overlay-width: 25px;
+         }
+         
+        .center-text {
+          height: 135px;
+          width: 135px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       </style>
     </custom-style>
+
 
     <!-- Header -->
     <px-demo-header
@@ -71,23 +124,80 @@
 
       <!-- Component ---------------------------------------------------------->
       <px-demo-component slot="px-demo-component">
-        <px-tile hoverable="{{props.hoverable.value}}"
-                 title="{{props.title.value}}"
-                 subtitle="{{props.subtitle.value}}"
-                 description="{{props.description.value}}"
-                 overlay-description="{{props.overlayDescription.value}}"
-                 action-buttons="{{props.actionButtons.value}}">
-          <div slot="thumbnail">
-            <img src$="[[importPath]]gas_turbine.png" />
-          </div>
-          
-          <div class="footer" slot="footer">
-<!--             <px-icon icon="px-fea:tag"></px-icon>
-            <px-alert-label type="unknown" label="Tag 1"></px-alert-label>
-            <px-alert-label type="unknown" label="Tag 2"></px-alert-label>
-            <px-alert-label type="unknown" label="Tag 3"></px-alert-label> -->
-          </div> 
-        </px-tile>
+
+          <px-tile class$="{{props.customClass.value}}" hoverable="{{props.hoverable.value}}"
+                   title="{{props.title.value}}"
+                   subtitle="{{props.subtitle.value}}"
+                   description="{{props.description.value}}"
+                   overlay-description="{{props.overlayDescription.value}}"
+                   action-buttons="{{props.actionButtons.value}}"  >
+
+            <!-- Default -->
+            <template is="dom-if" if="{{isDefaultContent(chosenConfig.configName)}}" restamp="true">
+              <div slot="thumbnail">
+                <img src$="[[importPath]]gas_turbine.png" />
+              </div>
+              <div class="footer" slot="footer"></div>
+            </template>
+
+            <!-- Variant 1 (use non-transparent JPG, and make use of footer slot with px labels. )-->
+            <template is="dom-if" if="{{isVariant1Content(chosenConfig.configName)}}" restamp="true">
+              <div class="thumbnail" slot="thumbnail">
+                <img src$="[[importPath]]turbine.jpg" />
+              </div>
+              <div class="footer" slot="footer">
+                <px-icon icon="px-fea:tag"></px-icon>
+                <px-alert-label type="unknown" label="TAG1"></px-alert-label>
+                <px-alert-label type="unknown" label="TAG2"></px-alert-label>
+                <px-alert-label type="unknown" label="TAG3"></px-alert-label>
+              </div>
+            </template>
+
+            <!-- Variant 2 (using slot, includes a simple version of px vis pie chart, no action buttons ) -->
+            <template is="dom-if" if="{{isVariant2Content(chosenConfig.configName)}}" restamp="true">
+              <div slot="thumbnail" class="px-vis-pie-chart"><px-vis-pie-custom-component></px-vis-pie-custom-component></div>
+            </template>
+
+            <!-- Variant 3 (using slot, includes a px vis horizontal bar chart )  -->
+            <template is="dom-if" if="{{isVariant3Content(chosenConfig.configName)}}" restamp="true">
+              <div slot="thumbnail" class="px-simple-horizontal-bar-chart">
+                <px-simple-horizontal-bar-chart
+                  id="default-chart"
+                  width="auto"
+                  height="150"
+                  chart-data="[100,200,300,400,500,360]"
+                  colors='["#506DB6","#BFDA5D","#BD79A4","#E3483D","#FDE571","#8ACDE2"]'
+                  domain-max="500"
+                  legend-labels='[
+                        "No Action", "Scheduled Maintenance", "Sensor Repair",
+                        "Unplanned Maintenance", "Ops Changes", "Forced Outage", "eight"
+                    ]'>
+                </px-simple-horizontal-bar-chart>
+              </div>
+            </template>
+
+            <!-- Variant 4 (small version - no thumbnail portion, use of text-based action button) -->
+            <template is="dom-if" if="{{isVariant4Content(chosenConfig.configName)}}" restamp="true">
+            </template>
+
+            <!-- Variant 5 (small version - no thumbnail portion, use of text-based and color action button) -->
+            <template is="dom-if" if="{{isVariant5Content(chosenConfig.configName)}}" restamp="true">
+            </template>
+
+            <!-- Variant 6 (smaller version - no thumbnail portion,no action button, no description) -->
+            <template is="dom-if" if="{{isVariant6Content(chosenConfig.configName)}}" restamp="true">
+            </template>
+            
+            <!-- Variant 7 (just a small box with a few characters )-->
+            <template is="dom-if" if="{{isVariant7Content(chosenConfig.configName)}}" restamp="true">
+              <div slot="thumbnail" >
+                <div class="center-text">01</div>
+              </div>
+            </template>
+
+
+          </px-tile>
+
       </px-demo-component>
       <!-- END Component ------------------------------------------------------>
 
@@ -122,11 +232,115 @@
         type: Array,
         value: function(){
           return [
-            { configName: "Default",
-              configReset: true }
+            { configName: 'Default',
+              configReset: true
+            },
+            {
+              configName: 'Variant 1',
+              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
+              subtitle: 'Subtitle text',
+              actionButtons : {"items":[{"id":"101","label":"Notification","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:notification","isPrimary":true}]},
+              description: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.',
+              overlayDescription: 'Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.',
+              hoverable : true,
+              customClass: ''
+
+            },
+            {
+              configName: 'Variant 2',
+              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
+              subtitle: 'Subtitle text',
+              actionButtons : {"items":[{"id":"103","label":"Compare","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:compare","isPrimary":true}]},
+              description: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.',
+              overlayDescription: 'Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna.',
+              hoverable : true,
+              customClass: ''
+            },
+            {
+              configName: 'Variant 3',
+              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
+              subtitle: 'Subtitle text',
+              actionButtons : {},
+              description: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.',
+              overlayDescription: 'Overlay description text : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. ',
+              hoverable : true,
+              customClass: ''
+            },
+            {
+              configName: 'Variant 4',
+              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
+              subtitle: 'Subtitle text',
+              description: '07/30/2017 by Anita Lazman',
+              overlayDescription: '',
+              actionButtons : {"items":[{"id":"105","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Secondary Action","size":"small","type":"tertiary"},{"id":"2","label":"Action","size":"small","type":"call to action"}]},
+              hoverable : false,
+              customClass: 'px-tile-custom'
+            },
+            {
+              configName: 'Variant 5',
+              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
+              subtitle: 'Subtitle text',
+              description: '07/30/2017 by Anita Lazman',
+              overlayDescription: '',
+              actionButtons : {"items":[{"id":"106","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Return","size":"small"},{"id":"2","label":"Scrap","size":"small"},{"id":"3","label":"Download","size":"small"}]},
+              hoverable : false,
+              customClass: 'px-tile-custom'
+            },
+            {
+              configName: 'Variant 6',
+              title: 'SF_722101_IR_WDMMYYXX_GHEIXYZ_SS45',
+              subtitle: 'Inspected by Chelsea Hammond on 11/26/2017',
+              description: '',
+              overlayDescription: '',
+              actionButtons: {"items":[{"id":"107","label":"Favorite","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"1","label":"Return","icon":"px-utl:edit","selected":true},{"id":"2","label":"Scrap","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}]},
+              hoverable : false,
+              customClass: 'small-container'
+
+            },
+            {
+              configName: 'Variant 7',
+              title: '',
+              subtitle: '',
+              description: '',
+              actionButtons : {"items":[{"id":"20","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]},
+              overlayDescription: '',
+              hoverable : false,
+              customClass: 'square-container'
+            }
           ]
         }
       }
+    },
+    isDefaultContent: function(selectedTab) {
+      if(!selectedTab){
+        return true;
+      }else{
+        return selectedTab === 'Default';
+      }
+    },
+    isVariant1Content: function(selectedTab) {
+      return selectedTab === 'Variant 1';
+    },
+    isVariant2Content: function(selectedTab) {
+      return selectedTab === 'Variant 2';
+    },
+    isVariant3Content: function(selectedTab) {
+      return selectedTab === 'Variant 3';
+    },
+    isVariant4Content: function(selectedTab) {
+      return selectedTab === 'Variant 4';
+    },
+    isVariant5Content: function(selectedTab) {
+      return selectedTab === 'Variant 5';
+    },
+    isVariant6Content: function(selectedTab) {
+      return selectedTab === 'Variant 6';
+    },
+    isVariant7Content: function(selectedTab) {
+      return selectedTab === 'Variant 7';
+    },
+    isVariant8Content: function(selectedTab) {
+      return selectedTab === 'Variant 8';
     },
 
     demoProps: {
@@ -155,20 +369,15 @@
         defaultValue: true,
         inputType: 'toggle'
       },
+      customClass:{
+        type: String,
+        defaultValue: '',
+        _visibleForConfig: false,
+        inputType: 'text'
+      },
       actionButtons: {
         type: Object,
-        //  Examples when items <= 3
-        // Only icons
         defaultValue: {"items":[{"id":"1111","label":"Link","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link"},{"id":"2222","label":"Favorite","size":"small","type":"bare","buttonIcon":true,"icon":"px-nav:favorite","isPrimary":true},{"id":"3333","label":"Copy","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:copy"},{"id":"4444","label":"Download","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]},
-        // Buttons
-        //defaultValue: {"items":[{"id":"1","label":"Link","size":"small"},{"id":"2","label":"Copy","size":"small"},{"id":"3","label":"Download","size":"small"}]},
-        // Buttons with icons
-        //defaultValue: {"items":[{"id":"1","label":"Link","size":"small","icon":"px-utl:link"},{"id":"2","label":"Copy","size":"small","icon":"px-utl:copy"},{"id":"3","label":"Download","size":"small","icon":"px-utl:download"}]},
-        // Buttons with text only
-        //defaultValue: {"items":[{"id":"1","label":"Link","size":"small","type":"bare--primary", "style":"margin-right: -15px;"},{"id":"2","label":"Copy","size":"small","type":"bare--primary"},{"id":"3","label":"Download","size":"small","type":"bare--primary"}]},
-
-        // Example with items > 3.  This will show the dropdown.
-        //defaultValue: {"items":[{"id":"1","label":"Edit","icon":"px-utl:edit","selected":true},{"id":"2","label":"Copy","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false},
         inputType: 'code:JSON'
       }
     }

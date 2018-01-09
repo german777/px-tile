@@ -20,32 +20,6 @@
        */overlayDescription:{type:String,value:'',observer:'_onDataChanged'},/**
        * Action buttons display below description.
        * 
-       * When items <= 3 will display the buttons/text inline.
-       * 
-       * Please refer to ` px-buttons-design ` (https://www.predix-ui.com/#/css/visual/buttons/px-buttons-design) for more details
-       * 
-       * When items > 3 will display the list of elements in a dropdown.
-       * 
-       * Please refer to ` px-dropdown ` (https://www.predix-ui.com/#/elements/px-dropdown) for more details
-       * 
-       *  `style` is an additionally property from px-tile (E.g. background-color: red; margin-left: 4px; others..). See example "Buttons with text only" below
-       * 
-       * Some examples when items <= 3:
-       * 
-       * Only icons:  ` {"items":[{"id":"1","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:link"},{"id":"2","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:copy"},{"id":"3","size":"small","type":"bare","buttonIcon":true,"icon":"px-utl:download"}]} ` 
-       * 
-       * Small buttons:  ` {"items":[{"id":"1","label":"Link","size":"small"},{"id":"2","label":"Copy","size":"small"},{"id":"3","label":"Download","size":"small"}]} ` 
-       * 
-       * Small buttons with icons:  ` {"items":[{"id":"1","label":"Link","size":"small","icon":"px-utl:link"},{"id":"2","label":"Copy","size":"small","icon":"px-utl:copy"},{"id":"3","label":"Download","size":"small","icon":"px-utl:download"}]} ` 
-       * 
-       * Buttons with text only:  ` {"items":[{"id":"1","label":"Link","size":"small","type":"bare--primary", "style":"margin-right: -15px;"},{"id":"2","label":"Copy","size":"small","type":"bare--primary"},{"id":"3","label":"Download","size":"small","type":"bare--primary"}]} ` 
-       * 
-       * 
-       * 
-       * Example when items > 3:  
-       * 
-       * ` {"items":[{"id":"1","label":"Edit","icon":"px-utl:edit","selected":true},{"id":"2","label":"Copy","icon":"px-utl:copy"},{"id":"3","label":"Remove","icon":"px-vis:trash-series"},{"id":"4","label":"Notification","icon":"px-nav:notification"}],"sortMode":"id","buttonStyle":"icon","icon":"px-nav:more","displayValue":"Select","disabled":false,"disableClear":false,"hideChevron":true,"multi":false,"searchMode":false} ` 
-       * 
        * Event fired on item selection:
        * 
        * `px-tile-action-tapped`
